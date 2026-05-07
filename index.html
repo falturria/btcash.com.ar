@@ -9,7 +9,7 @@
   <meta name="author" content="BTCash">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://btcash.com.ar">
-
+ 
   <!-- ── OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ── -->
   <meta property="og:type"         content="website">
   <meta property="og:url"          content="https://btcash.com.ar">
@@ -20,65 +20,14 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale"       content="es_AR">
   <meta property="og:site_name"    content="₿TCa$h">
-
+ 
   <!-- ── TWITTER / X CARD ── -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="₿TCa$h — Préstamos con Colateral en Bitcoin">
   <meta name="twitter:description" content="Obtené liquidez en dólares usando tu Bitcoin como garantía. Sin vender. Tasa 18% anual.">
   <meta name="twitter:image"       content="https://btcash.com.ar/og-image.png">
-
-  <!-- ── SCHEMA.ORG — FinancialService + FAQPage ── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "FinancialService",
-        "name": "BTCash",
-        "alternateName": "₿TCa$h",
-        "url": "https://btcash.com.ar",
-        "description": "Préstamos en dólares con colateral en Bitcoin. Sin historial crediticio. Tasa 18% anual. Acreditación inmediata.",
-        "areaServed": { "@type": "Country", "name": "Argentina" },
-        "address": [
-          { "@type": "PostalAddress", "addressLocality": "Olivos", "addressRegion": "Buenos Aires", "addressCountry": "AR" },
-          { "@type": "PostalAddress", "addressLocality": "Microcentro", "addressRegion": "Buenos Aires", "addressCountry": "AR" }
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "customer service",
-          "availableLanguage": "Spanish",
-          "url": "https://wa.me/5491173695582"
-        },
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Préstamos Colaterales",
-          "itemListElement": [{
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "LoanOrCredit",
-              "name": "Préstamo con Colateral en Bitcoin",
-              "loanTerm": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 12, "unitCode": "MON" },
-              "amount": { "@type": "MonetaryAmount", "minValue": 4000, "maxValue": 100000, "currency": "USD" },
-              "annualPercentageRate": 18,
-              "requiredCollateral": "Bitcoin (BTC)"
-            }
-          }]
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          { "@type": "Question", "name": "¿Cómo funciona el préstamo con garantía en Bitcoin?", "acceptedAnswer": { "@type": "Answer", "text": "Depositás Bitcoin como garantía y recibís un préstamo en dólares. El Bitcoin queda bloqueado en billetera fría hasta que canceles el préstamo." } },
-          { "@type": "Question", "name": "¿Cuánto puedo pedir prestado?", "acceptedAnswer": { "@type": "Answer", "text": "Prestamos hasta el 50% del valor en dólares del Bitcoin que entregués como garantía (LTV 50%). Mínimo USD 4.000, máximo USD 100.000." } },
-          { "@type": "Question", "name": "¿Qué tasa tiene el préstamo?", "acceptedAnswer": { "@type": "Answer", "text": "La tasa es del 18% anual, interés simple. Sin comisiones ocultas ni gastos de mantenimiento." } },
-          { "@type": "Question", "name": "¿Puedo cancelar antes del vencimiento?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, podés devolver el préstamo en cualquier momento sin penalidades. Al cancelar liberamos tu Bitcoin de forma inmediata." } },
-          { "@type": "Question", "name": "¿Dónde queda mi Bitcoin?", "acceptedAnswer": { "@type": "Answer", "text": "Tu garantía se bloquea en una billetera fría de resguardo. No se vende ni se invierte. Se crea una billetera exclusiva por préstamo, verificable en el explorador público." } }
-        ]
-      }
-    ]
-  }
-  </script>
-
+ 
+ 
   <!-- ── GOOGLE ANALYTICS 4 ────────────────────────────────────────────────────
        1. Andá a analytics.google.com
        2. Admin → Crear propiedad → Web → URL: btcash.com.ar
@@ -91,7 +40,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
-
+ 
     // ── Eventos personalizados de conversión ──
     // Se llaman desde los botones del sitio
     function trackWA(label) {
@@ -131,7 +80,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
     a { text-decoration: none; }
-
+ 
     /* ── NAV ─────────────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -173,7 +122,7 @@
     .mob-menu a { color: var(--text); font-size: 15px; padding: 11px 0; border-bottom: 0.5px solid var(--border); }
     .mob-menu .btn-nav { text-align: center; margin-top: 10px; padding: 13px; border-radius: 12px; }
     .mob-menu .nav-panel-link { text-align: center; margin-top: 6px; padding: 13px; border-radius: 12px; justify-content: center; }
-
+ 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
       min-height: 100vh;
@@ -243,7 +192,7 @@
     .h-stat .number { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; color: var(--orange); line-height: 1; transition: color .2s; }
     .h-stat:hover .number { color: #F5C07A; }
     .h-stat .label { font-size: 11px; color: #5A8A75; margin-top: 4px; letter-spacing: .04em; }
-
+ 
     /* Hero topbar: badge + ticker en fila perfectamente alineados */
     .hero-topbar {
       display: flex; align-items: center; gap: 10px;
@@ -268,7 +217,7 @@
     .tick-live { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--mist); font-weight: 400; }
     .tick-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-ok); animation: tickBlink 2s ease-in-out infinite; flex-shrink: 0; }
     @keyframes tickBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
-
+ 
     /* Hero card */
     .hcard {
       background: var(--white); border: 0.5px solid var(--border);
@@ -297,7 +246,7 @@
     .hc-btc-item .bl { font-size: 9px; color: var(--mist); text-transform: uppercase; letter-spacing: .06em; }
     .hc-btc-item .bv { font-size: 11px; font-weight: 600; color: var(--sage-deep); margin-top: 3px; }
     .hc-btc-item.live .bv { color: var(--green-ok); }
-
+ 
     /* ── SECTIONS ─────────────────────────────────────────── */
     section { padding: 96px 52px; }
     .container { max-width: 1060px; margin: 0 auto; }
@@ -306,7 +255,7 @@
     h2.sec-title em { font-style: italic; color: var(--sage-mid); }
     .sec-desc { font-size: 15px; color: var(--muted); max-width: 500px; font-weight: 300; line-height: 1.85; }
     .sheader { margin-bottom: 56px; }
-
+ 
     /* ── COMO FUNCIONA ────────────────────────────────────── */
     #como-funciona { background: var(--white); }
     .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.5px; background: var(--border); border: 0.5px solid var(--border); border-radius: 18px; overflow: hidden; }
@@ -320,7 +269,7 @@
     .step:hover .step-icon { transform: scale(1.15) rotate(-5deg); }
     .step h3 { font-size: 15px; font-weight: 600; color: var(--sage-deep); margin-bottom: 8px; }
     .step p { font-size: 13px; color: var(--muted); line-height: 1.75; }
-
+ 
     /* LTV */
     .ltv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 72px; }
     .ltv-vis { background: var(--white); border: 0.5px solid var(--border); border-radius: 20px; padding: 32px; transition: box-shadow .3s; }
@@ -346,7 +295,7 @@
     .cklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); transition: color .2s; }
     .cklist li:hover { color: var(--text); }
     .cklist li::before { content: ''; display: block; min-width: 16px; height: 16px; margin-top: 2px; background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23C8DDD4'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%232D4F40' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/cover no-repeat; }
-
+ 
     /* LTV explicado tooltip */
     .ltv-explain {
       margin-top: 24px; padding: 18px 24px;
@@ -355,7 +304,7 @@
       border-left: 3px solid var(--sage-mid);
     }
     .ltv-explain strong { font-weight: 700; }
-
+ 
     /* Semáforo */
     .sem-wrap { margin-top: 72px; }
     .sem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 30px; }
@@ -377,7 +326,7 @@
     .sem-card.y h4 { color: #713F12; }
     .sem-card.r h4 { color: #7F1D1D; }
     .sem-card p { font-size: 13px; color: var(--muted); line-height: 1.75; }
-
+ 
     /* ── CALCULADORA ──────────────────────────────────────── */
     #calculadora { background: var(--cream); }
     .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
@@ -409,7 +358,7 @@
     .pi:hover { transform: translateY(-3px); }
     .pi .pv { font-family: 'Instrument Serif', serif; font-size: 34px; font-weight: 400; color: var(--orange); }
     .pi .pk { font-size: 11px; color: #5A8A75; margin-top: 5px; letter-spacing: .04em; }
-
+ 
     /* ── SEGUIMIENTO ──────────────────────────────────────── */
     #seguimiento { background: var(--white); }
     .tcard { background: var(--cream); border: 0.5px solid var(--border); border-radius: 20px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; margin-top: 52px; }
@@ -430,7 +379,7 @@
     .mbar { background: rgba(200,221,212,.12); border-radius: 4px; height: 5px; overflow: hidden; margin-top: 7px; }
     .mbar-fill { height: 100%; background: var(--orange); border-radius: 4px; width: 0%; transition: width 1.4s cubic-bezier(.25,.46,.45,.94); }
     .mlogo-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 10px; border-bottom: 0.5px solid rgba(200,221,212,.15); }
-
+ 
     /* ── FAQ ──────────────────────────────────────────────── */
     #faq { background: var(--cream); }
     /* Layout en lista vertical — sin grid de 2 columnas para evitar el bug */
@@ -449,7 +398,7 @@
     .fa-inner strong { color: var(--sage-deep); }
     /* Pill LTV en FAQ */
     .ltv-pill { display: inline-flex; align-items: center; gap: 5px; background: var(--sage); color: var(--sage-deep); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 100px; margin: 0 2px; }
-
+ 
     /* ── TRUST STRIP ──────────────────────────────────────── */
     .trust-strip {
       background: var(--white); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
@@ -459,7 +408,7 @@
     .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
     .trust-item .ti-icon { font-size: 20px; }
     .trust-item strong { color: var(--sage-deep); font-weight: 600; }
-
+ 
     /* ── CTA FINAL ────────────────────────────────────────── */
     .cta-wrap { padding: 0 52px 96px; }
     .cta-box { background: var(--sage-deep); border-radius: 24px; padding: 72px 60px; text-align: center; position: relative; overflow: hidden; max-width: 1060px; margin: 0 auto; }
@@ -480,11 +429,11 @@
     }
     .wa-btn:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.35); }
     .wa-btn svg { width: 19px; height: 19px; flex-shrink: 0; }
-
+ 
     /* ── FOOTER ───────────────────────────────────────────── */
     footer { background: var(--carbon); padding: 44px 52px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     footer p { font-size: 12px; color: #3D6652; letter-spacing: .06em; }
-
+ 
     /* ── ANIMACIONES SCROLL ───────────────────────────────── */
     @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
     .hero-left > * { animation: fadeUp .7s ease both; }
@@ -500,7 +449,7 @@
     .obs-d1 { transition-delay: .1s; }
     .obs-d2 { transition-delay: .2s; }
     .obs-d3 { transition-delay: .3s; }
-
+ 
     /* ── RESPONSIVE ───────────────────────────────────────── */
     @media (max-width:1000px) { .hero-inner{grid-template-columns:1fr} .hero-right{display:none} .ltv-grid{grid-template-columns:1fr;gap:36px} .tcard{grid-template-columns:1fr} .tmock{display:none} }
     @media (max-width:840px) {
@@ -514,7 +463,7 @@
   </style>
 </head>
 <body>
-
+ 
 <!-- ── NAV ────────────────────────────────────────────────────── -->
 <nav id="mainNav">
   <a href="#" style="display:flex;align-items:center;">
@@ -532,7 +481,7 @@
     <a href="#como-funciona">Cómo funciona</a>
     <a href="#calculadora">Calculadora</a>
     <a href="#faq">FAQ</a>
-    <a href="https://script.google.com/macros/s/AKfycbz3JvHxgalbFkSt4PFeJlL4JhA9wyX3rJrPAMXncOFaOUCBrgUL7Xrqx-1Vc22f-22e/exec?page=prestamo" target="_blank" class="nav-panel-link" onclick="trackPanel()">
+    <a href="<?= appUrl ?>?page=prestamo" target="_blank" class="nav-panel-link" onclick="trackPanel()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
       Mi préstamo
     </a>
@@ -549,10 +498,10 @@
   <a href="#como-funciona" onclick="closeMob()">Cómo funciona</a>
   <a href="#calculadora" onclick="closeMob()">Calculadora</a>
   <a href="#faq" onclick="closeMob()">Preguntas frecuentes</a>
-  <a href="https://script.google.com/macros/s/AKfycbz3JvHxgalbFkSt4PFeJlL4JhA9wyX3rJrPAMXncOFaOUCBrgUL7Xrqx-1Vc22f-22e/exec?page=prestamo" target="_blank" class="nav-panel-link" onclick="closeMob()">Mi préstamo</a>
+  <a href="<?= appUrl ?>?page=prestamo" target="_blank" class="nav-panel-link" onclick="closeMob()">Mi préstamo</a>
   <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-nav" onclick="closeMob()">Hablar con un asesor</a>
 </div>
-
+ 
 <!-- ── HERO ────────────────────────────────────────────────────── -->
 <section class="hero" id="inicio">
   <div class="hero-bg-glow"></div>
@@ -610,14 +559,14 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ── TRUST STRIP ─────────────────────────────────────────────── -->
 <div class="trust-strip obs">
   <div class="trust-item"><span class="ti-icon">🔒</span><span><strong>Billetera fría</strong> — tu BTC no se mueve</span></div>
   <div class="trust-item"><span class="ti-icon">📄</span><span><strong>Contrato digital</strong> firmado en el momento</span></div>
   <div class="trust-item"><span class="ti-icon">⚡</span><span><strong>Acreditación</strong> el mismo día</span></div>
 </div>
-
+ 
 <!-- ── COMO FUNCIONA ───────────────────────────────────────────── -->
 <section id="como-funciona">
   <div class="container">
@@ -632,7 +581,7 @@
       <div class="step obs obs-d3"><div class="step-num">03</div><span class="step-icon">🔒</span><h3>Depositás tu BTC</h3><p>Transferís tu Bitcoin a la billetera fría asignada. Tu garantía queda en custodia, sin venderse.</p></div>
       <div class="step obs" style="transition-delay:.4s"><div class="step-num">04</div><span class="step-icon">💵</span><h3>Recibís el dinero</h3><p>Recibís los dólares el mismo día: en efectivo, en pesos al tipo de cambio, o en USDT a tu wallet.</p></div>
     </div>
-
+ 
     <div class="ltv-grid" style="grid-template-rows:auto auto;">
       <div class="ltv-vis obs">
         <div class="ltv-tag">LTV — Loan to Value</div>
@@ -663,7 +612,7 @@
     <div class="ltv-explain obs">
       <strong>¿Qué es el LTV (Loan to Value)?</strong> Es la relación entre el monto del préstamo y el valor de tu garantía. Con un LTV del 50%, si depositás Bitcoin valuado en $100.000, podés recibir hasta $50.000 USD. Cuanto más bajo el LTV que usás, mayor tu margen de seguridad: el precio del BTC tiene que caer más antes de activar alertas. Por eso muchos clientes prefieren usar el 30–40% del LTV disponible en lugar del máximo.
     </div>
-
+ 
     <div class="sem-wrap obs">
       <div class="eyebrow">Protección del colateral</div>
       <h2 class="sec-title" style="max-width:520px">¿Qué pasa si el<br><em>precio del BTC baja?</em></h2>
@@ -675,7 +624,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ── CALCULADORA ─────────────────────────────────────────────── -->
 <section id="calculadora">
   <div class="container">
@@ -716,7 +665,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ── SEGUIMIENTO ─────────────────────────────────────────────── -->
 <section id="seguimiento">
   <div class="container">
@@ -736,7 +685,7 @@
           <li>Acceso directo a tu contrato firmado digitalmente</li>
           <li>Link a tu billetera BTC en explorador público</li>
         </ul>
-        <a href="https://script.google.com/macros/s/AKfycbz3JvHxgalbFkSt4PFeJlL4JhA9wyX3rJrPAMXncOFaOUCBrgUL7Xrqx-1Vc22f-22e/exec?page=prestamo" target="_blank" class="btn-primary">Ir a mi préstamo →</a>
+        <a href="<?= appUrl ?>?page=prestamo" target="_blank" class="btn-primary">Ir a mi préstamo →</a>
       </div>
       <div class="tmock">
         <div class="mlogo-row">
@@ -759,7 +708,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ── FAQ ────────────────────────────────────────────────────── -->
 <section id="faq">
   <div class="container">
@@ -780,7 +729,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ── CTA FINAL ───────────────────────────────────────────────── -->
 <div class="cta-wrap">
   <div class="cta-box obs">
@@ -795,7 +744,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- ── FOOTER ──────────────────────────────────────────────────── -->
 <footer>
   <div>
@@ -811,21 +760,21 @@
     <p style="margin-top:8px; color:#3D6652; font-size:12px; letter-spacing:.04em;">Olivos · Microcentro · Buenos Aires · btcash.com.ar</p>
   </div>
   <div style="text-align:right; max-width:440px;">
-    <p style="font-size:11px; color:#3D6652; letter-spacing:.04em;">© 2026 ₿TCa$h — Todos los derechos reservados.</p>
+    <p style="font-size:11px; color:#3D6652; letter-spacing:.04em;">© 2023 ₿TCa$h — Todos los derechos reservados.</p>
     <p style="margin-top:6px; font-size:10px; color:#2A3F34; line-height:1.7;">Los valores del simulador son estimativos y no constituyen oferta vinculante. El otorgamiento de préstamos está sujeto a disponibilidad y condiciones acordadas en el contrato. btcash.com.ar no es una entidad financiera regulada por el BCRA.</p>
   </div>
 </footer>
-
+ 
 <script>
 /* ── NAV SCROLL ─────────────────────────────────────── */
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
 });
-
+ 
 /* ── MENU MOBILE ────────────────────────────────────── */
 function toggleMenu(){ document.getElementById('mobMenu').classList.toggle('open'); }
 function closeMob(){ document.getElementById('mobMenu').classList.remove('open'); }
-
+ 
 /* ── FAQ — cada item es independiente ───────────────── */
 function faq(el) {
   const item = el.closest('.faq-item');
@@ -844,10 +793,10 @@ function faq(el) {
     answer.classList.add('open');
   }
 }
-
+ 
 /* ── FORMATO MONEDA ─────────────────────────────────── */
 function fmt(n){ return '$'+Number(n.toFixed(2)).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
-
+ 
 /* ── CALCULADORA ────────────────────────────────────── */
 function lU(){ const v=document.getElementById('lR').value; document.getElementById('lL').textContent=v+'%'; document.getElementById('lD').textContent=v+'%'; }
 function pU(){ const v=document.getElementById('pR').value; document.getElementById('pL').textContent=v+(v=='1'?' mes':' meses'); document.getElementById('pD').textContent=v; }
@@ -872,7 +821,7 @@ function calc(){
   document.getElementById('rU').textContent=fmt(pr+cq);
   document.getElementById('rB').textContent=ba.toFixed(6).replace('.',',')+' BTC';
 }
-
+ 
 /* ── PRECIO BTC — desde el Excel vía Apps Script ────── */
 function applyBtcPrice(price) {
   if(!price || price <= 0) return;
@@ -906,14 +855,14 @@ function applyBtcPrice(price) {
     calc();
   }
 }
-
+ 
 function fetchBtcPrice() {
   google.script.run
     .withSuccessHandler(function(price) { applyBtcPrice(price); })
     .withFailureHandler(function() { /* silencioso */ })
     .getBtcPrice();
 }
-
+ 
 /* ── ANIMACIONES SCROLL ─────────────────────────────── */
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -939,16 +888,16 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.obs').forEach(el => io.observe(el));
-
+ 
 // También observar la card del hero
 const heroCard = document.getElementById('heroCard');
 if(heroCard) io.observe(heroCard);
-
+ 
 /* ── INIT ───────────────────────────────────────────── */
 fetchBtcPrice();
 setInterval(fetchBtcPrice, 60000); // actualizar cada 60 segundos (desde el Excel)
 // calc() se dispara dentro de applyBtcPrice una vez que llega el precio real
-
+ 
 // Animar barra LTV cuando ya es visible
 window.addEventListener('load', ()=>{
   setTimeout(()=>{ const b=document.getElementById('ltvBar'); if(b) b.style.width='50%'; }, 800);

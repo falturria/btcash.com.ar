@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>₿TCa$h — Préstamos con Colateral en Bitcoin | btcash.com.ar</title>
+  <meta name="description" content="Obtené liquidez en dólares usando tu Bitcoin como garantía. Sin vender. Tasa 18% anual. Acreditación inmediata. Olivos y Microcentro, Buenos Aires.">
+  <meta name="keywords" content="préstamo bitcoin, colateral bitcoin argentina, préstamo criptomonedas, liquidez bitcoin, préstamo BTC USDT">
+  <meta name="author" content="BTCash">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://btcash.com.ar">
+
+  <!-- ── OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ── -->
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://btcash.com.ar">
+  <meta property="og:title"        content="₿TCa$h — Préstamos con Colateral en Bitcoin">
+  <meta property="og:description"  content="Obtené liquidez en dólares usando tu Bitcoin como garantía. Sin vender tu posición. Tasa 18% anual. Acreditación el mismo día.">
+  <meta property="og:image"        content="https://btcash.com.ar/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale"       content="es_AR">
+  <meta property="og:site_name"    content="₿TCa$h">
+
+  <!-- ── TWITTER / X CARD ── -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="₿TCa$h — Préstamos con Colateral en Bitcoin">
+  <meta name="twitter:description" content="Obtené liquidez en dólares usando tu Bitcoin como garantía. Sin vender. Tasa 18% anual.">
+  <meta name="twitter:image"       content="https://btcash.com.ar/og-image.png">
+
+  <!-- ── SCHEMA.ORG — FinancialService + FAQPage ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FinancialService",
+        "name": "BTCash",
+        "alternateName": "₿TCa$h",
+        "url": "https://btcash.com.ar",
+        "description": "Préstamos en dólares con colateral en Bitcoin. Sin historial crediticio. Tasa 18% anual. Acreditación inmediata.",
+        "areaServed": { "@type": "Country", "name": "Argentina" },
+        "address": [
+          { "@type": "PostalAddress", "addressLocality": "Olivos", "addressRegion": "Buenos Aires", "addressCountry": "AR" },
+          { "@type": "PostalAddress", "addressLocality": "Microcentro", "addressRegion": "Buenos Aires", "addressCountry": "AR" }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "availableLanguage": "Spanish",
+          "url": "https://wa.me/5491173695582"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Préstamos Colaterales",
+          "itemListElement": [{
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "LoanOrCredit",
+              "name": "Préstamo con Colateral en Bitcoin",
+              "loanTerm": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 12, "unitCode": "MON" },
+              "amount": { "@type": "MonetaryAmount", "minValue": 4000, "maxValue": 100000, "currency": "USD" },
+              "annualPercentageRate": 18,
+              "requiredCollateral": "Bitcoin (BTC)"
+            }
+          }]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿Cómo funciona el préstamo con garantía en Bitcoin?", "acceptedAnswer": { "@type": "Answer", "text": "Depositás Bitcoin como garantía y recibís un préstamo en dólares. El Bitcoin queda bloqueado en billetera fría hasta que canceles el préstamo." } },
+          { "@type": "Question", "name": "¿Cuánto puedo pedir prestado?", "acceptedAnswer": { "@type": "Answer", "text": "Prestamos hasta el 50% del valor en dólares del Bitcoin que entregués como garantía (LTV 50%). Mínimo USD 4.000, máximo USD 100.000." } },
+          { "@type": "Question", "name": "¿Qué tasa tiene el préstamo?", "acceptedAnswer": { "@type": "Answer", "text": "La tasa es del 18% anual, interés simple. Sin comisiones ocultas ni gastos de mantenimiento." } },
+          { "@type": "Question", "name": "¿Puedo cancelar antes del vencimiento?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, podés devolver el préstamo en cualquier momento sin penalidades. Al cancelar liberamos tu Bitcoin de forma inmediata." } },
+          { "@type": "Question", "name": "¿Dónde queda mi Bitcoin?", "acceptedAnswer": { "@type": "Answer", "text": "Tu garantía se bloquea en una billetera fría de resguardo. No se vende ni se invierte. Se crea una billetera exclusiva por préstamo, verificable en el explorador público." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── GOOGLE ANALYTICS 4 ────────────────────────────────────────────────────
+       1. Andá a analytics.google.com
+       2. Admin → Crear propiedad → Web → URL: btcash.com.ar
+       3. Copiá el Measurement ID (formato G-XXXXXXXXXX)
+       4. Reemplazá G-XXXXXXXXXX en las dos líneas de abajo
+  ──────────────────────────────────────────────────────────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+
+    // ── Eventos personalizados de conversión ──
+    // Se llaman desde los botones del sitio
+    function trackWA(label) {
+      gtag('event', 'click_whatsapp', { event_category: 'conversion', event_label: label });
+    }
+    function trackCalculator() {
+      gtag('event', 'use_calculator', { event_category: 'engagement' });
+    }
+    function trackPanel() {
+      gtag('event', 'click_panel', { event_category: 'engagement' });
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS DE MARCA ─────────────────────────────────── */
+    :root {
+      --sage:      #C8DDD4;
+      --sage-dark: #3B6B57;
+      --sage-mid:  #5A9E84;
+      --sage-deep: #2D4F40;
+      --orange:    #F4A96A;
+      --orange-dk: #D4824A;
+      --mist:      #9BB8AD;
+      --cream:     #FAF8F4;
+      --sand:      #F0EBE3;
+      --text:      #1C2B24;
+      --muted:     #6B8078;
+      --border:    #E2EDE8;
+      --white:     #FFFFFF;
+      --carbon:    #1A1F1D;
+      --green-ok:  #16A34A;
+      --green-bg:  #E8F8F2;
+      --yellow-bg: #FFFBEB;
+      --red-bg:    #FEF2F2;
+    }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; height: 64px;
+      background: rgba(250,248,244,.96);
+      backdrop-filter: blur(20px);
+      border-bottom: 0.5px solid var(--border);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(45,79,64,.08); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 400; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage-deep); }
+    .nav-panel-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--sage-deep); color: #E8F5EE;
+      border: none; border-radius: 10px;
+      padding: 8px 16px; font-size: 13px; font-weight: 600;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: background .2s, color .2s, transform .1s;
+      text-decoration: none !important;
+    }
+    .nav-panel-link:hover { background: var(--sage-dark); transform: translateY(-1px); color: #E8F5EE; }
+    .btn-nav {
+      background: var(--orange); color: var(--sage-deep);
+      border: none; border-radius: 12px;
+      padding: 10px 20px; font-size: 14px; font-weight: 600;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: background .15s, transform .1s;
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .btn-nav:hover { background: var(--orange-dk); color: var(--white); transform: translateY(-1px); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .hamburger { display: none; background: none; border: 0.5px solid var(--border); border-radius: 8px; cursor: pointer; padding: 6px 8px; }
+    .hamburger span { display: block; width: 18px; height: 1.5px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: .3s; }
+    .mob-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 0.5px solid var(--border); padding: 16px 24px; z-index: 99; flex-direction: column; gap: 2px; }
+    .mob-menu.open { display: flex; }
+    .mob-menu a { color: var(--text); font-size: 15px; padding: 11px 0; border-bottom: 0.5px solid var(--border); }
+    .mob-menu .btn-nav { text-align: center; margin-top: 10px; padding: 13px; border-radius: 12px; }
+    .mob-menu .nav-panel-link { text-align: center; margin-top: 6px; padding: 13px; border-radius: 12px; justify-content: center; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--sage-deep);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 110px 52px 88px;
+      position: relative; overflow: hidden;
+    }
+    /* Fondo animado con partículas */
+    .hero-bg-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(244,169,106,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(200,221,212,.05) 0%, transparent 60%);
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes bgPulse { from { opacity:.6; } to { opacity:1; } }
+    /* Símbolo ₿ flotante de fondo */
+    .hero-symbol {
+      position: absolute; right: 4%; bottom: -60px;
+      font-family: 'DM Sans', sans-serif; font-size: 380px; font-weight: 700;
+      color: rgba(200,221,212,.05); pointer-events: none; line-height: 1;
+      animation: floatY 10s ease-in-out infinite;
+    }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1060px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(200,221,212,.10); border: 0.5px solid rgba(200,221,212,.22);
+      border-radius: 100px; padding: 6px 16px;
+      font-size: 12px; color: var(--mist); font-weight: 500; letter-spacing: .04em;
+    }
+    .hero-badge .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); position: relative; flex-shrink: 0; }
+    .hero-badge .pulse::after { content:''; position:absolute; inset:-3px; border-radius:50%; border:1.5px solid var(--orange); animation:pulse 2s ease-out infinite; }
+    @keyframes pulse { 0%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(2.2)} }
+    h1.hero-h1 { font-family: 'Instrument Serif', serif; font-size: clamp(40px,5.5vw,68px); font-weight: 400; line-height: 1.06; color: #E8F5EE; margin-bottom: 20px; }
+    h1.hero-h1 em { font-style: italic; color: var(--orange); }
+    .hero-sub { font-size: 16px; font-weight: 300; color: #7EC9AB; max-width: 420px; margin-bottom: 36px; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: var(--sage-deep);
+      border: none; border-radius: 12px;
+      padding: 14px 26px; font-size: 15px; font-weight: 600;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(244,169,106,.25);
+    }
+    .btn-primary:hover { background: var(--orange-dk); color: var(--white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,130,74,.35); }
+    .btn-primary:active { transform: scale(.97); }
+    .btn-secondary {
+      background: transparent; color: #C8DDD4;
+      border: 0.5px solid rgba(200,221,212,.35); border-radius: 12px;
+      padding: 14px 26px; font-size: 15px; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-secondary:hover { border-color: rgba(200,221,212,.7); background: rgba(200,221,212,.07); }
+    /* Hero stats */
+    .hero-stats { margin-top: 44px; display: flex; gap: 36px; flex-wrap: wrap; padding-top: 36px; border-top: 0.5px solid rgba(200,221,212,.15); }
+    .h-stat { cursor: default; }
+    .h-stat .number { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; color: var(--orange); line-height: 1; transition: color .2s; }
+    .h-stat:hover .number { color: #F5C07A; }
+    .h-stat .label { font-size: 11px; color: #5A8A75; margin-top: 4px; letter-spacing: .04em; }
+
+    /* Hero topbar: badge + ticker en fila perfectamente alineados */
+    .hero-topbar {
+      display: flex; align-items: center; gap: 10px;
+      flex-wrap: wrap; margin-bottom: 28px;
+    }
+    /* Separador vertical entre badge y ticker */
+    .hero-topbar-sep {
+      width: 1px; height: 18px;
+      background: rgba(200,221,212,.2);
+      flex-shrink: 0;
+    }
+    /* BTC ticker — mismo pill que el badge */
+    .btc-ticker {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(200,221,212,.10); border: 0.5px solid rgba(200,221,212,.22);
+      border-radius: 100px; padding: 6px 16px;
+      font-size: 12px; color: var(--mist);
+    }
+    .btc-ticker .tick-logo { font-size: 13px; font-weight: 700; color: var(--orange); line-height: 1; flex-shrink: 0; }
+    .btc-ticker .tick-price { font-size: 13px; font-weight: 600; color: #E8F5EE; letter-spacing: .01em; min-width: 60px; }
+    .tick-sep { width: 1px; height: 12px; background: rgba(200,221,212,.25); flex-shrink: 0; }
+    .tick-live { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--mist); font-weight: 400; }
+    .tick-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-ok); animation: tickBlink 2s ease-in-out infinite; flex-shrink: 0; }
+    @keyframes tickBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* Hero card */
+    .hcard {
+      background: var(--white); border: 0.5px solid var(--border);
+      border-radius: 22px; padding: 28px;
+      box-shadow: 0 32px 64px rgba(0,0,0,.2);
+      transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s;
+      transform: perspective(1000px) rotateY(-3deg) rotateX(2deg);
+    }
+    .hcard:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); box-shadow: 0 20px 48px rgba(0,0,0,.15); }
+    .hcard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+    .hcard-title { font-size: 13px; font-weight: 600; color: var(--sage-deep); }
+    .hcard-badge { background: #E8F8F2; color: #14532D; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; border: 0.5px solid #A8D5C0; }
+    .hc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .hc-kpi { background: var(--cream); border-radius: 12px; padding: 13px 14px; border: 0.5px solid var(--border); transition: background .2s, border-color .2s; }
+    .hc-kpi:hover { background: var(--sand); border-color: var(--sage); }
+    .hc-kpi .kl { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--sage-mid); margin-bottom: 5px; }
+    .hc-kpi .kv { font-size: 18px; font-weight: 600; color: var(--sage-deep); }
+    .hc-kpi .kv.o { color: var(--orange-dk); }
+    .hc-kpi .kv.g { color: var(--green-ok); }
+    .hc-bar-bg { background: var(--sand); border-radius: 6px; height: 8px; overflow: hidden; }
+    .hc-bar { height: 100%; background: var(--orange); border-radius: 6px; width: 0%; transition: width 1.4s cubic-bezier(.25,.46,.45,.94); }
+    .hc-bar-lbl { display: flex; justify-content: space-between; font-size: 10px; color: var(--mist); margin-top: 5px; }
+    .hc-btc { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 14px; }
+    .hc-btc-item { background: var(--cream); border-radius: 8px; padding: 9px; text-align: center; border: 0.5px solid var(--border); transition: transform .2s; }
+    .hc-btc-item:hover { transform: translateY(-2px); }
+    .hc-btc-item .bl { font-size: 9px; color: var(--mist); text-transform: uppercase; letter-spacing: .06em; }
+    .hc-btc-item .bv { font-size: 11px; font-weight: 600; color: var(--sage-deep); margin-top: 3px; }
+    .hc-btc-item.live .bv { color: var(--green-ok); }
+
+    /* ── SECTIONS ─────────────────────────────────────────── */
+    section { padding: 96px 52px; }
+    .container { max-width: 1060px; margin: 0 auto; }
+    .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--sage-mid); margin-bottom: 10px; }
+    h2.sec-title { font-family: 'Instrument Serif', serif; font-size: clamp(28px,3.6vw,46px); font-weight: 400; line-height: 1.1; color: var(--sage-deep); margin-bottom: 16px; }
+    h2.sec-title em { font-style: italic; color: var(--sage-mid); }
+    .sec-desc { font-size: 15px; color: var(--muted); max-width: 500px; font-weight: 300; line-height: 1.85; }
+    .sheader { margin-bottom: 56px; }
+
+    /* ── COMO FUNCIONA ────────────────────────────────────── */
+    #como-funciona { background: var(--white); }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.5px; background: var(--border); border: 0.5px solid var(--border); border-radius: 18px; overflow: hidden; }
+    .step { background: var(--white); padding: 30px 24px; transition: background .25s; position: relative; overflow: hidden; }
+    .step::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--sage-mid),var(--orange)); transform:scaleX(0); transform-origin:left; transition:transform .4s cubic-bezier(.25,.46,.45,.94); }
+    .step:hover { background: var(--cream); }
+    .step:hover::before { transform:scaleX(1); }
+    .step-num { font-family: 'Instrument Serif', serif; font-size: 44px; font-weight: 400; color: var(--sage); line-height: 1; margin-bottom: 14px; transition: color .25s; }
+    .step:hover .step-num { color: var(--sage-mid); }
+    .step-icon { font-size: 22px; margin-bottom: 10px; display: block; transition: transform .3s; }
+    .step:hover .step-icon { transform: scale(1.15) rotate(-5deg); }
+    .step h3 { font-size: 15px; font-weight: 600; color: var(--sage-deep); margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+    /* LTV */
+    .ltv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 72px; }
+    .ltv-vis { background: var(--white); border: 0.5px solid var(--border); border-radius: 20px; padding: 32px; transition: box-shadow .3s; }
+    .ltv-vis:hover { box-shadow: 0 8px 32px rgba(45,79,64,.08); }
+    .ltv-tag { display: inline-block; background: var(--sage); color: var(--sage-dark); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 12px; }
+    .ltv-big { font-family: 'Instrument Serif', serif; font-size: 48px; font-weight: 400; color: var(--sage-deep); margin-bottom: 4px; line-height: 1; }
+    .ltv-sub { font-size: 13px; color: var(--mist); margin-bottom: 20px; }
+    .ltv-bar-bg { background: var(--sand); border-radius: 8px; height: 44px; overflow: hidden; }
+    .ltv-bar-fill { height: 100%; width: 0%; background: var(--orange); display: flex; align-items: center; padding-left: 14px; transition: width 1.2s cubic-bezier(.25,.46,.45,.94); }
+    .ltv-bar-fill span { font-size: 16px; font-weight: 600; color: var(--white); }
+    .ltv-bar-lbls { display: flex; justify-content: space-between; font-size: 11px; color: var(--mist); margin-top: 5px; }
+    .ltv-tbl { margin-top: 16px; border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .ltv-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; font-size: 13px; transition: background .2s; }
+    .ltv-row:hover { background: var(--cream); }
+    .ltv-row:not(:last-child) { border-bottom: 0.5px solid var(--border); }
+    .ltv-row .lk { color: var(--muted); }
+    .ltv-row .lv { font-weight: 600; color: var(--sage-deep); }
+    .ltv-row .lv.o { color: var(--orange-dk); }
+    .ltv-row .lv.g { color: var(--green-ok); }
+    .ltv-txt h3 { font-family: 'Instrument Serif', serif; font-size: 26px; font-weight: 400; color: var(--sage-deep); line-height: 1.2; margin-bottom: 14px; }
+    .ltv-txt p { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+    .cklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .cklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); transition: color .2s; }
+    .cklist li:hover { color: var(--text); }
+    .cklist li::before { content: ''; display: block; min-width: 16px; height: 16px; margin-top: 2px; background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23C8DDD4'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%232D4F40' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/cover no-repeat; }
+
+    /* LTV explicado tooltip */
+    .ltv-explain {
+      margin-top: 24px; padding: 18px 24px;
+      background: var(--sage); border-radius: 14px;
+      font-size: 14px; color: var(--sage-deep); line-height: 1.7;
+      border-left: 3px solid var(--sage-mid);
+    }
+    .ltv-explain strong { font-weight: 700; }
+
+    /* Semáforo */
+    .sem-wrap { margin-top: 72px; }
+    .sem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 30px; }
+    .sem-card { border-radius: 16px; padding: 24px; border: 0.5px solid transparent; transition: transform .25s, box-shadow .25s; cursor: default; }
+    .sem-card:hover { transform: translateY(-4px); }
+    .sem-card.g { background: var(--green-bg); border-color: #A8D5C0; }
+    .sem-card.g:hover { box-shadow: 0 8px 24px rgba(22,163,74,.1); }
+    .sem-card.y { background: var(--yellow-bg); border-color: #FCD34D; }
+    .sem-card.y:hover { box-shadow: 0 8px 24px rgba(234,179,8,.1); }
+    .sem-card.r { background: var(--red-bg); border-color: #FCA5A5; }
+    .sem-card.r:hover { box-shadow: 0 8px 24px rgba(220,38,38,.1); }
+    .sem-dot { width: 11px; height: 11px; border-radius: 50%; margin-bottom: 12px; }
+    .sem-card.g .sem-dot { background: var(--green-ok); animation: semBlink 3s ease-in-out infinite; }
+    .sem-card.y .sem-dot { background: #EAB308; animation: semBlink 2s ease-in-out infinite; }
+    .sem-card.r .sem-dot { background: #DC2626; }
+    @keyframes semBlink { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .sem-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+    .sem-card.g h4 { color: #14532D; }
+    .sem-card.y h4 { color: #713F12; }
+    .sem-card.r h4 { color: #7F1D1D; }
+    .sem-card p { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+    /* ── CALCULADORA ──────────────────────────────────────── */
+    #calculadora { background: var(--cream); }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
+    .calc-panel { background: var(--white); border: 0.5px solid var(--border); border-radius: 20px; padding: 30px; }
+    .calc-panel h3 { font-size: 14px; font-weight: 600; color: var(--mist); margin-bottom: 26px; letter-spacing: .06em; text-transform: uppercase; }
+    .ig { margin-bottom: 22px; }
+    .ig label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 7px; font-weight: 500; }
+    .ir { display: flex; }
+    .ipre { background: var(--sand); border: 0.5px solid var(--border); border-right: none; border-radius: 12px 0 0 12px; padding: 10px 12px; font-size: 13px; color: var(--mist); display: flex; align-items: center; }
+    .ifield { flex: 1; background: var(--white); color: var(--text); border: 0.5px solid var(--border); border-radius: 0 12px 12px 0; padding: 10px 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color .15s; }
+    .ifield:focus { border-color: var(--sage-mid); }
+    .ifield::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .rrow { display: flex; align-items: center; gap: 12px; }
+    .crange { flex: 1; -webkit-appearance: none; height: 3px; background: var(--sage); border-radius: 2px; outline: none; cursor: pointer; }
+    .crange::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--orange); cursor: pointer; box-shadow: 0 0 0 3px rgba(244,169,106,.2); transition: transform .2s; }
+    .crange::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    .rdisplay { font-size: 13px; font-weight: 600; color: var(--orange-dk); min-width: 44px; text-align: right; }
+    .results-panel { background: var(--white); border: 0.5px solid var(--sage); border-radius: 20px; padding: 30px; }
+    .results-panel h3 { font-size: 14px; font-weight: 600; color: var(--sage-mid); margin-bottom: 22px; letter-spacing: .06em; text-transform: uppercase; }
+    .rr { display: flex; justify-content: space-between; align-items: baseline; padding: 11px 0; border-bottom: 0.5px solid var(--border); }
+    .rr:last-of-type { border-bottom: none; }
+    .rr .rk { font-size: 13px; color: var(--muted); }
+    .rr .rv { font-size: 14px; font-weight: 600; color: var(--sage-deep); transition: color .3s; }
+    .rr .rv.big { font-size: 26px; font-family: 'Instrument Serif', serif; font-weight: 400; color: var(--sage-deep); }
+    .rr .rv.o { color: var(--orange-dk); }
+    .rr .rv.updated { color: var(--orange-dk) !important; }
+    .pstrip { background: var(--sage-deep); border-radius: 18px; padding: 40px; display: grid; grid-template-columns: repeat(5,1fr); gap: 24px; margin-top: 44px; text-align: center; }
+    .pi { transition: transform .25s; cursor: default; }
+    .pi:hover { transform: translateY(-3px); }
+    .pi .pv { font-family: 'Instrument Serif', serif; font-size: 34px; font-weight: 400; color: var(--orange); }
+    .pi .pk { font-size: 11px; color: #5A8A75; margin-top: 5px; letter-spacing: .04em; }
+
+    /* ── SEGUIMIENTO ──────────────────────────────────────── */
+    #seguimiento { background: var(--white); }
+    .tcard { background: var(--cream); border: 0.5px solid var(--border); border-radius: 20px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; margin-top: 52px; }
+    .ttext { padding: 52px 44px; }
+    .ttext h3 { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; margin-bottom: 14px; color: var(--sage-deep); line-height: 1.2; }
+    .ttext p { color: var(--muted); font-size: 14px; line-height: 1.85; margin-bottom: 24px; }
+    .flist { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .flist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); transition: color .2s, gap .2s; }
+    .flist li:hover { color: var(--text); gap: 14px; }
+    .flist li::before { content: '→'; color: var(--sage-mid); flex-shrink: 0; font-weight: 600; }
+    .tmock { background: var(--sage-deep); padding: 32px; display: flex; flex-direction: column; gap: 13px; justify-content: center; }
+    .mkpi { background: rgba(200,221,212,.08); border: 0.5px solid rgba(200,221,212,.15); border-radius: 12px; padding: 14px 16px; transition: background .2s; }
+    .mkpi:hover { background: rgba(200,221,212,.13); }
+    .mkpi .ml { font-size: 10px; color: #5A8A75; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
+    .mkpi .mv { font-size: 18px; font-weight: 600; color: #E8F5EE; }
+    .mkpi .mv.g { color: #7EC9AB; }
+    .mkpi .mv.o { color: var(--orange); }
+    .mbar { background: rgba(200,221,212,.12); border-radius: 4px; height: 5px; overflow: hidden; margin-top: 7px; }
+    .mbar-fill { height: 100%; background: var(--orange); border-radius: 4px; width: 0%; transition: width 1.4s cubic-bezier(.25,.46,.45,.94); }
+    .mlogo-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 10px; border-bottom: 0.5px solid rgba(200,221,212,.15); }
+
+    /* ── FAQ ──────────────────────────────────────────────── */
+    #faq { background: var(--cream); }
+    /* Layout en lista vertical — sin grid de 2 columnas para evitar el bug */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; margin-top: 48px; max-width: 780px; }
+    .faq-item { background: var(--white); border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+    .faq-item:hover { border-color: var(--sage); box-shadow: 0 4px 16px rgba(45,79,64,.06); }
+    .faq-item.is-open { border-color: var(--sage-mid); }
+    .fq { padding: 18px 20px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; user-select: none; transition: background .15s; color: var(--text); }
+    .fq:hover { background: var(--cream); }
+    .fq.open { color: var(--sage-dark); }
+    .fq-icon { flex-shrink: 0; width: 20px; height: 20px; border: 0.5px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--mist); transition: transform .35s cubic-bezier(.25,.46,.45,.94), border-color .2s, color .2s; }
+    .fq.open .fq-icon { transform: rotate(45deg); border-color: var(--sage-mid); color: var(--sage-mid); }
+    .fa { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.25,.46,.45,.94); }
+    .fa.open { max-height: 600px; }
+    .fa-inner { padding: 0 20px 18px; font-size: 13px; color: var(--muted); line-height: 1.85; border-top: 0.5px solid var(--border); padding-top: 14px; }
+    .fa-inner strong { color: var(--sage-deep); }
+    /* Pill LTV en FAQ */
+    .ltv-pill { display: inline-flex; align-items: center; gap: 5px; background: var(--sage); color: var(--sage-deep); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 100px; margin: 0 2px; }
+
+    /* ── TRUST STRIP ──────────────────────────────────────── */
+    .trust-strip {
+      background: var(--white); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
+      padding: 28px 52px;
+      display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
+    .trust-item .ti-icon { font-size: 20px; }
+    .trust-item strong { color: var(--sage-deep); font-weight: 600; }
+
+    /* ── CTA FINAL ────────────────────────────────────────── */
+    .cta-wrap { padding: 0 52px 96px; }
+    .cta-box { background: var(--sage-deep); border-radius: 24px; padding: 72px 60px; text-align: center; position: relative; overflow: hidden; max-width: 1060px; margin: 0 auto; }
+    .cta-box::before { content: ''; position: absolute; right: -60px; top: -60px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,169,106,.08) 0%, transparent 70%); animation: bgPulse 6s ease-in-out infinite alternate; }
+    .cta-box::after { content: ''; position: absolute; left: -80px; bottom: -80px; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(200,221,212,.05) 0%, transparent 70%); }
+    .cta-box h2 { font-family: 'Instrument Serif', serif; font-size: clamp(26px,3.2vw,42px); font-weight: 400; color: #E8F5EE; margin-bottom: 14px; position: relative; z-index: 1; }
+    .cta-box h2 em { font-style: italic; color: var(--orange); }
+    .cta-box p { color: #7EC9AB; font-size: 15px; font-weight: 300; margin-bottom: 36px; position: relative; z-index: 1; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+    .wa-btn {
+      background: #25D366; color: var(--white);
+      border: none; border-radius: 12px;
+      padding: 15px 28px; font-size: 15px; font-weight: 600;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 9px;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(37,211,102,.25);
+    }
+    .wa-btn:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.35); }
+    .wa-btn svg { width: 19px; height: 19px; flex-shrink: 0; }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer { background: var(--carbon); padding: 44px 52px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    footer p { font-size: 12px; color: #3D6652; letter-spacing: .06em; }
+
+    /* ── ANIMACIONES SCROLL ───────────────────────────────── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    .hero-left > * { animation: fadeUp .7s ease both; }
+    .hero-left > *:nth-child(1) { animation-delay:.05s; }
+    .hero-left > *:nth-child(2) { animation-delay:.15s; }
+    .hero-left > *:nth-child(3) { animation-delay:.25s; }
+    .hero-left > *:nth-child(4) { animation-delay:.35s; }
+    .hero-left > *:nth-child(5) { animation-delay:.45s; }
+    .hero-left > *:nth-child(6) { animation-delay:.55s; }
+    .hero-right { animation: fadeUp .7s ease .4s both; }
+    .obs { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .obs.visible { opacity: 1; transform: translateY(0); }
+    .obs-d1 { transition-delay: .1s; }
+    .obs-d2 { transition-delay: .2s; }
+    .obs-d3 { transition-delay: .3s; }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width:1000px) { .hero-inner{grid-template-columns:1fr} .hero-right{display:none} .ltv-grid{grid-template-columns:1fr;gap:36px} .tcard{grid-template-columns:1fr} .tmock{display:none} }
+    @media (max-width:840px) {
+      nav{padding:0 20px} .nav-links,.nav-right{display:none} .hamburger{display:block}
+      section,.cta-wrap{padding:64px 20px} .hero{padding:88px 20px 64px}
+      .steps{grid-template-columns:1fr} .sem-grid{grid-template-columns:1fr}
+      .calc-grid{grid-template-columns:1fr} .pstrip{grid-template-columns:repeat(2,1fr);padding:28px 20px}
+      .cta-box{padding:48px 24px} footer{padding:32px 20px;flex-direction:column;text-align:center}
+      .trust-strip{padding:24px 20px;gap:24px} .hcard{transform:none!important}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────────────────── -->
+<nav id="mainNav">
+  <a href="#" style="display:flex;align-items:center;">
+    <svg width="160" height="28" viewBox="0 0 240 40" fill="none">
+      <text x="0"  y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="700" fill="#F4A96A">₿</text>
+      <text x="28" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#2D4F40">T</text>
+      <text x="52" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#2D4F40">C</text>
+      <text x="78" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#2D4F40">a</text>
+      <text x="101" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="700" fill="#F4A96A">$</text>
+      <text x="121" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#2D4F40">h</text>
+      <text x="150" y="33" font-family="'DM Sans',sans-serif" font-size="11" font-weight="400" fill="#9BB8AD">.com.ar</text>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#calculadora">Calculadora</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://script.google.com/macros/s/AKfycbz3JvHxgalbFkSt4PFeJlL4JhA9wyX3rJrPAMXncOFaOUCBrgUL7Xrqx-1Vc22f-22e/exec?page=prestamo" target="_blank" class="nav-panel-link" onclick="trackPanel()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      Mi préstamo
+    </a>
+  </div>
+  <div class="nav-right">
+    <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-nav">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.118.555 4.103 1.523 5.829L.057 23.7c-.054.196.025.401.196.524a.497.497 0 00.507.021l5.98-2.98A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      Hablar con un asesor
+    </a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#como-funciona" onclick="closeMob()">Cómo funciona</a>
+  <a href="#calculadora" onclick="closeMob()">Calculadora</a>
+  <a href="#faq" onclick="closeMob()">Preguntas frecuentes</a>
+  <a href="https://script.google.com/macros/s/AKfycbz3JvHxgalbFkSt4PFeJlL4JhA9wyX3rJrPAMXncOFaOUCBrgUL7Xrqx-1Vc22f-22e/exec?page=prestamo" target="_blank" class="nav-panel-link" onclick="closeMob()">Mi préstamo</a>
+  <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-nav" onclick="closeMob()">Hablar con un asesor</a>
+</div>
+
+<!-- ── HERO ────────────────────────────────────────────────────── -->
+<section class="hero" id="inicio">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-symbol">₿</div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <!-- Barra superior: badge + separador + ticker -->
+      <div class="hero-topbar">
+        <div class="hero-badge">
+          <span class="pulse"></span>
+          Sin historial crediticio requerido
+        </div>
+        <span class="hero-topbar-sep"></span>
+        <div class="btc-ticker" id="btcTickerWrap">
+          <span class="tick-logo">₿</span>
+          <span class="tick-price" id="tickPrice">—</span>
+          <span class="tick-sep"></span>
+          <span class="tick-live"><span class="tick-dot"></span>en vivo</span>
+        </div>
+      </div>
+      <h1 class="hero-h1">Tu Bitcoin trabaja.<br><em>Vos cobrás.</em></h1>
+      <p class="hero-sub">Obtenés liquidez en dólares usando tu Bitcoin como garantía. Sin vender. Sin perder tu posición en el mercado.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.118.555 4.103 1.523 5.829L.057 23.7c-.054.196.025.401.196.524a.497.497 0 00.507.021l5.98-2.98A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          Hablar con un asesor
+        </a>
+        <a href="#calculadora" class="btn-secondary">Calcular cuánto pedir →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><div class="number">18%</div><div class="label">Tasa anual fija</div></div>
+        <div class="h-stat"><div class="number">50%</div><div class="label">LTV máximo</div></div>
+        <div class="h-stat"><div class="number">$100K</div><div class="label">USD máximo</div></div>
+        <div class="h-stat"><div class="number">Hoy</div><div class="label">Acreditación</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hcard" id="heroCard">
+        <div class="hcard-header">
+          <span class="hcard-title">Mi préstamo</span>
+          <span class="hcard-badge">● Al día</span>
+        </div>
+        <div class="hc-grid">
+          <div class="hc-kpi"><div class="kl">Capital</div><div class="kv o">$50.000</div></div>
+          <div class="hc-kpi"><div class="kl">Pendiente</div><div class="kv">$21.500</div></div>
+        </div>
+        <div class="hc-bar-bg"><div class="hc-bar" id="heroBar"></div></div>
+        <div class="hc-bar-lbl"><span>Pagado 62%</span><span>$50.000 total</span></div>
+        <div class="hc-btc">
+          <div class="hc-btc-item"><div class="bl">Garantía</div><div class="bv">0,50 BTC</div></div>
+          <div class="hc-btc-item"><div class="bl">Advertencia</div><div class="bv" style="color:#A07800">$78.000</div></div>
+          <div class="hc-btc-item live"><div class="bl">En vivo</div><div class="bv" id="heroLive">— USD</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST STRIP ─────────────────────────────────────────────── -->
+<div class="trust-strip obs">
+  <div class="trust-item"><span class="ti-icon">🔒</span><span><strong>Billetera fría</strong> — tu BTC no se mueve</span></div>
+  <div class="trust-item"><span class="ti-icon">📄</span><span><strong>Contrato digital</strong> firmado en el momento</span></div>
+  <div class="trust-item"><span class="ti-icon">⚡</span><span><strong>Acreditación</strong> el mismo día</span></div>
+</div>
+
+<!-- ── COMO FUNCIONA ───────────────────────────────────────────── -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="sheader obs">
+      <div class="eyebrow">El proceso</div>
+      <h2 class="sec-title">4 pasos,<br><em>sin vueltas.</em></h2>
+      <p class="sec-desc">Desde que nos contactás hasta que tenés el dinero, son 4 pasos simples.</p>
+    </div>
+    <div class="steps obs">
+      <div class="step obs obs-d1"><div class="step-num">01</div><span class="step-icon">💬</span><h3>Nos contactás</h3><p>Por WhatsApp coordinamos montos, plazo y condiciones a medida de tu necesidad.</p></div>
+      <div class="step obs obs-d2"><div class="step-num">02</div><span class="step-icon">📄</span><h3>Firmás el contrato</h3><p>Se genera un contrato digital con todas las cláusulas. Firmás electrónicamente desde donde estés.</p></div>
+      <div class="step obs obs-d3"><div class="step-num">03</div><span class="step-icon">🔒</span><h3>Depositás tu BTC</h3><p>Transferís tu Bitcoin a la billetera fría asignada. Tu garantía queda en custodia, sin venderse.</p></div>
+      <div class="step obs" style="transition-delay:.4s"><div class="step-num">04</div><span class="step-icon">💵</span><h3>Recibís el dinero</h3><p>Recibís los dólares el mismo día: en efectivo, en pesos al tipo de cambio, o en USDT a tu wallet.</p></div>
+    </div>
+
+    <div class="ltv-grid" style="grid-template-rows:auto auto;">
+      <div class="ltv-vis obs">
+        <div class="ltv-tag">LTV — Loan to Value</div>
+        <div class="ltv-big">50%</div>
+        <div class="ltv-sub">Prestamos hasta la mitad del valor de tu garantía</div>
+        <div class="ltv-bar-bg"><div class="ltv-bar-fill" id="ltvBar"><span>50%</span></div></div>
+        <div class="ltv-bar-lbls"><span>Préstamo (USD)</span><span>Margen de seguridad</span></div>
+        <div class="ltv-tbl">
+          <div class="ltv-row"><span class="lk">1 BTC = $100.000</span><span class="lv o">Garantía</span></div>
+          <div class="ltv-row"><span class="lk">Podés recibir</span><span class="lv g">$50.000 USD</span></div>
+          <div class="ltv-row"><span class="lk">Mínimo</span><span class="lv">$4.000 USD</span></div>
+          <div class="ltv-row"><span class="lk">Máximo</span><span class="lv">$100.000 USD</span></div>
+        </div>
+      </div>
+      <div class="ltv-txt obs">
+        <h3>Sin puntaje crediticio.<br>Solo tu Bitcoin.</h3>
+        <p>A diferencia de los bancos que evalúan tu historial, aquí el único requisito es tener Bitcoin. El colateral garantiza el préstamo.</p>
+        <ul class="cklist">
+          <li>Sin verificación de ingresos ni historial bancario</li>
+          <li>Tu BTC sigue siendo tuyo — solo lo custodiamos</li>
+          <li>Si el BTC sube, podés recuperar el excedente de garantía</li>
+          <li>Cancelación anticipada libre, sin penalidades</li>
+          <li>Sin comisiones ocultas ni gastos de mantenimiento</li>
+        </ul>
+      </div>
+    </div>
+    <!-- LTV explicado — bloque completo -->
+    <div class="ltv-explain obs">
+      <strong>¿Qué es el LTV (Loan to Value)?</strong> Es la relación entre el monto del préstamo y el valor de tu garantía. Con un LTV del 50%, si depositás Bitcoin valuado en $100.000, podés recibir hasta $50.000 USD. Cuanto más bajo el LTV que usás, mayor tu margen de seguridad: el precio del BTC tiene que caer más antes de activar alertas. Por eso muchos clientes prefieren usar el 30–40% del LTV disponible en lugar del máximo.
+    </div>
+
+    <div class="sem-wrap obs">
+      <div class="eyebrow">Protección del colateral</div>
+      <h2 class="sec-title" style="max-width:520px">¿Qué pasa si el<br><em>precio del BTC baja?</em></h2>
+      <div class="sem-grid">
+        <div class="sem-card g obs obs-d1"><div class="sem-dot"></div><h4>Zona segura — Al día</h4><p>Tu BTC cubre holgadamente el préstamo. Sin acción requerida. Seguís monitoreando en tiempo real desde tu panel.</p></div>
+        <div class="sem-card y obs obs-d2"><div class="sem-dot"></div><h4>Precio de advertencia</h4><p>Te avisamos por WhatsApp o email. Podés agregar más BTC como garantía o cancelar parte del capital.</p></div>
+        <div class="sem-card r obs obs-d3"><div class="sem-dot"></div><h4>Precio de liquidación</h4><p>Se vende el BTC necesario para cubrir la deuda. Si queda remanente después de cancelar, te lo devolvemos.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CALCULADORA ─────────────────────────────────────────────── -->
+<section id="calculadora">
+  <div class="container">
+    <div class="sheader obs">
+      <div class="eyebrow">Simulador</div>
+      <h2 class="sec-title">Calculá<br><em>tu préstamo.</em></h2>
+      <p class="sec-desc">Ingresá los datos y mirá cuánto podés recibir y cuáles serán tus cuotas.</p>
+    </div>
+    <div class="calc-grid">
+      <div class="calc-panel obs">
+        <h3>Parámetros</h3>
+        <div class="ig"><label>Precio actual del Bitcoin (USD) <span id="bPLiveTag" style="display:none;font-size:10px;color:var(--sage-mid);font-weight:500;letter-spacing:.04em;">● EN VIVO</span></label><div class="ir"><span class="ipre">$</span><input type="number" class="ifield" id="bP" placeholder="cargando precio…" min="1" oninput="calc()"></div></div>
+        <div class="ig"><label>BTC a depositar como garantía</label><div class="ir"><span class="ipre">₿</span><input type="number" class="ifield" id="bA" value="0.5" step="0.01" min="0.01" oninput="calc()"></div></div>
+        <div class="ig"><label>% del LTV a usar — <strong id="lL" style="color:var(--orange-dk)">50%</strong></label><div class="rrow"><input type="range" class="crange" id="lR" min="10" max="50" value="50" step="5" oninput="lU();calc();trackCalculator()"><span class="rdisplay" id="lD">50%</span></div></div>
+        <div class="ig"><label>Plazo en meses — <strong id="pL" style="color:var(--orange-dk)">6 meses</strong></label><div class="rrow"><input type="range" class="crange" id="pR" min="1" max="12" value="6" step="1" oninput="pU();calc()"><span class="rdisplay" id="pD">6</span></div></div>
+      </div>
+      <div class="results-panel obs">
+        <h3>Resultado estimado</h3>
+        <div class="rr"><span class="rk">Préstamo disponible</span><span class="rv big" id="rP">—</span></div>
+        <div class="rr"><span class="rk">Interés total (18% anual)</span><span class="rv" id="rI">—</span></div>
+        <div class="rr"><span class="rk">Total a devolver</span><span class="rv" id="rT">—</span></div>
+        <div class="rr"><span class="rk">Cuota mensual de interés</span><span class="rv o" id="rC">—</span></div>
+        <div class="rr"><span class="rk">Última cuota (interés + capital)</span><span class="rv" id="rU">—</span></div>
+        <div class="rr"><span class="rk">BTC en garantía</span><span class="rv o" id="rB">—</span></div>
+        <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20solicitar%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="wa-btn" style="width:100%;justify-content:center;margin-top:20px;" onclick="trackWA('calculator')">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.118.555 4.103 1.523 5.829L.057 23.7c-.054.196.025.401.196.524a.497.497 0 00.507.021l5.98-2.98A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          Hablar con un asesor
+        </a>
+        <p style="font-size:11px;color:var(--mist);margin-top:10px;text-align:center;">Estimativo. Valores reales se confirman en el contrato.</p>
+      </div>
+    </div>
+    <div class="pstrip obs">
+      <div class="pi"><div class="pv">18%</div><div class="pk">Tasa anual simple</div></div>
+      <div class="pi"><div class="pv">1 día</div><div class="pk">Acreditación</div></div>
+      <div class="pi"><div class="pv">$0</div><div class="pk">Comisiones ocultas</div></div>
+      <div class="pi"><div class="pv">12 m</div><div class="pk">Plazo máximo</div></div>
+      <div class="pi"><div class="pv">Libre</div><div class="pk">Cancelación anticipada</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEGUIMIENTO ─────────────────────────────────────────────── -->
+<section id="seguimiento">
+  <div class="container">
+    <div class="sheader obs">
+      <div class="eyebrow">Plataforma</div>
+      <h2 class="sec-title">Tu panel,<br><em>en tiempo real.</em></h2>
+      <p class="sec-desc">Accedé desde cualquier dispositivo con tu código de préstamo.</p>
+    </div>
+    <div class="tcard obs">
+      <div class="ttext">
+        <h3>Tu préstamo, siempre a la vista.</h3>
+        <p>Desarrollamos una plataforma exclusiva para que puedas monitorear cada detalle en tiempo real y desde donde estés.</p>
+        <ul class="flist">
+          <li>Historial de pagos y deuda pendiente actualizado</li>
+          <li>Precio del BTC en vivo con semáforo de alertas</li>
+          <li>Progreso del préstamo con visualización gráfica</li>
+          <li>Acceso directo a tu contrato firmado digitalmente</li>
+          <li>Link a tu billetera BTC en explorador público</li>
+        </ul>
+        <a href="https://script.google.com/macros/s/AKfycbz3JvHxgalbFkSt4PFeJlL4JhA9wyX3rJrPAMXncOFaOUCBrgUL7Xrqx-1Vc22f-22e/exec?page=prestamo" target="_blank" class="btn-primary">Ir a mi préstamo →</a>
+      </div>
+      <div class="tmock">
+        <div class="mlogo-row">
+          <svg width="110" height="20" viewBox="0 0 200 34" fill="none">
+            <text x="0"  y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="700" fill="#F4A96A">₿</text>
+            <text x="22" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="600" fill="#E8F5EE">T</text>
+            <text x="40" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="600" fill="#E8F5EE">C</text>
+            <text x="59" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="600" fill="#E8F5EE">a</text>
+            <text x="75" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="700" fill="#F4A96A">$</text>
+            <text x="91" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="600" fill="#E8F5EE">h</text>
+            <text x="112" y="28" font-family="'DM Sans',sans-serif" font-size="9" font-weight="400" fill="#5A8A75">.com.ar</text>
+          </svg>
+          <span style="font-size:10px;color:#3D6652;margin-left:auto;letter-spacing:.06em;text-transform:uppercase;">Panel cliente</span>
+        </div>
+        <div class="mkpi"><div class="ml">Capital prestado</div><div class="mv g">$50.000 USD</div></div>
+        <div class="mkpi"><div class="ml">Total pagado</div><div class="mv">$31.000 USD</div><div class="mbar"><div class="mbar-fill" id="mockBar"></div></div></div>
+        <div class="mkpi"><div class="ml">Garantía bloqueada</div><div class="mv o">0,500000 BTC</div></div>
+        <div class="mkpi"><div class="ml">BTC precio en vivo</div><div class="mv g" id="mockLive">— USD ●</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────────────────── -->
+<section id="faq">
+  <div class="container">
+    <div class="sheader obs">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2 class="sec-title">Todo lo que<br><em>necesitás saber.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cómo funciona el préstamo con garantía en Bitcoin?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Depositás Bitcoin como garantía y recibís un préstamo en dólares (efectivo, pesos o USDT). El Bitcoin queda bloqueado hasta que canceles. Es ideal para mantener exposición cripto y tener liquidez sin vender tu posición.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Qué es el LTV y cómo me afecta?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">El <span class="ltv-pill">LTV</span> (Loan to Value, o relación préstamo-valor) indica qué porcentaje del valor de tu garantía podés recibir como préstamo. Trabajamos con un <strong>LTV máximo del 50%</strong>: si depositás Bitcoin valuado en $100.000, podés recibir hasta $50.000 USD. Un LTV más bajo significa mayor margen de seguridad: tu BTC tiene que caer más antes de activar alertas. Por eso muchos clientes usan solo el 30-40% del LTV disponible.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cuánto puedo pedir prestado?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Prestamos hasta el <strong>50% del valor en dólares</strong> del Bitcoin que entregués (<span class="ltv-pill">LTV</span> 50%). Con 1 BTC a $100.000 podés recibir hasta $50.000 USD. <strong>Mínimo:</strong> $4.000 / <strong>Máximo:</strong> $100.000.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Qué pasa si el precio del Bitcoin baja?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Si cae al <strong>umbral de advertencia</strong>, te avisamos para que agregues más BTC o canceles parte del capital. Si llega al <strong>precio de liquidación</strong>, se vende el BTC necesario para cubrir la deuda y el remanente te lo devolvemos.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Y si el precio del BTC sube?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">La ganancia es 100% tuya. Si el precio sube más de un 50% respecto al inicio, podés <strong>recuperar parte de tu garantía</strong>. Se devuelve el excedente para que la cobertura vuelva a los niveles originales del préstamo.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Dónde queda mi Bitcoin? ¿Es seguro?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Tu garantía se bloquea en una <strong>billetera fría de resguardo</strong>. No se vende, no se invierte, solo se custodia. Se crea una billetera exclusiva por préstamo cuyo saldo podés verificar en el explorador público en cualquier momento.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cuál es la tasa y cómo se paga?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner"><strong>18% anual, interés simple.</strong> Durante el plazo solo abonás las cuotas de interés calculadas sobre el capital. En la última cuota devolvés el capital completo. Sin gastos de mantenimiento ni comisiones ocultas. Cuotas semanales, mensuales o trimestrales según lo acordado.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Puedo cancelar antes del vencimiento?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Sí. Podés devolver el préstamo en cualquier momento sin penalidades. Al cancelar, liberamos tu Bitcoin de manera inmediata.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cómo recibo el dinero? ¿Qué necesito?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Podés elegir <strong>efectivo</strong> (dólares o pesos al tipo de cambio comprador del momento) o <strong>USDT directo a tu wallet</strong>. El único requisito es tener Bitcoin para depositar como garantía. Sin trámites ni demoras.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ───────────────────────────────────────────────── -->
+<div class="cta-wrap">
+  <div class="cta-box obs">
+    <h2>¿Listo para obtener liquidez<br><em>sin vender tu Bitcoin?</em></h2>
+    <p>Contanos cuánto BTC tenés y cuánto necesitás. Respondemos el mismo día.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20solicitar%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="wa-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.118.555 4.103 1.523 5.829L.057 23.7c-.054.196.025.401.196.524a.497.497 0 00.507.021l5.98-2.98A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Hablar con un asesor
+      </a>
+      <a href="#calculadora" class="btn-secondary">Ver la calculadora</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer>
+  <div>
+    <svg width="200" height="30" viewBox="0 0 280 44" fill="none">
+      <text x="0"   y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="700" fill="#F4A96A">₿</text>
+      <text x="28"  y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#E8F5EE">T</text>
+      <text x="51"  y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#E8F5EE">C</text>
+      <text x="76"  y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#E8F5EE">a</text>
+      <text x="97"  y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="700" fill="#F4A96A">$</text>
+      <text x="117" y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#E8F5EE">h</text>
+      <text x="144" y="36" font-family="'DM Sans',sans-serif" font-size="11" font-weight="400" fill="#5A8A75">.com.ar</text>
+    </svg>
+    <p style="margin-top:8px; color:#3D6652; font-size:12px; letter-spacing:.04em;">Olivos · Microcentro · Buenos Aires · btcash.com.ar</p>
+  </div>
+  <div style="text-align:right; max-width:440px;">
+    <p style="font-size:11px; color:#3D6652; letter-spacing:.04em;">© 2026 ₿TCa$h — Todos los derechos reservados.</p>
+    <p style="margin-top:6px; font-size:10px; color:#2A3F34; line-height:1.7;">Los valores del simulador son estimativos y no constituyen oferta vinculante. El otorgamiento de préstamos está sujeto a disponibilidad y condiciones acordadas en el contrato. btcash.com.ar no es una entidad financiera regulada por el BCRA.</p>
+  </div>
+</footer>
+
+<script>
+/* ── NAV SCROLL ─────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ── MENU MOBILE ────────────────────────────────────── */
+function toggleMenu(){ document.getElementById('mobMenu').classList.toggle('open'); }
+function closeMob(){ document.getElementById('mobMenu').classList.remove('open'); }
+
+/* ── FAQ — cada item es independiente ───────────────── */
+function faq(el) {
+  const item = el.closest('.faq-item');
+  const answer = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  // Cerrar todos
+  document.querySelectorAll('.fq.open').forEach(q => {
+    q.classList.remove('open');
+    q.closest('.faq-item').classList.remove('is-open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  // Abrir el clickeado si estaba cerrado
+  if (!isOpen) {
+    el.classList.add('open');
+    item.classList.add('is-open');
+    answer.classList.add('open');
+  }
+}
+
+/* ── FORMATO MONEDA ─────────────────────────────────── */
+function fmt(n){ return '$'+Number(n.toFixed(2)).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+
+/* ── CALCULADORA ────────────────────────────────────── */
+function lU(){ const v=document.getElementById('lR').value; document.getElementById('lL').textContent=v+'%'; document.getElementById('lD').textContent=v+'%'; }
+function pU(){ const v=document.getElementById('pR').value; document.getElementById('pL').textContent=v+(v=='1'?' mes':' meses'); document.getElementById('pD').textContent=v; }
+function flashUpdate(id){
+  const el=document.getElementById(id);
+  el.classList.add('updated');
+  setTimeout(()=>el.classList.remove('updated'),600);
+}
+function calc(){
+  const bp=parseFloat(document.getElementById('bP').value)||0;
+  const ba=parseFloat(document.getElementById('bA').value)||0;
+  const ltv=parseInt(document.getElementById('lR').value)||50;
+  const pl=parseInt(document.getElementById('pR').value)||6;
+  const pr=Math.min(100000,Math.max(0,bp*ba*(ltv/100)));
+  const cq=pr*(0.18/12);
+  const it=cq*pl;
+  ['rP','rI','rT','rC','rU','rB'].forEach(id=>flashUpdate(id));
+  document.getElementById('rP').textContent=fmt(pr);
+  document.getElementById('rI').textContent=fmt(it);
+  document.getElementById('rT').textContent=fmt(pr+it);
+  document.getElementById('rC').textContent=fmt(cq);
+  document.getElementById('rU').textContent=fmt(pr+cq);
+  document.getElementById('rB').textContent=ba.toFixed(6).replace('.',',')+' BTC';
+}
+
+/* ── PRECIO BTC — desde el Excel vía Apps Script ────── */
+function applyBtcPrice(price) {
+  if(!price || price <= 0) return;
+  const priceStr = '$' + Math.round(price).toLocaleString('es-AR');
+  // Ticker hero
+  const tp = document.getElementById('tickPrice');
+  if(tp) {
+    const prev = tp.textContent;
+    tp.textContent = priceStr;
+    if(prev !== 'cargando…' && prev !== priceStr) {
+      tp.style.transition = 'color .5s';
+      tp.style.color = '#7EC9AB';
+      setTimeout(()=>{ tp.style.color = ''; }, 900);
+    }
+  }
+  // Ocultar change (no aplica con el Excel)
+  const tc = document.getElementById('tickChange');
+  if(tc) { tc.textContent = ''; tc.className = 'tick-change'; }
+  // Card hero
+  const hl = document.getElementById('heroLive');
+  if(hl) hl.textContent = priceStr + ' USD';
+  // Mock panel
+  const ml = document.getElementById('mockLive');
+  if(ml) ml.textContent = priceStr + ' USD ●';
+  // Calculadora — siempre actualiza en primera carga
+  const bP = document.getElementById('bP');
+  if(bP && !bP.matches(':focus')) {
+    bP.value = Math.round(price);
+    const tag = document.getElementById('bPLiveTag');
+    if(tag) tag.style.display = 'inline';
+    calc();
+  }
+}
+
+function fetchBtcPrice() {
+  google.script.run
+    .withSuccessHandler(function(price) { applyBtcPrice(price); })
+    .withFailureHandler(function() { /* silencioso */ })
+    .getBtcPrice();
+}
+
+/* ── ANIMACIONES SCROLL ─────────────────────────────── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Animaciones on-enter
+      if (e.target.id === 'heroCard') {
+        setTimeout(()=>{ document.getElementById('heroBar').style.width='62%'; }, 400);
+      }
+      if (e.target.classList.contains('ltv-vis') || e.target.querySelector('#ltvBar')) {
+        setTimeout(()=>{
+          const b = document.getElementById('ltvBar');
+          if(b) b.style.width='50%';
+        }, 300);
+      }
+      if (e.target.classList.contains('tcard') || e.target.querySelector('#mockBar')) {
+        setTimeout(()=>{
+          const m = document.getElementById('mockBar');
+          if(m) m.style.width='62%';
+        }, 500);
+      }
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.obs').forEach(el => io.observe(el));
+
+// También observar la card del hero
+const heroCard = document.getElementById('heroCard');
+if(heroCard) io.observe(heroCard);
+
+/* ── INIT ───────────────────────────────────────────── */
+fetchBtcPrice();
+setInterval(fetchBtcPrice, 60000); // actualizar cada 60 segundos (desde el Excel)
+// calc() se dispara dentro de applyBtcPrice una vez que llega el precio real
+
+// Animar barra LTV cuando ya es visible
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{ const b=document.getElementById('ltvBar'); if(b) b.style.width='50%'; }, 800);
+  setTimeout(()=>{ const b=document.getElementById('heroBar'); if(b) b.style.width='62%'; }, 600);
+  setTimeout(()=>{ const b=document.getElementById('mockBar'); if(b) b.style.width='62%'; }, 1000);
+});
+</script>
+</body>
+</html>

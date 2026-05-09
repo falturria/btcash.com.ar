@@ -873,6 +873,11 @@ function calc(){
 }
 
 /* ── PRECIO BTC ─────────────────────────────────────── */
+/*
+ * CAMBIO: fetchBtcPrice ahora consulta APIs públicas directas
+ * en lugar de google.script.run, que tiene latencia de 1-3s.
+ * Orden: CoinGecko + Binance en paralelo → Apps Script (fallback)
+ */
 function applyBtcPrice(price) {
   if(!price || price <= 0) return;
   const priceStr = '$' + Math.round(price).toLocaleString('es-AR');
@@ -906,11 +911,49 @@ function applyBtcPrice(price) {
   }
 }
 
+function _btcCoinGecko() {
+  return new Promise(function(resolve, reject) {
+    var ctrl = new AbortController();
+    var t = setTimeout(function(){ ctrl.abort(); }, 4000);
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd', { signal: ctrl.signal, cache: 'no-store' })
+      .then(function(r){ clearTimeout(t); return r.json(); })
+      .then(function(d){ var p=d&&d.bitcoin&&d.bitcoin.usd; if(p>0) resolve(p); else reject(); })
+      .catch(function(){ clearTimeout(t); reject(); });
+  });
+}
+
+function _btcBinance() {
+  return new Promise(function(resolve, reject) {
+    var ctrl = new AbortController();
+    var t = setTimeout(function(){ ctrl.abort(); }, 4000);
+    fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT', { signal: ctrl.signal, cache: 'no-store' })
+      .then(function(r){ clearTimeout(t); return r.json(); })
+      .then(function(d){ var p=parseFloat(d&&d.price); if(p>0) resolve(p); else reject(); })
+      .catch(function(){ clearTimeout(t); reject(); });
+  });
+}
+
+function _btcAppsScript() {
+  return new Promise(function(resolve, reject) {
+    if(typeof google === 'undefined' || !google.script) { reject(); return; }
+    var t = setTimeout(function(){ reject(); }, 10000);
+    google.script.run
+      .withSuccessHandler(function(price){ clearTimeout(t); if(price>0) resolve(price); else reject(); })
+      .withFailureHandler(function(){ clearTimeout(t); reject(); })
+      .getBtcPrice();
+  });
+}
+
 function fetchBtcPrice() {
-  google.script.run
-    .withSuccessHandler(function(price) { applyBtcPrice(price); })
-    .withFailureHandler(function() { /* silencioso */ })
-    .getBtcPrice();
+  // CoinGecko y Binance en paralelo; gana la primera que responde
+  Promise.any([_btcCoinGecko(), _btcBinance()])
+    .then(function(price){ applyBtcPrice(price); })
+    .catch(function(){
+      // Ambas APIs directas fallaron → Apps Script como último recurso
+      _btcAppsScript()
+        .then(function(price){ applyBtcPrice(price); })
+        .catch(function(){ /* silencioso: no romper la UI */ });
+    });
 }
 
 /* ── ANIMACIONES SCROLL ─────────────────────────────── */
@@ -942,7 +985,8 @@ const heroCard = document.getElementById('heroCard');
 if(heroCard) io.observe(heroCard);
 
 /* ── INIT ───────────────────────────────────────────── */
-fetchBtcPrice();
+// Cargar precio apenas el DOM está listo, sin esperar imágenes ni fuentes
+document.addEventListener('DOMContentLoaded', function(){ fetchBtcPrice(); });
 setInterval(fetchBtcPrice, 60000);
 
 window.addEventListener('load', ()=>{

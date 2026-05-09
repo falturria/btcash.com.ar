@@ -33,13 +33,7 @@
   <meta name="twitter:description" content="Obtené liquidez en dólares usando tu Bitcoin como garantía. Sin vender. Tasa 18% anual.">
   <meta name="twitter:image"       content="https://btcash.com.ar/og-image.png">
 
-
-  <!-- ── GOOGLE ANALYTICS 4 ────────────────────────────────────────────────────
-       1. Andá a analytics.google.com
-       2. Admin → Crear propiedad → Web → URL: btcash.com.ar
-       3. Copiá el Measurement ID (formato G-XXXXXXXXXX)
-       4. Reemplazá G-XXXXXXXXXX en las dos líneas de abajo
-  ──────────────────────────────────────────────────────────────────────────── -->
+  <!-- ── GOOGLE ANALYTICS 4 ── -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-K2NYN8ENFX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -47,18 +41,82 @@
     gtag('js', new Date());
     gtag('config', 'G-K2NYN8ENFX', { 'anonymize_ip': true });
 
-    // ── Eventos personalizados de conversión ──
-    // Se llaman desde los botones del sitio
+    // ── Eventos: WhatsApp (recibe desde dónde se clickeó)
     function trackWA(label) {
-      gtag('event', 'click_whatsapp', { event_category: 'conversion', event_label: label });
+      gtag('event', 'click_whatsapp', {
+        event_category: 'conversion',
+        event_label: label
+      });
     }
+
+    // ── Evento: uso de calculadora
     function trackCalculator() {
-      gtag('event', 'use_calculator', { event_category: 'engagement' });
+      gtag('event', 'use_calculator', {
+        event_category: 'engagement',
+        ltv_value: document.getElementById('lR')?.value || '',
+        plazo_value: document.getElementById('pR')?.value || ''
+      });
     }
+
+    // ── Evento: clic en "Mi préstamo"
     function trackPanel() {
-      gtag('event', 'click_panel', { event_category: 'engagement' });
+      gtag('event', 'click_panel', {
+        event_category: 'engagement',
+        event_label: 'nav'
+      });
     }
+
+    // ── Evento: pregunta del FAQ abierta
+    function trackFaq(question) {
+      gtag('event', 'faq_open', {
+        event_category: 'engagement',
+        event_label: question
+      });
+    }
+
+    // ── Evento: precio BTC cargado correctamente
+    function trackBtcLoaded(price) {
+      gtag('event', 'btc_price_loaded', {
+        event_category: 'system',
+        btc_price: Math.round(price)
+      });
+    }
+
+    // ── Scroll depth: 25%, 50%, 75%, 100%
+    (function() {
+      const fired = {};
+      const depths = [25, 50, 75, 100];
+      window.addEventListener('scroll', function() {
+        const scrolled = window.scrollY + window.innerHeight;
+        const total = document.documentElement.scrollHeight;
+        const pct = Math.round((scrolled / total) * 100);
+        depths.forEach(function(d) {
+          if (pct >= d && !fired[d]) {
+            fired[d] = true;
+            gtag('event', 'scroll_depth', {
+              event_category: 'engagement',
+              event_label: d + '%',
+              percent_scrolled: d
+            });
+          }
+        });
+      }, { passive: true });
+    })();
+
+    // ── Tiempo en página: 30s, 60s, 120s
+    (function() {
+      [30, 60, 120].forEach(function(sec) {
+        setTimeout(function() {
+          gtag('event', 'time_on_page', {
+            event_category: 'engagement',
+            event_label: sec + 's',
+            seconds: sec
+          });
+        }, sec * 1000);
+      });
+    })();
   </script>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     /* ── TOKENS DE MARCA ─────────────────────────────────── */
@@ -137,7 +195,6 @@
       padding: 110px 52px 88px;
       position: relative; overflow: hidden;
     }
-    /* Fondo animado con partículas */
     .hero-bg-glow {
       position: absolute; inset: 0; pointer-events: none;
       background:
@@ -146,7 +203,6 @@
       animation: bgPulse 8s ease-in-out infinite alternate;
     }
     @keyframes bgPulse { from { opacity:.6; } to { opacity:1; } }
-    /* Símbolo ₿ flotante de fondo */
     .hero-symbol {
       position: absolute; right: 4%; bottom: -60px;
       font-family: 'DM Sans', sans-serif; font-size: 380px; font-weight: 700;
@@ -192,25 +248,21 @@
       transition: border-color .2s, background .2s;
     }
     .btn-secondary:hover { border-color: rgba(200,221,212,.7); background: rgba(200,221,212,.07); }
-    /* Hero stats */
     .hero-stats { margin-top: 44px; display: flex; gap: 36px; flex-wrap: wrap; padding-top: 36px; border-top: 0.5px solid rgba(200,221,212,.15); }
     .h-stat { cursor: default; }
     .h-stat .number { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; color: var(--orange); line-height: 1; transition: color .2s; }
     .h-stat:hover .number { color: #F5C07A; }
     .h-stat .label { font-size: 11px; color: #5A8A75; margin-top: 4px; letter-spacing: .04em; }
 
-    /* Hero topbar: badge + ticker en fila perfectamente alineados */
     .hero-topbar {
       display: flex; align-items: center; gap: 10px;
       flex-wrap: wrap; margin-bottom: 28px;
     }
-    /* Separador vertical entre badge y ticker */
     .hero-topbar-sep {
       width: 1px; height: 18px;
       background: rgba(200,221,212,.2);
       flex-shrink: 0;
     }
-    /* BTC ticker — mismo pill que el badge */
     .btc-ticker {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(200,221,212,.10); border: 0.5px solid rgba(200,221,212,.22);
@@ -224,7 +276,6 @@
     .tick-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-ok); animation: tickBlink 2s ease-in-out infinite; flex-shrink: 0; }
     @keyframes tickBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-    /* Hero card */
     .hcard {
       background: var(--white); border: 0.5px solid var(--border);
       border-radius: 22px; padding: 28px;
@@ -276,7 +327,6 @@
     .step h3 { font-size: 15px; font-weight: 600; color: var(--sage-deep); margin-bottom: 8px; }
     .step p { font-size: 13px; color: var(--muted); line-height: 1.75; }
 
-    /* LTV */
     .ltv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 72px; }
     .ltv-vis { background: var(--white); border: 0.5px solid var(--border); border-radius: 20px; padding: 32px; transition: box-shadow .3s; }
     .ltv-vis:hover { box-shadow: 0 8px 32px rgba(45,79,64,.08); }
@@ -302,7 +352,6 @@
     .cklist li:hover { color: var(--text); }
     .cklist li::before { content: ''; display: block; min-width: 16px; height: 16px; margin-top: 2px; background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23C8DDD4'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%232D4F40' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/cover no-repeat; }
 
-    /* LTV explicado tooltip */
     .ltv-explain {
       margin-top: 24px; padding: 18px 24px;
       background: var(--sage); border-radius: 14px;
@@ -311,7 +360,6 @@
     }
     .ltv-explain strong { font-weight: 700; }
 
-    /* Semáforo */
     .sem-wrap { margin-top: 72px; }
     .sem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 30px; }
     .sem-card { border-radius: 16px; padding: 24px; border: 0.5px solid transparent; transition: transform .25s, box-shadow .25s; cursor: default; }
@@ -388,7 +436,6 @@
 
     /* ── FAQ ──────────────────────────────────────────────── */
     #faq { background: var(--cream); }
-    /* Layout en lista vertical — sin grid de 2 columnas para evitar el bug */
     .faq-list { display: flex; flex-direction: column; gap: 8px; margin-top: 48px; max-width: 780px; }
     .faq-item { background: var(--white); border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
     .faq-item:hover { border-color: var(--sage); box-shadow: 0 4px 16px rgba(45,79,64,.06); }
@@ -402,7 +449,6 @@
     .fa.open { max-height: 600px; }
     .fa-inner { padding: 0 20px 18px; font-size: 13px; color: var(--muted); line-height: 1.85; border-top: 0.5px solid var(--border); padding-top: 14px; }
     .fa-inner strong { color: var(--sage-deep); }
-    /* Pill LTV en FAQ */
     .ltv-pill { display: inline-flex; align-items: center; gap: 5px; background: var(--sage); color: var(--sage-deep); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 100px; margin: 0 2px; }
 
     /* ── TRUST STRIP ──────────────────────────────────────── */
@@ -493,7 +539,7 @@
     </a>
   </div>
   <div class="nav-right">
-    <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-nav">
+    <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-nav" onclick="trackWA('nav')">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.118.555 4.103 1.523 5.829L.057 23.7c-.054.196.025.401.196.524a.497.497 0 00.507.021l5.98-2.98A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
       Hablar con un asesor
     </a>
@@ -504,8 +550,8 @@
   <a href="#como-funciona" onclick="closeMob()">Cómo funciona</a>
   <a href="#calculadora" onclick="closeMob()">Calculadora</a>
   <a href="#faq" onclick="closeMob()">Preguntas frecuentes</a>
-  <a href="https://script.google.com/macros/s/AKfycbwMRZTYyJ5AAsmwFU2I0N6TCBh-AQdxr3eSmWmktShMYekW2NN1qjtje0xzLCTTnllm/exec?page=prestamo" target="_blank" class="nav-panel-link" onclick="closeMob()">Mi préstamo</a>
-  <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-nav" onclick="closeMob()">Hablar con un asesor</a>
+  <a href="https://script.google.com/macros/s/AKfycbwMRZTYyJ5AAsmwFU2I0N6TCBh-AQdxr3eSmWmktShMYekW2NN1qjtje0xzLCTTnllm/exec?page=prestamo" target="_blank" class="nav-panel-link" onclick="trackPanel(); closeMob()">Mi préstamo</a>
+  <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-nav" onclick="trackWA('nav_mobile'); closeMob()">Hablar con un asesor</a>
 </div>
 
 <!-- ── HERO ────────────────────────────────────────────────────── -->
@@ -514,7 +560,6 @@
   <div class="hero-symbol">₿</div>
   <div class="hero-inner">
     <div class="hero-left">
-      <!-- Barra superior: badge + separador + ticker -->
       <div class="hero-topbar">
         <div class="hero-badge">
           <span class="pulse"></span>
@@ -531,7 +576,7 @@
       <h1 class="hero-h1">Tu Bitcoin trabaja.<br><em>Vos cobrás.</em></h1>
       <p class="hero-sub">Obtenés liquidez en dólares usando tu Bitcoin como garantía. Sin vender. Sin perder tu posición en el mercado.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-primary">
+        <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="btn-primary" onclick="trackWA('hero')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.118.555 4.103 1.523 5.829L.057 23.7c-.054.196.025.401.196.524a.497.497 0 00.507.021l5.98-2.98A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
           Hablar con un asesor
         </a>
@@ -614,7 +659,6 @@
         </ul>
       </div>
     </div>
-    <!-- LTV explicado — bloque completo -->
     <div class="ltv-explain obs">
       <strong>¿Qué es el LTV (Loan to Value)?</strong> Es la relación entre el monto del préstamo y el valor de tu garantía. Con un LTV del 50%, si depositás Bitcoin valuado en $100.000, podés recibir hasta $50.000 USD. Cuanto más bajo el LTV que usás, mayor tu margen de seguridad: el precio del BTC tiene que caer más antes de activar alertas. Por eso muchos clientes prefieren usar el 30–40% del LTV disponible en lugar del máximo.
     </div>
@@ -691,7 +735,7 @@
           <li>Acceso directo a tu contrato firmado digitalmente</li>
           <li>Link a tu billetera BTC en explorador público</li>
         </ul>
-        <a href="https://script.google.com/macros/s/AKfycbwMRZTYyJ5AAsmwFU2I0N6TCBh-AQdxr3eSmWmktShMYekW2NN1qjtje0xzLCTTnllm/exec?page=prestamo" target="_blank" class="btn-primary">Ir a mi préstamo →</a>
+        <a href="https://script.google.com/macros/s/AKfycbwMRZTYyJ5AAsmwFU2I0N6TCBh-AQdxr3eSmWmktShMYekW2NN1qjtje0xzLCTTnllm/exec?page=prestamo" target="_blank" class="btn-primary" onclick="trackPanel()">Ir a mi préstamo →</a>
       </div>
       <div class="tmock">
         <div class="mlogo-row">
@@ -742,7 +786,7 @@
     <h2>¿Listo para obtener liquidez<br><em>sin vender tu Bitcoin?</em></h2>
     <p>Contanos cuánto BTC tenés y cuánto necesitás. Respondemos el mismo día.</p>
     <div class="cta-actions">
-      <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20solicitar%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="wa-btn">
+      <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20solicitar%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" class="wa-btn" onclick="trackWA('cta_final')">
         <svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.118.555 4.103 1.523 5.829L.057 23.7c-.054.196.025.401.196.524a.497.497 0 00.507.021l5.98-2.98A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
         Hablar con un asesor
       </a>
@@ -781,22 +825,22 @@ window.addEventListener('scroll', () => {
 function toggleMenu(){ document.getElementById('mobMenu').classList.toggle('open'); }
 function closeMob(){ document.getElementById('mobMenu').classList.remove('open'); }
 
-/* ── FAQ — cada item es independiente ───────────────── */
+/* ── FAQ ────────────────────────────────────────────── */
 function faq(el) {
   const item = el.closest('.faq-item');
   const answer = el.nextElementSibling;
   const isOpen = el.classList.contains('open');
-  // Cerrar todos
   document.querySelectorAll('.fq.open').forEach(q => {
     q.classList.remove('open');
     q.closest('.faq-item').classList.remove('is-open');
     q.nextElementSibling.classList.remove('open');
   });
-  // Abrir el clickeado si estaba cerrado
   if (!isOpen) {
     el.classList.add('open');
     item.classList.add('is-open');
     answer.classList.add('open');
+    // Trackear qué pregunta abrieron
+    trackFaq(el.childNodes[0].textContent.trim());
   }
 }
 
@@ -828,11 +872,10 @@ function calc(){
   document.getElementById('rB').textContent=ba.toFixed(6).replace('.',',')+' BTC';
 }
 
-/* ── PRECIO BTC — desde el Excel vía Apps Script ────── */
+/* ── PRECIO BTC ─────────────────────────────────────── */
 function applyBtcPrice(price) {
   if(!price || price <= 0) return;
   const priceStr = '$' + Math.round(price).toLocaleString('es-AR');
-  // Ticker hero
   const tp = document.getElementById('tickPrice');
   if(tp) {
     const prev = tp.textContent;
@@ -843,22 +886,23 @@ function applyBtcPrice(price) {
       setTimeout(()=>{ tp.style.color = ''; }, 900);
     }
   }
-  // Ocultar change (no aplica con el Excel)
   const tc = document.getElementById('tickChange');
   if(tc) { tc.textContent = ''; tc.className = 'tick-change'; }
-  // Card hero
   const hl = document.getElementById('heroLive');
   if(hl) hl.textContent = priceStr + ' USD';
-  // Mock panel
   const ml = document.getElementById('mockLive');
   if(ml) ml.textContent = priceStr + ' USD ●';
-  // Calculadora — siempre actualiza en primera carga
   const bP = document.getElementById('bP');
   if(bP && !bP.matches(':focus')) {
     bP.value = Math.round(price);
     const tag = document.getElementById('bPLiveTag');
     if(tag) tag.style.display = 'inline';
     calc();
+  }
+  // Trackear precio cargado (solo la primera vez)
+  if (!window._btcTracked) {
+    window._btcTracked = true;
+    trackBtcLoaded(price);
   }
 }
 
@@ -874,7 +918,6 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      // Animaciones on-enter
       if (e.target.id === 'heroCard') {
         setTimeout(()=>{ document.getElementById('heroBar').style.width='62%'; }, 400);
       }
@@ -895,16 +938,13 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.obs').forEach(el => io.observe(el));
 
-// También observar la card del hero
 const heroCard = document.getElementById('heroCard');
 if(heroCard) io.observe(heroCard);
 
 /* ── INIT ───────────────────────────────────────────── */
 fetchBtcPrice();
-setInterval(fetchBtcPrice, 60000); // actualizar cada 60 segundos (desde el Excel)
-// calc() se dispara dentro de applyBtcPrice una vez que llega el precio real
+setInterval(fetchBtcPrice, 60000);
 
-// Animar barra LTV cuando ya es visible
 window.addEventListener('load', ()=>{
   setTimeout(()=>{ const b=document.getElementById('ltvBar'); if(b) b.style.width='50%'; }, 800);
   setTimeout(()=>{ const b=document.getElementById('heroBar'); if(b) b.style.width='62%'; }, 600);

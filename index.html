@@ -3,86 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>₿TCa$h — Préstamos con Colateral en Bitcoin | btcash.com.ar</title>
+  <title>BTCash — Préstamos con Colateral en Bitcoin | btcash.com.ar</title>
   <meta name="description" content="Obtené liquidez en dólares usando tu Bitcoin como garantía. Sin vender. Tasa 18% anual. Acreditación inmediata. Olivos y Microcentro, Buenos Aires.">
   <meta name="keywords" content="préstamo bitcoin, colateral bitcoin argentina, préstamo criptomonedas, liquidez bitcoin, préstamo BTC USDT">
   <meta name="author" content="BTCash">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://btcash.com.ar">
-  <!-- ── FAVICONS ── -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-  <!-- ── OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ── -->
   <meta property="og:type"         content="website">
   <meta property="og:url"          content="https://btcash.com.ar">
-  <meta property="og:title"        content="₿TCa$h — Préstamos con Colateral en Bitcoin">
+  <meta property="og:title"        content="BTCash — Préstamos con Colateral en Bitcoin">
   <meta property="og:description"  content="Obtené liquidez en dólares usando tu Bitcoin como garantía. Sin vender tu posición. Tasa 18% anual. Acreditación el mismo día.">
   <meta property="og:image"        content="https://btcash.com.ar/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale"       content="es_AR">
-  <meta property="og:site_name"    content="₿TCa$h">
-
-  <!-- ── TWITTER / X CARD ── -->
+  <meta property="og:site_name"    content="BTCash">
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="₿TCa$h — Préstamos con Colateral en Bitcoin">
+  <meta name="twitter:title"       content="BTCash — Préstamos con Colateral en Bitcoin">
   <meta name="twitter:description" content="Obtené liquidez en dólares usando tu Bitcoin como garantía. Sin vender. Tasa 18% anual.">
   <meta name="twitter:image"       content="https://btcash.com.ar/og-image.png">
-
-  <!-- ── GOOGLE ANALYTICS 4 ── -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-K2NYN8ENFX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-K2NYN8ENFX', { 'anonymize_ip': true });
-
-    // ── Eventos: WhatsApp (recibe desde dónde se clickeó)
-    function trackWA(label) {
-      gtag('event', 'click_whatsapp', {
-        event_category: 'conversion',
-        event_label: label
-      });
-    }
-
-    // ── Evento: uso de calculadora
-    function trackCalculator() {
-      gtag('event', 'use_calculator', {
-        event_category: 'engagement',
-        ltv_value: document.getElementById('lR')?.value || '',
-        plazo_value: document.getElementById('pR')?.value || ''
-      });
-    }
-
-    // ── Evento: clic en "Mi préstamo"
-    function trackPanel() {
-      gtag('event', 'click_panel', {
-        event_category: 'engagement',
-        event_label: 'nav'
-      });
-    }
-
-    // ── Evento: pregunta del FAQ abierta
-    function trackFaq(question) {
-      gtag('event', 'faq_open', {
-        event_category: 'engagement',
-        event_label: question
-      });
-    }
-
-    // ── Evento: precio BTC cargado correctamente
-    function trackBtcLoaded(price) {
-      gtag('event', 'btc_price_loaded', {
-        event_category: 'system',
-        btc_price: Math.round(price)
-      });
-    }
-
-    // ── Scroll depth: 25%, 50%, 75%, 100%
+    function trackWA(label) { gtag('event', 'click_whatsapp', { event_category: 'conversion', event_label: label }); }
+    function trackCalculator() { gtag('event', 'use_calculator', { event_category: 'engagement', ltv_value: document.getElementById('lR')?.value || '', plazo_value: document.getElementById('pR')?.value || '' }); }
+    function trackPanel() { gtag('event', 'click_panel', { event_category: 'engagement', event_label: 'nav' }); }
+    function trackFaq(question) { gtag('event', 'faq_open', { event_category: 'engagement', event_label: question }); }
+    function trackBtcLoaded(price) { gtag('event', 'btc_price_loaded', { event_category: 'system', btc_price: Math.round(price) }); }
     (function() {
       const fired = {};
       const depths = [25, 50, 75, 100];
@@ -93,33 +48,21 @@
         depths.forEach(function(d) {
           if (pct >= d && !fired[d]) {
             fired[d] = true;
-            gtag('event', 'scroll_depth', {
-              event_category: 'engagement',
-              event_label: d + '%',
-              percent_scrolled: d
-            });
+            gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: d + '%', percent_scrolled: d });
           }
         });
       }, { passive: true });
     })();
-
-    // ── Tiempo en página: 30s, 60s, 120s
     (function() {
       [30, 60, 120].forEach(function(sec) {
         setTimeout(function() {
-          gtag('event', 'time_on_page', {
-            event_category: 'engagement',
-            event_label: sec + 's',
-            seconds: sec
-          });
+          gtag('event', 'time_on_page', { event_category: 'engagement', event_label: sec + 's', seconds: sec });
         }, sec * 1000);
       });
     })();
   </script>
-
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    /* ── TOKENS DE MARCA ─────────────────────────────────── */
     :root {
       --sage:      #C8DDD4;
       --sage-dark: #3B6B57;
@@ -145,15 +88,22 @@
     body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
     a { text-decoration: none; }
 
-    /* ── NAV ─────────────────────────────────────────────── */
+    /* ── LOGO — Opción B ─────────────────────────── */
+    .logo-b { display:inline-flex; align-items:baseline; gap:0; line-height:1; }
+    .logo-b .l-btc    { font-family:'DM Sans',sans-serif; font-weight:700; color:var(--orange); letter-spacing:-.02em; }
+    .logo-b .l-cash   { font-family:'DM Sans',sans-serif; font-weight:600; color:var(--sage-deep); letter-spacing:-.02em; }
+    .logo-b .l-domain { font-family:'DM Sans',sans-serif; font-weight:400; color:var(--mist); margin-left:6px; letter-spacing:.04em; }
+    /* versión sobre fondo oscuro */
+    .logo-b.on-dark .l-cash   { color:#E8F5EE; }
+    .logo-b.on-dark .l-domain { color:#5A8A75; }
+
+    /* ── NAV ─────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 52px; height: 64px;
-      background: rgba(250,248,244,.96);
-      backdrop-filter: blur(20px);
-      border-bottom: 0.5px solid var(--border);
-      transition: box-shadow .3s;
+      background: rgba(250,248,244,.96); backdrop-filter: blur(20px);
+      border-bottom: 0.5px solid var(--border); transition: box-shadow .3s;
     }
     nav.scrolled { box-shadow: 0 4px 24px rgba(45,79,64,.08); }
     .nav-links { display: flex; gap: 28px; align-items: center; }
@@ -162,18 +112,17 @@
     .nav-panel-link {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--sage-deep); color: #E8F5EE;
-      border: none; border-radius: 10px;
-      padding: 8px 16px; font-size: 13px; font-weight: 600;
-      cursor: pointer; font-family: 'DM Sans', sans-serif;
-      transition: background .2s, color .2s, transform .1s;
+      border: none; border-radius: 10px; padding: 8px 16px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: background .2s, transform .1s;
       text-decoration: none !important;
     }
     .nav-panel-link:hover { background: var(--sage-dark); transform: translateY(-1px); color: #E8F5EE; }
     .btn-nav {
       background: var(--orange); color: var(--sage-deep);
-      border: none; border-radius: 12px;
-      padding: 10px 20px; font-size: 14px; font-weight: 600;
-      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      border: none; border-radius: 12px; padding: 10px 20px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
       transition: background .15s, transform .1s;
       display: inline-flex; align-items: center; gap: 7px;
     }
@@ -187,40 +136,14 @@
     .mob-menu .btn-nav { text-align: center; margin-top: 10px; padding: 13px; border-radius: 12px; }
     .mob-menu .nav-panel-link { text-align: center; margin-top: 6px; padding: 13px; border-radius: 12px; justify-content: center; }
 
-    /* ── HERO ─────────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      background: var(--sage-deep);
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 110px 52px 88px;
-      position: relative; overflow: hidden;
-    }
-    .hero-bg-glow {
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(244,169,106,.07) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(200,221,212,.05) 0%, transparent 60%);
-      animation: bgPulse 8s ease-in-out infinite alternate;
-    }
+    /* ── HERO ────────────────────────────────────── */
+    .hero { min-height: 100vh; background: var(--sage-deep); display: flex; flex-direction: column; justify-content: center; padding: 110px 52px 88px; position: relative; overflow: hidden; }
+    .hero-bg-glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 50% 60% at 80% 20%, rgba(244,169,106,.07) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 10% 80%, rgba(200,221,212,.05) 0%, transparent 60%); animation: bgPulse 8s ease-in-out infinite alternate; }
     @keyframes bgPulse { from { opacity:.6; } to { opacity:1; } }
-    .hero-symbol {
-      position: absolute; right: 4%; bottom: -60px;
-      font-family: 'DM Sans', sans-serif; font-size: 380px; font-weight: 700;
-      color: rgba(200,221,212,.05); pointer-events: none; line-height: 1;
-      animation: floatY 10s ease-in-out infinite;
-    }
+    .hero-symbol { position: absolute; right: 4%; bottom: -60px; font-family: 'DM Sans', sans-serif; font-size: 380px; font-weight: 700; color: rgba(200,221,212,.05); pointer-events: none; line-height: 1; animation: floatY 10s ease-in-out infinite; }
     @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
-    .hero-inner {
-      position: relative; z-index: 1;
-      max-width: 1060px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(200,221,212,.10); border: 0.5px solid rgba(200,221,212,.22);
-      border-radius: 100px; padding: 6px 16px;
-      font-size: 12px; color: var(--mist); font-weight: 500; letter-spacing: .04em;
-    }
+    .hero-inner { position: relative; z-index: 1; max-width: 1060px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(200,221,212,.10); border: 0.5px solid rgba(200,221,212,.22); border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--mist); font-weight: 500; letter-spacing: .04em; }
     .hero-badge .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); position: relative; flex-shrink: 0; }
     .hero-badge .pulse::after { content:''; position:absolute; inset:-3px; border-radius:50%; border:1.5px solid var(--orange); animation:pulse 2s ease-out infinite; }
     @keyframes pulse { 0%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(2.2)} }
@@ -228,84 +151,43 @@
     h1.hero-h1 em { font-style: italic; color: var(--orange); }
     .hero-sub { font-size: 16px; font-weight: 300; color: #7EC9AB; max-width: 420px; margin-bottom: 36px; line-height: 1.8; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--orange); color: var(--sage-deep);
-      border: none; border-radius: 12px;
-      padding: 14px 26px; font-size: 15px; font-weight: 600;
-      cursor: pointer; font-family: 'DM Sans', sans-serif;
-      display: inline-flex; align-items: center; gap: 8px;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 16px rgba(244,169,106,.25);
-    }
+    .btn-primary { background: var(--orange); color: var(--sage-deep); border: none; border-radius: 12px; padding: 14px 26px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; display: inline-flex; align-items: center; gap: 8px; transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 0 4px 16px rgba(244,169,106,.25); }
     .btn-primary:hover { background: var(--orange-dk); color: var(--white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,130,74,.35); }
     .btn-primary:active { transform: scale(.97); }
-    .btn-primary svg, .btn-nav svg { flex-shrink: 0; }
-    .btn-secondary {
-      background: transparent; color: #C8DDD4;
-      border: 0.5px solid rgba(200,221,212,.35); border-radius: 12px;
-      padding: 14px 26px; font-size: 15px; font-weight: 500;
-      cursor: pointer; font-family: 'DM Sans', sans-serif;
-      display: inline-flex; align-items: center; gap: 8px;
-      transition: border-color .2s, background .2s;
-    }
+    .btn-secondary { background: transparent; color: #C8DDD4; border: 0.5px solid rgba(200,221,212,.35); border-radius: 12px; padding: 14px 26px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; display: inline-flex; align-items: center; gap: 8px; transition: border-color .2s, background .2s; }
     .btn-secondary:hover { border-color: rgba(200,221,212,.7); background: rgba(200,221,212,.07); }
     .hero-stats { margin-top: 44px; display: flex; gap: 36px; flex-wrap: wrap; padding-top: 36px; border-top: 0.5px solid rgba(200,221,212,.15); }
-    .h-stat { cursor: default; }
-    .h-stat .number { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; color: var(--orange); line-height: 1; transition: color .2s; }
-    .h-stat:hover .number { color: #F5C07A; }
-    .h-stat .label { font-size: 11px; color: #5A8A75; margin-top: 4px; letter-spacing: .04em; }
-
-    .hero-topbar {
-      display: flex; align-items: center; gap: 10px;
-      flex-wrap: wrap; margin-bottom: 28px;
-    }
-    .hero-topbar-sep {
-      width: 1px; height: 18px;
-      background: rgba(200,221,212,.2);
-      flex-shrink: 0;
-    }
-    .btc-ticker {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(200,221,212,.10); border: 0.5px solid rgba(200,221,212,.22);
-      border-radius: 100px; padding: 6px 16px;
-      font-size: 12px; color: var(--mist);
-    }
-    .btc-ticker .tick-logo { font-size: 13px; font-weight: 700; color: var(--orange); line-height: 1; flex-shrink: 0; }
+    .h-stat .number { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; color: var(--orange); line-height: 1; }
+    .h-stat .label  { font-size: 11px; color: #5A8A75; margin-top: 4px; letter-spacing: .04em; }
+    .hero-topbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-topbar-sep { width: 1px; height: 18px; background: rgba(200,221,212,.2); flex-shrink: 0; }
+    .btc-ticker { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,221,212,.10); border: 0.5px solid rgba(200,221,212,.22); border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--mist); }
+    .btc-ticker .tick-logo { font-size: 13px; font-weight: 700; color: var(--orange); flex-shrink: 0; }
     .btc-ticker .tick-price { font-size: 13px; font-weight: 600; color: #E8F5EE; letter-spacing: .01em; min-width: 60px; }
     .tick-sep { width: 1px; height: 12px; background: rgba(200,221,212,.25); flex-shrink: 0; }
-    .tick-live { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--mist); font-weight: 400; }
+    .tick-live { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--mist); }
     .tick-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-ok); animation: tickBlink 2s ease-in-out infinite; flex-shrink: 0; }
     @keyframes tickBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
-
-    .hcard {
-      background: var(--white); border: 0.5px solid var(--border);
-      border-radius: 22px; padding: 28px;
-      box-shadow: 0 32px 64px rgba(0,0,0,.2);
-      transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s;
-      transform: perspective(1000px) rotateY(-3deg) rotateX(2deg);
-    }
+    .hcard { background: var(--white); border: 0.5px solid var(--border); border-radius: 22px; padding: 28px; box-shadow: 0 32px 64px rgba(0,0,0,.2); transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s; transform: perspective(1000px) rotateY(-3deg) rotateX(2deg); }
     .hcard:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); box-shadow: 0 20px 48px rgba(0,0,0,.15); }
     .hcard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-    .hcard-title { font-size: 13px; font-weight: 600; color: var(--sage-deep); }
-    .hcard-badge { background: #E8F8F2; color: #14532D; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; border: 0.5px solid #A8D5C0; }
+    .hcard-title  { font-size: 13px; font-weight: 600; color: var(--sage-deep); }
+    .hcard-badge  { background: #E8F8F2; color: #14532D; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; border: 0.5px solid #A8D5C0; }
     .hc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-    .hc-kpi { background: var(--cream); border-radius: 12px; padding: 13px 14px; border: 0.5px solid var(--border); transition: background .2s, border-color .2s; }
-    .hc-kpi:hover { background: var(--sand); border-color: var(--sage); }
+    .hc-kpi { background: var(--cream); border-radius: 12px; padding: 13px 14px; border: 0.5px solid var(--border); }
     .hc-kpi .kl { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--sage-mid); margin-bottom: 5px; }
     .hc-kpi .kv { font-size: 18px; font-weight: 600; color: var(--sage-deep); }
     .hc-kpi .kv.o { color: var(--orange-dk); }
-    .hc-kpi .kv.g { color: var(--green-ok); }
     .hc-bar-bg { background: var(--sand); border-radius: 6px; height: 8px; overflow: hidden; }
     .hc-bar { height: 100%; background: var(--orange); border-radius: 6px; width: 0%; transition: width 1.4s cubic-bezier(.25,.46,.45,.94); }
     .hc-bar-lbl { display: flex; justify-content: space-between; font-size: 10px; color: var(--mist); margin-top: 5px; }
     .hc-btc { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 14px; }
-    .hc-btc-item { background: var(--cream); border-radius: 8px; padding: 9px; text-align: center; border: 0.5px solid var(--border); transition: transform .2s; }
-    .hc-btc-item:hover { transform: translateY(-2px); }
+    .hc-btc-item { background: var(--cream); border-radius: 8px; padding: 9px; text-align: center; border: 0.5px solid var(--border); }
     .hc-btc-item .bl { font-size: 9px; color: var(--mist); text-transform: uppercase; letter-spacing: .06em; }
     .hc-btc-item .bv { font-size: 11px; font-weight: 600; color: var(--sage-deep); margin-top: 3px; }
     .hc-btc-item.live .bv { color: var(--green-ok); }
 
-    /* ── SECTIONS ─────────────────────────────────────────── */
+    /* ── SECTIONS ────────────────────────────────── */
     section { padding: 96px 52px; }
     .container { max-width: 1060px; margin: 0 auto; }
     .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--sage-mid); margin-bottom: 10px; }
@@ -314,27 +196,27 @@
     .sec-desc { font-size: 15px; color: var(--muted); max-width: 500px; font-weight: 300; line-height: 1.85; }
     .sheader { margin-bottom: 56px; }
 
-    /* ── COMO FUNCIONA ────────────────────────────────────── */
+    /* ── COMO FUNCIONA ───────────────────────────── */
     #como-funciona { background: var(--white); }
     .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.5px; background: var(--border); border: 0.5px solid var(--border); border-radius: 18px; overflow: hidden; }
     .step { background: var(--white); padding: 30px 24px; transition: background .25s; position: relative; overflow: hidden; }
     .step::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--sage-mid),var(--orange)); transform:scaleX(0); transform-origin:left; transition:transform .4s cubic-bezier(.25,.46,.45,.94); }
     .step:hover { background: var(--cream); }
     .step:hover::before { transform:scaleX(1); }
-    .step-num { font-family: 'Instrument Serif', serif; font-size: 44px; font-weight: 400; color: var(--sage); line-height: 1; margin-bottom: 14px; transition: color .25s; }
+    .step-num  { font-family: 'Instrument Serif', serif; font-size: 44px; font-weight: 400; color: var(--sage); line-height: 1; margin-bottom: 14px; transition: color .25s; }
     .step:hover .step-num { color: var(--sage-mid); }
     .step-icon { font-size: 22px; margin-bottom: 10px; display: block; transition: transform .3s; }
     .step:hover .step-icon { transform: scale(1.15) rotate(-5deg); }
     .step h3 { font-size: 15px; font-weight: 600; color: var(--sage-deep); margin-bottom: 8px; }
-    .step p { font-size: 13px; color: var(--muted); line-height: 1.75; }
+    .step p  { font-size: 13px; color: var(--muted); line-height: 1.75; }
 
     .ltv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 72px; }
-    .ltv-vis { background: var(--white); border: 0.5px solid var(--border); border-radius: 20px; padding: 32px; transition: box-shadow .3s; }
+    .ltv-vis  { background: var(--white); border: 0.5px solid var(--border); border-radius: 20px; padding: 32px; transition: box-shadow .3s; }
     .ltv-vis:hover { box-shadow: 0 8px 32px rgba(45,79,64,.08); }
-    .ltv-tag { display: inline-block; background: var(--sage); color: var(--sage-dark); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 12px; }
-    .ltv-big { font-family: 'Instrument Serif', serif; font-size: 48px; font-weight: 400; color: var(--sage-deep); margin-bottom: 4px; line-height: 1; }
-    .ltv-sub { font-size: 13px; color: var(--mist); margin-bottom: 20px; }
-    .ltv-bar-bg { background: var(--sand); border-radius: 8px; height: 44px; overflow: hidden; }
+    .ltv-tag  { display: inline-block; background: var(--sage); color: var(--sage-dark); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 12px; }
+    .ltv-big  { font-family: 'Instrument Serif', serif; font-size: 48px; font-weight: 400; color: var(--sage-deep); margin-bottom: 4px; line-height: 1; }
+    .ltv-sub  { font-size: 13px; color: var(--mist); margin-bottom: 20px; }
+    .ltv-bar-bg   { background: var(--sand); border-radius: 8px; height: 44px; overflow: hidden; }
     .ltv-bar-fill { height: 100%; width: 0%; background: var(--orange); display: flex; align-items: center; padding-left: 14px; transition: width 1.2s cubic-bezier(.25,.46,.45,.94); }
     .ltv-bar-fill span { font-size: 16px; font-weight: 600; color: var(--white); }
     .ltv-bar-lbls { display: flex; justify-content: space-between; font-size: 11px; color: var(--mist); margin-top: 5px; }
@@ -347,20 +229,12 @@
     .ltv-row .lv.o { color: var(--orange-dk); }
     .ltv-row .lv.g { color: var(--green-ok); }
     .ltv-txt h3 { font-family: 'Instrument Serif', serif; font-size: 26px; font-weight: 400; color: var(--sage-deep); line-height: 1.2; margin-bottom: 14px; }
-    .ltv-txt p { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+    .ltv-txt p  { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
     .cklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .cklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); transition: color .2s; }
-    .cklist li:hover { color: var(--text); }
+    .cklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); }
     .cklist li::before { content: ''; display: block; min-width: 16px; height: 16px; margin-top: 2px; background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23C8DDD4'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%232D4F40' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/cover no-repeat; }
-
-    .ltv-explain {
-      margin-top: 24px; padding: 18px 24px;
-      background: var(--sage); border-radius: 14px;
-      font-size: 14px; color: var(--sage-deep); line-height: 1.7;
-      border-left: 3px solid var(--sage-mid);
-    }
+    .ltv-explain { margin-top: 24px; padding: 18px 24px; background: var(--sage); border-radius: 14px; font-size: 14px; color: var(--sage-deep); line-height: 1.7; border-left: 3px solid var(--sage-mid); }
     .ltv-explain strong { font-weight: 700; }
-
     .sem-wrap { margin-top: 72px; }
     .sem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 30px; }
     .sem-card { border-radius: 16px; padding: 24px; border: 0.5px solid transparent; transition: transform .25s, box-shadow .25s; cursor: default; }
@@ -382,22 +256,21 @@
     .sem-card.r h4 { color: #7F1D1D; }
     .sem-card p { font-size: 13px; color: var(--muted); line-height: 1.75; }
 
-    /* ── CALCULADORA ──────────────────────────────────────── */
+    /* ── CALCULADORA ─────────────────────────────── */
     #calculadora { background: var(--cream); }
     .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
     .calc-panel { background: var(--white); border: 0.5px solid var(--border); border-radius: 20px; padding: 30px; }
     .calc-panel h3 { font-size: 14px; font-weight: 600; color: var(--mist); margin-bottom: 26px; letter-spacing: .06em; text-transform: uppercase; }
     .ig { margin-bottom: 22px; }
     .ig label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 7px; font-weight: 500; }
-    .ir { display: flex; }
-    .ipre { background: var(--sand); border: 0.5px solid var(--border); border-right: none; border-radius: 12px 0 0 12px; padding: 10px 12px; font-size: 13px; color: var(--mist); display: flex; align-items: center; }
+    .ir    { display: flex; }
+    .ipre  { background: var(--sand); border: 0.5px solid var(--border); border-right: none; border-radius: 12px 0 0 12px; padding: 10px 12px; font-size: 13px; color: var(--mist); display: flex; align-items: center; }
     .ifield { flex: 1; background: var(--white); color: var(--text); border: 0.5px solid var(--border); border-radius: 0 12px 12px 0; padding: 10px 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color .15s; }
     .ifield:focus { border-color: var(--sage-mid); }
     .ifield::-webkit-inner-spin-button { -webkit-appearance: none; }
-    .rrow { display: flex; align-items: center; gap: 12px; }
+    .rrow   { display: flex; align-items: center; gap: 12px; }
     .crange { flex: 1; -webkit-appearance: none; height: 3px; background: var(--sage); border-radius: 2px; outline: none; cursor: pointer; }
-    .crange::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--orange); cursor: pointer; box-shadow: 0 0 0 3px rgba(244,169,106,.2); transition: transform .2s; }
-    .crange::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    .crange::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--orange); cursor: pointer; box-shadow: 0 0 0 3px rgba(244,169,106,.2); }
     .rdisplay { font-size: 13px; font-weight: 600; color: var(--orange-dk); min-width: 44px; text-align: right; }
     .results-panel { background: var(--white); border: 0.5px solid var(--sage); border-radius: 20px; padding: 30px; }
     .results-panel h3 { font-size: 14px; font-weight: 600; color: var(--sage-mid); margin-bottom: 22px; letter-spacing: .06em; text-transform: uppercase; }
@@ -405,37 +278,34 @@
     .rr:last-of-type { border-bottom: none; }
     .rr .rk { font-size: 13px; color: var(--muted); }
     .rr .rv { font-size: 14px; font-weight: 600; color: var(--sage-deep); transition: color .3s; }
-    .rr .rv.big { font-size: 26px; font-family: 'Instrument Serif', serif; font-weight: 400; color: var(--sage-deep); }
+    .rr .rv.big { font-size: 26px; font-family: 'Instrument Serif', serif; font-weight: 400; }
     .rr .rv.o { color: var(--orange-dk); }
     .rr .rv.updated { color: var(--orange-dk) !important; }
     .pstrip { background: var(--sage-deep); border-radius: 18px; padding: 40px; display: grid; grid-template-columns: repeat(5,1fr); gap: 24px; margin-top: 44px; text-align: center; }
-    .pi { transition: transform .25s; cursor: default; }
-    .pi:hover { transform: translateY(-3px); }
     .pi .pv { font-family: 'Instrument Serif', serif; font-size: 34px; font-weight: 400; color: var(--orange); }
     .pi .pk { font-size: 11px; color: #5A8A75; margin-top: 5px; letter-spacing: .04em; }
 
-    /* ── SEGUIMIENTO ──────────────────────────────────────── */
+    /* ── SEGUIMIENTO ─────────────────────────────── */
     #seguimiento { background: var(--white); }
     .tcard { background: var(--cream); border: 0.5px solid var(--border); border-radius: 20px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; margin-top: 52px; }
     .ttext { padding: 52px 44px; }
     .ttext h3 { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; margin-bottom: 14px; color: var(--sage-deep); line-height: 1.2; }
-    .ttext p { color: var(--muted); font-size: 14px; line-height: 1.85; margin-bottom: 24px; }
+    .ttext p  { color: var(--muted); font-size: 14px; line-height: 1.85; margin-bottom: 24px; }
     .flist { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
     .flist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); transition: color .2s, gap .2s; }
     .flist li:hover { color: var(--text); gap: 14px; }
     .flist li::before { content: '→'; color: var(--sage-mid); flex-shrink: 0; font-weight: 600; }
     .tmock { background: var(--sage-deep); padding: 32px; display: flex; flex-direction: column; gap: 13px; justify-content: center; }
-    .mkpi { background: rgba(200,221,212,.08); border: 0.5px solid rgba(200,221,212,.15); border-radius: 12px; padding: 14px 16px; transition: background .2s; }
-    .mkpi:hover { background: rgba(200,221,212,.13); }
+    .mkpi { background: rgba(200,221,212,.08); border: 0.5px solid rgba(200,221,212,.15); border-radius: 12px; padding: 14px 16px; }
     .mkpi .ml { font-size: 10px; color: #5A8A75; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
     .mkpi .mv { font-size: 18px; font-weight: 600; color: #E8F5EE; }
     .mkpi .mv.g { color: #7EC9AB; }
     .mkpi .mv.o { color: var(--orange); }
-    .mbar { background: rgba(200,221,212,.12); border-radius: 4px; height: 5px; overflow: hidden; margin-top: 7px; }
+    .mbar      { background: rgba(200,221,212,.12); border-radius: 4px; height: 5px; overflow: hidden; margin-top: 7px; }
     .mbar-fill { height: 100%; background: var(--orange); border-radius: 4px; width: 0%; transition: width 1.4s cubic-bezier(.25,.46,.45,.94); }
     .mlogo-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 10px; border-bottom: 0.5px solid rgba(200,221,212,.15); }
 
-    /* ── FAQ ──────────────────────────────────────────────── */
+    /* ── FAQ ─────────────────────────────────────── */
     #faq { background: var(--cream); }
     .faq-list { display: flex; flex-direction: column; gap: 8px; margin-top: 48px; max-width: 780px; }
     .faq-item { background: var(--white); border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
@@ -443,51 +313,72 @@
     .faq-item.is-open { border-color: var(--sage-mid); }
     .fq { padding: 18px 20px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; user-select: none; transition: background .15s; color: var(--text); }
     .fq:hover { background: var(--cream); }
-    .fq.open { color: var(--sage-dark); }
-    .fq-icon { flex-shrink: 0; width: 20px; height: 20px; border: 0.5px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--mist); transition: transform .35s cubic-bezier(.25,.46,.45,.94), border-color .2s, color .2s; }
+    .fq.open  { color: var(--sage-dark); }
+    .fq-icon  { flex-shrink: 0; width: 20px; height: 20px; border: 0.5px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--mist); transition: transform .35s cubic-bezier(.25,.46,.45,.94), border-color .2s, color .2s; }
     .fq.open .fq-icon { transform: rotate(45deg); border-color: var(--sage-mid); color: var(--sage-mid); }
     .fa { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.25,.46,.45,.94); }
-    .fa.open { max-height: 600px; }
+    .fa.open  { max-height: 600px; }
     .fa-inner { padding: 0 20px 18px; font-size: 13px; color: var(--muted); line-height: 1.85; border-top: 0.5px solid var(--border); padding-top: 14px; }
     .fa-inner strong { color: var(--sage-deep); }
     .ltv-pill { display: inline-flex; align-items: center; gap: 5px; background: var(--sage); color: var(--sage-deep); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 100px; margin: 0 2px; }
 
-    /* ── TRUST STRIP ──────────────────────────────────────── */
+    /* ── TRUST STRIP — íconos SVG profesionales ─── */
     .trust-strip {
-      background: var(--white); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
-      padding: 28px 52px;
-      display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap;
+      background: var(--white);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 32px 52px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 56px; flex-wrap: wrap;
     }
-    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
-    .trust-item .ti-icon { font-size: 20px; }
-    .trust-item strong { color: var(--sage-deep); font-weight: 600; }
+    .trust-item { display: flex; align-items: center; gap: 14px; }
+    .trust-icon { flex-shrink: 0; }
+    .trust-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--sage-deep); margin-bottom: 1px; }
+    .trust-text span   { font-size: 12px; color: var(--muted); font-weight: 400; }
 
-    /* ── CTA FINAL ────────────────────────────────────────── */
+    /* ── CTA FINAL ───────────────────────────────── */
     .cta-wrap { padding: 0 52px 96px; }
-    .cta-box { background: var(--sage-deep); border-radius: 24px; padding: 72px 60px; text-align: center; position: relative; overflow: hidden; max-width: 1060px; margin: 0 auto; }
-    .cta-box::before { content: ''; position: absolute; right: -60px; top: -60px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,169,106,.08) 0%, transparent 70%); animation: bgPulse 6s ease-in-out infinite alternate; }
-    .cta-box::after { content: ''; position: absolute; left: -80px; bottom: -80px; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(200,221,212,.05) 0%, transparent 70%); }
+    .cta-box  { background: var(--sage-deep); border-radius: 24px; padding: 72px 60px; text-align: center; position: relative; overflow: hidden; max-width: 1060px; margin: 0 auto; }
+    .cta-box::before { content: ''; position: absolute; right: -60px; top: -60px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,169,106,.08) 0%, transparent 70%); }
     .cta-box h2 { font-family: 'Instrument Serif', serif; font-size: clamp(26px,3.2vw,42px); font-weight: 400; color: #E8F5EE; margin-bottom: 14px; position: relative; z-index: 1; }
     .cta-box h2 em { font-style: italic; color: var(--orange); }
-    .cta-box p { color: #7EC9AB; font-size: 15px; font-weight: 300; margin-bottom: 36px; position: relative; z-index: 1; }
+    .cta-box p  { color: #7EC9AB; font-size: 15px; font-weight: 300; margin-bottom: 36px; position: relative; z-index: 1; }
     .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
-    .wa-btn {
-      background: #25D366; color: var(--white);
-      border: none; border-radius: 12px;
-      padding: 15px 28px; font-size: 15px; font-weight: 600;
-      cursor: pointer; display: inline-flex; align-items: center; gap: 9px;
-      font-family: 'DM Sans', sans-serif;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 16px rgba(37,211,102,.25);
-    }
+    .wa-btn { background: #25D366; color: var(--white); border: none; border-radius: 12px; padding: 15px 28px; font-size: 15px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 9px; font-family: 'DM Sans', sans-serif; transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 0 4px 16px rgba(37,211,102,.25); }
     .wa-btn:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.35); }
     .wa-btn svg { width: 19px; height: 19px; flex-shrink: 0; }
 
-    /* ── FOOTER ───────────────────────────────────────────── */
-    footer { background: var(--carbon); padding: 44px 52px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    footer p { font-size: 12px; color: #3D6652; letter-spacing: .06em; }
+    /* ── FOOTER — rediseñado ─────────────────────── */
+    footer {
+      background: var(--carbon);
+      padding: 56px 52px 36px;
+    }
+    .footer-grid {
+      max-width: 1060px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px; padding-bottom: 40px;
+      border-bottom: 0.5px solid rgba(255,255,255,.06);
+    }
+    .footer-brand .logo-b { margin-bottom: 16px; display: inline-flex; }
+    .footer-brand .logo-b .l-btc  { font-size: 28px; }
+    .footer-brand .logo-b .l-cash { font-size: 24px; color: #E8F5EE; }
+    .footer-brand .logo-b .l-domain { font-size: 11px; color: #5A8A75; }
+    .footer-brand p { font-size: 13px; color: #5A8A75; line-height: 1.7; max-width: 280px; margin-bottom: 20px; }
+    .footer-contact-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer-contact-row svg { flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-row .fc-text { font-size: 13px; color: #9BB8AD; line-height: 1.5; }
+    .footer-contact-row .fc-text strong { display: block; color: #E8F5EE; font-weight: 500; font-size: 13px; }
+    .footer-contact-row a { color: #F4A96A; transition: color .2s; }
+    .footer-contact-row a:hover { color: #F5C07A; }
+    .footer-col-title { font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #3D6652; margin-bottom: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: #5A8A75; transition: color .2s; }
+    .footer-links a:hover { color: #9BB8AD; }
+    .footer-bottom { max-width: 1060px; margin: 28px auto 0; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 11px; color: #2A3F34; line-height: 1.7; max-width: 560px; }
+    .footer-bottom .copy { font-size: 11px; color: #3D6652; white-space: nowrap; }
 
-    /* ── ANIMACIONES SCROLL ───────────────────────────────── */
+    /* ── ANIMACIONES SCROLL ──────────────────────── */
     @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
     .hero-left > * { animation: fadeUp .7s ease both; }
     .hero-left > *:nth-child(1) { animation-delay:.05s; }
@@ -503,32 +394,43 @@
     .obs-d2 { transition-delay: .2s; }
     .obs-d3 { transition-delay: .3s; }
 
-    /* ── RESPONSIVE ───────────────────────────────────────── */
-    @media (max-width:1000px) { .hero-inner{grid-template-columns:1fr} .hero-right{display:none} .ltv-grid{grid-template-columns:1fr;gap:36px} .tcard{grid-template-columns:1fr} .tmock{display:none} }
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width:1000px) {
+      .hero-inner { grid-template-columns:1fr; }
+      .hero-right  { display:none; }
+      .ltv-grid    { grid-template-columns:1fr; gap:36px; }
+      .tcard       { grid-template-columns:1fr; }
+      .tmock       { display:none; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+    }
     @media (max-width:840px) {
-      nav{padding:0 20px} .nav-links,.nav-right{display:none} .hamburger{display:block}
-      section,.cta-wrap{padding:64px 20px} .hero{padding:88px 20px 64px}
-      .steps{grid-template-columns:1fr} .sem-grid{grid-template-columns:1fr}
-      .calc-grid{grid-template-columns:1fr} .pstrip{grid-template-columns:repeat(2,1fr);padding:28px 20px}
-      .cta-box{padding:48px 24px} footer{padding:32px 20px;flex-direction:column;text-align:center}
-      .trust-strip{padding:24px 20px;gap:24px} .hcard{transform:none!important}
+      nav { padding:0 20px; }
+      .nav-links,.nav-right { display:none; }
+      .hamburger { display:block; }
+      section,.cta-wrap { padding:64px 20px; }
+      .hero { padding:88px 20px 64px; }
+      .steps    { grid-template-columns:1fr; }
+      .sem-grid { grid-template-columns:1fr; }
+      .calc-grid { grid-template-columns:1fr; }
+      .pstrip   { grid-template-columns:repeat(2,1fr); padding:28px 20px; }
+      .cta-box  { padding:48px 24px; }
+      footer    { padding:40px 20px 28px; }
+      .footer-grid   { grid-template-columns:1fr; gap:32px; }
+      .footer-bottom { flex-direction:column; }
+      .trust-strip { padding:24px 20px; gap:28px; }
+      .trust-item  { flex-direction:column; text-align:center; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ────────────────────────────────────────────────────── -->
+<!-- ── NAV ─────────────────────────────────────────────── -->
 <nav id="mainNav">
   <a href="#" style="display:flex;align-items:center;">
-    <svg width="160" height="28" viewBox="0 0 240 40" fill="none">
-      <text x="0"  y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="700" fill="#F4A96A">₿</text>
-      <text x="28" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#2D4F40">T</text>
-      <text x="52" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#2D4F40">C</text>
-      <text x="78" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#2D4F40">a</text>
-      <text x="101" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="700" fill="#F4A96A">$</text>
-      <text x="121" y="33" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#2D4F40">h</text>
-      <text x="150" y="33" font-family="'DM Sans',sans-serif" font-size="11" font-weight="400" fill="#9BB8AD">.com.ar</text>
-    </svg>
+    <div class="logo-b">
+      <span class="l-btc" style="font-size:28px;">₿TCash</span>
+      <span class="l-domain" style="font-size:11px;">.com.ar</span>
+    </div>
   </a>
   <div class="nav-links">
     <a href="#como-funciona">Cómo funciona</a>
@@ -558,7 +460,7 @@
   </a>
 </div>
 
-<!-- ── HERO ────────────────────────────────────────────────────── -->
+<!-- ── HERO ─────────────────────────────────────────────── -->
 <section class="hero" id="inicio">
   <div class="hero-bg-glow"></div>
   <div class="hero-symbol">₿</div>
@@ -566,8 +468,7 @@
     <div class="hero-left">
       <div class="hero-topbar">
         <div class="hero-badge">
-          <span class="pulse"></span>
-           Sin historial crediticio requerido
+          <span class="pulse"></span>Sin historial crediticio requerido
         </div>
         <span class="hero-topbar-sep"></span>
         <div class="btc-ticker" id="btcTickerWrap">
@@ -615,14 +516,52 @@
   </div>
 </section>
 
-<!-- ── TRUST STRIP ─────────────────────────────────────────────── -->
+<!-- ── TRUST STRIP — íconos SVG profesionales ──────────── -->
 <div class="trust-strip obs">
-  <div class="trust-item"><span class="ti-icon">🔒</span><span><strong>Billetera fría</strong> — tu BTC no se mueve</span></div>
-  <div class="trust-item"><span class="ti-icon">📄</span><span><strong>Contrato digital</strong> firmado en el momento</span></div>
-  <div class="trust-item"><span class="ti-icon">⚡</span><span><strong>Acreditación</strong> el mismo día</span></div>
+
+  <div class="trust-item">
+    <svg class="trust-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="7" y="16" width="22" height="15" rx="2.5" stroke="#2D4F40" stroke-width="1.5" fill="none"/>
+      <path d="M11 16V11a7 7 0 0 1 14 0v5" stroke="#2D4F40" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="18" cy="22.5" r="2" fill="#F4A96A"/>
+      <path d="M18 24.5v2.5" stroke="#F4A96A" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <div class="trust-text">
+      <strong>Billetera fría</strong>
+      <span>Tu BTC no se mueve</span>
+    </div>
+  </div>
+
+  <div style="width:0.5px;height:36px;background:var(--border);flex-shrink:0;"></div>
+
+  <div class="trust-item">
+    <svg class="trust-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 5h12l7 7v19a1.5 1.5 0 0 1-1.5 1.5H10A1.5 1.5 0 0 1 8.5 31V6.5A1.5 1.5 0 0 1 10 5z" stroke="#2D4F40" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <path d="M22 5v7h7" stroke="#2D4F40" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <path d="M13 22l3 3 7-7" stroke="#F4A96A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <div class="trust-text">
+      <strong>Contrato digital</strong>
+      <span>Firmado en el momento</span>
+    </div>
+  </div>
+
+  <div style="width:0.5px;height:36px;background:var(--border);flex-shrink:0;"></div>
+
+  <div class="trust-item">
+    <svg class="trust-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.5 4.5L9 20h9l-1.5 11.5L28.5 16H20L19.5 4.5z" stroke="#2D4F40" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+      <circle cx="18" cy="18" r="15.5" stroke="#F4A96A" stroke-width="0.8" stroke-dasharray="2.5 3" fill="none" opacity="0.6"/>
+    </svg>
+    <div class="trust-text">
+      <strong>Acreditación</strong>
+      <span>El mismo día</span>
+    </div>
+  </div>
+
 </div>
 
-<!-- ── COMO FUNCIONA ───────────────────────────────────────────── -->
+<!-- ── COMO FUNCIONA ────────────────────────────────────── -->
 <section id="como-funciona">
   <div class="container">
     <div class="sheader obs">
@@ -636,8 +575,7 @@
       <div class="step obs obs-d3"><div class="step-num">03</div><span class="step-icon">🔒</span><h3>Depositás tu BTC</h3><p>Transferís tu Bitcoin a la billetera fría asignada. Tu garantía queda en custodia, sin venderse.</p></div>
       <div class="step obs" style="transition-delay:.4s"><div class="step-num">04</div><span class="step-icon">💵</span><h3>Recibís el dinero</h3><p>Recibís los dólares el mismo día: en efectivo, en pesos al tipo de cambio, o en USDT a tu wallet.</p></div>
     </div>
-
-    <div class="ltv-grid" style="grid-template-rows:auto auto;">
+    <div class="ltv-grid">
       <div class="ltv-vis obs">
         <div class="ltv-tag">LTV — Loan to Value</div>
         <div class="ltv-big">50%</div>
@@ -666,20 +604,19 @@
     <div class="ltv-explain obs">
       <strong>¿Qué es el LTV (Loan to Value)?</strong> Es la relación entre el monto del préstamo y el valor de tu garantía. Con un LTV del 50%, si depositás Bitcoin valuado en $100.000, podés recibir hasta $50.000 USD. Cuanto más bajo el LTV que usás, mayor tu margen de seguridad: el precio del BTC tiene que caer más antes de activar alertas. Por eso muchos clientes prefieren usar el 30–40% del LTV disponible en lugar del máximo.
     </div>
-
     <div class="sem-wrap obs">
       <div class="eyebrow">Protección del colateral</div>
       <h2 class="sec-title" style="max-width:520px">¿Qué pasa si el<br><em>precio del BTC baja?</em></h2>
       <div class="sem-grid">
         <div class="sem-card g obs obs-d1"><div class="sem-dot"></div><h4>Zona segura — Al día</h4><p>Tu BTC cubre holgadamente el préstamo. Sin acción requerida. Seguís monitoreando en tiempo real desde tu panel.</p></div>
-        <div class="sem-card y obs obs-d2"><div class="sem-dot"></div><h4>Precio de advertencia</h4><p>Te avisamos por WhatsApp o email. Podés agregar más BTC como garantía o cancelar parte del capital.</p></div>
+        <div class="sem-card y obs obs-d2"><div class="sem-dot"></div><h4>Precio de advertencia</h4><p>Te avisamos por WhatsApp. Podés agregar más BTC como garantía o cancelar parte del capital.</p></div>
         <div class="sem-card r obs obs-d3"><div class="sem-dot"></div><h4>Precio de liquidación</h4><p>Se vende el BTC necesario para cubrir la deuda. Si queda remanente después de cancelar, te lo devolvemos.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CALCULADORA ─────────────────────────────────────────────── -->
+<!-- ── CALCULADORA ──────────────────────────────────────── -->
 <section id="calculadora">
   <div class="container">
     <div class="sheader obs">
@@ -720,7 +657,7 @@
   </div>
 </section>
 
-<!-- ── SEGUIMIENTO ─────────────────────────────────────────────── -->
+<!-- ── SEGUIMIENTO ──────────────────────────────────────── -->
 <section id="seguimiento">
   <div class="container">
     <div class="sheader obs">
@@ -743,15 +680,10 @@
       </div>
       <div class="tmock">
         <div class="mlogo-row">
-          <svg width="110" height="20" viewBox="0 0 200 34" fill="none">
-            <text x="0"  y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="700" fill="#F4A96A">₿</text>
-            <text x="22" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="600" fill="#E8F5EE">T</text>
-            <text x="40" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="600" fill="#E8F5EE">C</text>
-            <text x="59" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="600" fill="#E8F5EE">a</text>
-            <text x="75" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="700" fill="#F4A96A">$</text>
-            <text x="91" y="28" font-family="'DM Sans',sans-serif" font-size="28" font-weight="600" fill="#E8F5EE">h</text>
-            <text x="112" y="28" font-family="'DM Sans',sans-serif" font-size="9" font-weight="400" fill="#5A8A75">.com.ar</text>
-          </svg>
+          <div class="logo-b on-dark">
+            <span class="l-btc" style="font-size:20px;">₿TCash</span>
+            <span class="l-domain" style="font-size:9px;">.com.ar</span>
+          </div>
           <span style="font-size:10px;color:#3D6652;margin-left:auto;letter-spacing:.06em;text-transform:uppercase;">Panel cliente</span>
         </div>
         <div class="mkpi"><div class="ml">Capital prestado</div><div class="mv g">$50.000 USD</div></div>
@@ -763,7 +695,7 @@
   </div>
 </section>
 
-<!-- ── FAQ ────────────────────────────────────────────────────── -->
+<!-- ── FAQ ──────────────────────────────────────────────── -->
 <section id="faq">
   <div class="container">
     <div class="sheader obs">
@@ -772,19 +704,19 @@
     </div>
     <div class="faq-list">
       <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cómo funciona el préstamo con garantía en Bitcoin?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Depositás Bitcoin como garantía y recibís un préstamo en dólares (efectivo, pesos o USDT). El Bitcoin queda bloqueado hasta que canceles. Es ideal para mantener exposición cripto y tener liquidez sin vender tu posición.</div></div></div>
-      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Qué es el LTV y cómo me afecta?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">El <span class="ltv-pill">LTV</span> (Loan to Value, o relación préstamo-valor) indica qué porcentaje del valor de tu garantía podés recibir como préstamo. Trabajamos con un <strong>LTV máximo del 50%</strong>: si depositás Bitcoin valuado en $100.000, podés recibir hasta $50.000 USD. Un LTV más bajo significa mayor margen de seguridad: tu BTC tiene que caer más antes de activar alertas. Por eso muchos clientes usan solo el 30-40% del LTV disponible.</div></div></div>
-      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cuánto puedo pedir prestado?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Prestamos hasta el <strong>50% del valor en dólares</strong> del Bitcoin que entregués (<span class="ltv-pill">LTV</span> 50%). Con 1 BTC a $100.000 podés recibir hasta $50.000 USD. <strong>Mínimo:</strong> $1.000 / <strong>Máximo:</strong> $100.000.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Qué es el LTV y cómo me afecta?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">El <span class="ltv-pill">LTV</span> (Loan to Value) indica qué porcentaje del valor de tu garantía podés recibir como préstamo. Trabajamos con un <strong>LTV máximo del 50%</strong>: si depositás Bitcoin valuado en $100.000, podés recibir hasta $50.000 USD. Un LTV más bajo significa mayor margen de seguridad.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cuánto puedo pedir prestado?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Prestamos hasta el <strong>50% del valor en dólares</strong> del Bitcoin que entregués. Con 1 BTC a $100.000 podés recibir hasta $50.000 USD. <strong>Mínimo:</strong> $1.000 / <strong>Máximo:</strong> $100.000.</div></div></div>
       <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Qué pasa si el precio del Bitcoin baja?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Si cae al <strong>umbral de advertencia</strong>, te avisamos para que agregues más BTC o canceles parte del capital. Si llega al <strong>precio de liquidación</strong>, se vende el BTC necesario para cubrir la deuda y el remanente te lo devolvemos.</div></div></div>
       <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Y si el precio del BTC sube?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">La ganancia es 100% tuya. Si el precio sube más de un 50% respecto al inicio, podés <strong>recuperar parte de tu garantía</strong>. Se devuelve el excedente para que la cobertura vuelva a los niveles originales del préstamo.</div></div></div>
-      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Dónde queda mi Bitcoin? ¿Es seguro?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Tu garantía se bloquea en una <strong>billetera fría de resguardo</strong>. No se vende, no se invierte, solo se custodia. Se crea una billetera exclusiva por préstamo cuyo saldo podés verificar en el explorador público en cualquier momento.</div></div></div>
-      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cuál es la tasa y cómo se paga?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner"><strong>18% anual, interés simple.</strong> Durante el plazo solo abonás las cuotas de interés calculadas sobre el capital. En la última cuota devolvés el capital completo. Sin gastos de mantenimiento ni comisiones ocultas. Cuotas semanales, mensuales o trimestrales según lo acordado.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Dónde queda mi Bitcoin? ¿Es seguro?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Tu garantía se bloquea en una <strong>billetera fría de resguardo</strong>. No se vende, no se invierte, solo se custodia. Podés verificar su saldo en el explorador público en cualquier momento.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cuál es la tasa y cómo se paga?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner"><strong>18% anual, interés simple.</strong> Durante el plazo solo abonás las cuotas de interés sobre el capital. En la última cuota devolvés el capital completo. Sin comisiones ocultas. Cuotas semanales, mensuales o trimestrales según lo acordado.</div></div></div>
       <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Puedo cancelar antes del vencimiento?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Sí. Podés devolver el préstamo en cualquier momento sin penalidades. Al cancelar, liberamos tu Bitcoin de manera inmediata.</div></div></div>
-      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cómo recibo el dinero? ¿Qué necesito?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Podés elegir <strong>efectivo</strong> (dólares o pesos al tipo de cambio comprador del momento) o <strong>USDT directo a tu wallet</strong>. El único requisito es tener Bitcoin para depositar como garantía. Sin trámites ni demoras.</div></div></div>
+      <div class="faq-item obs"><div class="fq" onclick="faq(this)">¿Cómo recibo el dinero? ¿Qué necesito?<span class="fq-icon">+</span></div><div class="fa"><div class="fa-inner">Podés elegir <strong>efectivo</strong> (dólares o pesos al tipo de cambio comprador del momento) o <strong>USDT directo a tu wallet</strong>. El único requisito es tener Bitcoin para depositar como garantía.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ── CTA FINAL ───────────────────────────────────────────────── -->
+<!-- ── CTA FINAL ─────────────────────────────────────────── -->
 <div class="cta-wrap">
   <div class="cta-box obs">
     <h2>¿Listo para obtener liquidez<br><em>sin vender tu Bitcoin?</em></h2>
@@ -799,37 +731,81 @@
   </div>
 </div>
 
-<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<!-- ── FOOTER — rediseñado ──────────────────────────────── -->
 <footer>
-  <div>
-    <svg width="200" height="30" viewBox="0 0 280 44" fill="none">
-      <text x="0"   y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="700" fill="#F4A96A">₿</text>
-      <text x="28"  y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#E8F5EE">T</text>
-      <text x="51"  y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#E8F5EE">C</text>
-      <text x="76"  y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#E8F5EE">a</text>
-      <text x="97"  y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="700" fill="#F4A96A">$</text>
-      <text x="117" y="36" font-family="'DM Sans',sans-serif" font-size="34" font-weight="600" fill="#E8F5EE">h</text>
-      <text x="144" y="36" font-family="'DM Sans',sans-serif" font-size="11" font-weight="400" fill="#5A8A75">.com.ar</text>
-    </svg>
-    <p style="margin-top:8px; color:#3D6652; font-size:12px; letter-spacing:.04em;">Olivos · Microcentro · Buenos Aires · btcash.com.ar</p>
+  <div class="footer-grid">
+
+    <!-- Marca + contacto -->
+    <div class="footer-brand">
+      <div class="logo-b" style="margin-bottom:16px;">
+        <span class="l-btc" style="font-size:28px;">₿TCash</span>
+        <span class="l-domain" style="font-size:11px; color:#5A8A75; margin-left:6px;">.com.ar</span>
+      </div>
+      <p>Préstamos con colateral en Bitcoin. Liquidez inmediata sin vender tu posición.</p>
+
+      <div class="footer-contact-row">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3D6652" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15.46l-5.27-.61-2.52 2.52a15.05 15.05 0 0 1-6.59-6.59l2.53-2.53L8.54 3H3.03C2.45 13.18 10.82 21.55 21 20.97v-5.51z"/></svg>
+        <div class="fc-text">
+          <strong>WhatsApp</strong>
+          <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" onclick="trackWA('footer')">+54 9 11 7369-5582</a>
+        </div>
+      </div>
+
+      <div class="footer-contact-row">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3D6652" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="fc-text">
+          <strong>Horario de atención</strong>
+          <span style="color:#5A8A75;">Lunes a viernes, 9 a 18 hs</span>
+        </div>
+      </div>
+
+      <div class="footer-contact-row">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3D6652" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="fc-text">
+          <strong>Atención presencial</strong>
+          <span style="color:#5A8A75;">Olivos · Microcentro, Buenos Aires</span>
+          <span style="color:#3D6652; font-size:11px;">Turnos previos por WhatsApp</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación -->
+    <div>
+      <div class="footer-col-title">Navegación</div>
+      <ul class="footer-links">
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#calculadora">Calculadora</a></li>
+        <li><a href="#seguimiento">Panel de seguimiento</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
+        <li><a href="https://script.google.com/macros/s/AKfycbwMRZTYyJ5AAsmwFU2I0N6TCBh-AQdxr3eSmWmktShMYekW2NN1qjtje0xzLCTTnllm/exec?page=prestamo" target="_blank" onclick="trackPanel()">Mi préstamo →</a></li>
+      </ul>
+    </div>
+
+    <!-- Legal -->
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">Términos y condiciones</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Custodia de garantías</a></li>
+      </ul>
+    </div>
+
   </div>
-  <div style="text-align:right; max-width:440px;">
-    <p style="font-size:11px; color:#3D6652; letter-spacing:.04em;">© 2026 ₿TCa$h — Todos los derechos reservados.</p>
-    <p style="margin-top:6px; font-size:10px; color:#2A3F34; line-height:1.7;">Los valores del simulador son estimativos y no constituyen oferta vinculante. El otorgamiento de préstamos está sujeto a disponibilidad y condiciones acordadas en el contrato. btcash.com.ar no es una entidad financiera regulada por el BCRA.</p>
+
+  <div class="footer-bottom">
+    <p>BTCash no es una entidad financiera regulada por el BCRA. Los valores del simulador son estimativos y no constituyen oferta vinculante. El otorgamiento de préstamos está sujeto a disponibilidad y condiciones acordadas en el contrato.</p>
+    <span class="copy">© 2026 BTCash — Todos los derechos reservados.</span>
   </div>
 </footer>
 
 <script>
-/* ── NAV SCROLL ─────────────────────────────────────── */
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
 });
-
-/* ── MENU MOBILE ────────────────────────────────────── */
 function toggleMenu(){ document.getElementById('mobMenu').classList.toggle('open'); }
 function closeMob(){ document.getElementById('mobMenu').classList.remove('open'); }
 
-/* ── FAQ ────────────────────────────────────────────── */
 function faq(el) {
   const item = el.closest('.faq-item');
   const answer = el.nextElementSibling;
@@ -843,22 +819,14 @@ function faq(el) {
     el.classList.add('open');
     item.classList.add('is-open');
     answer.classList.add('open');
-    // Trackear qué pregunta abrieron
     trackFaq(el.childNodes[0].textContent.trim());
   }
 }
 
-/* ── FORMATO MONEDA ─────────────────────────────────── */
 function fmt(n){ return '$'+Number(n.toFixed(2)).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
-
-/* ── CALCULADORA ────────────────────────────────────── */
 function lU(){ const v=document.getElementById('lR').value; document.getElementById('lL').textContent=v+'%'; document.getElementById('lD').textContent=v+'%'; }
 function pU(){ const v=document.getElementById('pR').value; document.getElementById('pL').textContent=v+(v=='1'?' mes':' meses'); document.getElementById('pD').textContent=v; }
-function flashUpdate(id){
-  const el=document.getElementById(id);
-  el.classList.add('updated');
-  setTimeout(()=>el.classList.remove('updated'),600);
-}
+function flashUpdate(id){ const el=document.getElementById(id); el.classList.add('updated'); setTimeout(()=>el.classList.remove('updated'),600); }
 function calc(){
   const bp=parseFloat(document.getElementById('bP').value)||0;
   const ba=parseFloat(document.getElementById('bA').value)||0;
@@ -876,27 +844,11 @@ function calc(){
   document.getElementById('rB').textContent=ba.toFixed(6).replace('.',',')+' BTC';
 }
 
-/* ── PRECIO BTC ─────────────────────────────────────── */
-/*
- * CAMBIO: fetchBtcPrice ahora consulta APIs públicas directas
- * en lugar de google.script.run, que tiene latencia de 1-3s.
- * Orden: CoinGecko + Binance en paralelo → Apps Script (fallback)
- */
 function applyBtcPrice(price) {
   if(!price || price <= 0) return;
   const priceStr = '$' + Math.round(price).toLocaleString('es-AR');
   const tp = document.getElementById('tickPrice');
-  if(tp) {
-    const prev = tp.textContent;
-    tp.textContent = priceStr;
-    if(prev !== 'cargando…' && prev !== priceStr) {
-      tp.style.transition = 'color .5s';
-      tp.style.color = '#7EC9AB';
-      setTimeout(()=>{ tp.style.color = ''; }, 900);
-    }
-  }
-  const tc = document.getElementById('tickChange');
-  if(tc) { tc.textContent = ''; tc.className = 'tick-change'; }
+  if(tp) { tp.textContent = priceStr; }
   const hl = document.getElementById('heroLive');
   if(hl) hl.textContent = priceStr + ' USD';
   const ml = document.getElementById('mockLive');
@@ -908,11 +860,7 @@ function applyBtcPrice(price) {
     if(tag) tag.style.display = 'inline';
     calc();
   }
-  // Trackear precio cargado (solo la primera vez)
-  if (!window._btcTracked) {
-    window._btcTracked = true;
-    trackBtcLoaded(price);
-  }
+  if (!window._btcTracked) { window._btcTracked = true; trackBtcLoaded(price); }
 }
 
 function _btcCoinGecko() {
@@ -925,7 +873,6 @@ function _btcCoinGecko() {
       .catch(function(){ clearTimeout(t); reject(); });
   });
 }
-
 function _btcBinance() {
   return new Promise(function(resolve, reject) {
     var ctrl = new AbortController();
@@ -936,7 +883,6 @@ function _btcBinance() {
       .catch(function(){ clearTimeout(t); reject(); });
   });
 }
-
 function _btcAppsScript() {
   return new Promise(function(resolve, reject) {
     if(typeof google === 'undefined' || !google.script) { reject(); return; }
@@ -947,20 +893,16 @@ function _btcAppsScript() {
       .getBtcPrice();
   });
 }
-
 function fetchBtcPrice() {
-  // CoinGecko y Binance en paralelo; gana la primera que responde
   Promise.any([_btcCoinGecko(), _btcBinance()])
     .then(function(price){ applyBtcPrice(price); })
     .catch(function(){
-      // Ambas APIs directas fallaron → Apps Script como último recurso
       _btcAppsScript()
         .then(function(price){ applyBtcPrice(price); })
-        .catch(function(){ /* silencioso: no romper la UI */ });
+        .catch(function(){});
     });
 }
 
-/* ── ANIMACIONES SCROLL ─────────────────────────────── */
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -968,31 +910,21 @@ const io = new IntersectionObserver((entries) => {
       if (e.target.id === 'heroCard') {
         setTimeout(()=>{ document.getElementById('heroBar').style.width='62%'; }, 400);
       }
-      if (e.target.classList.contains('ltv-vis') || e.target.querySelector('#ltvBar')) {
-        setTimeout(()=>{
-          const b = document.getElementById('ltvBar');
-          if(b) b.style.width='50%';
-        }, 300);
+      if (e.target.classList.contains('ltv-vis')) {
+        setTimeout(()=>{ const b=document.getElementById('ltvBar'); if(b) b.style.width='50%'; }, 300);
       }
-      if (e.target.classList.contains('tcard') || e.target.querySelector('#mockBar')) {
-        setTimeout(()=>{
-          const m = document.getElementById('mockBar');
-          if(m) m.style.width='62%';
-        }, 500);
+      if (e.target.classList.contains('tcard')) {
+        setTimeout(()=>{ const m=document.getElementById('mockBar'); if(m) m.style.width='62%'; }, 500);
       }
     }
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.obs').forEach(el => io.observe(el));
-
 const heroCard = document.getElementById('heroCard');
 if(heroCard) io.observe(heroCard);
 
-/* ── INIT ───────────────────────────────────────────── */
-// Cargar precio apenas el DOM está listo, sin esperar imágenes ni fuentes
 document.addEventListener('DOMContentLoaded', function(){ fetchBtcPrice(); });
 setInterval(fetchBtcPrice, 60000);
-
 window.addEventListener('load', ()=>{
   setTimeout(()=>{ const b=document.getElementById('ltvBar'); if(b) b.style.width='50%'; }, 800);
   setTimeout(()=>{ const b=document.getElementById('heroBar'); if(b) b.style.width='62%'; }, 600);

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custodia de Garantías — BTCash</title>
+  <meta name="description" content="Cómo BTCash custodia el Bitcoin entregado como colateral. Billetera fría, transparencia y seguridad.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://btcash.com.ar/custodia">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{--sage:#C8DDD4;--sage-dark:#3B6B57;--sage-mid:#5A9E84;--sage-deep:#2D4F40;--orange:#F4A96A;--orange-dk:#D4824A;--mist:#9BB8AD;--cream:#FAF8F4;--sand:#F0EBE3;--text:#1C2B24;--muted:#6B8078;--border:#E2EDE8;--white:#FFFFFF;--carbon:#1A1F1D;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden;}
+    a{text-decoration:none;color:var(--sage-mid);}a:hover{color:var(--sage-deep);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:64px;background:rgba(250,248,244,.96);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);}
+    .logo-b{display:inline-flex;align-items:baseline;gap:0;line-height:1;}
+    .logo-b .l-btc{font-family:'DM Sans',sans-serif;font-weight:700;color:var(--orange);letter-spacing:-.02em;font-size:26px;}
+    .logo-b .l-domain{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--mist);margin-left:6px;letter-spacing:.04em;font-size:11px;}
+    .nav-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);font-weight:500;border:0.5px solid var(--border);border-radius:10px;padding:7px 14px;transition:color .2s,border-color .2s;}
+    .nav-back:hover{color:var(--sage-deep);border-color:var(--sage);}
+    .legal-hero{background:var(--sage-deep);padding:110px 52px 64px;position:relative;overflow:hidden;}
+    .legal-hero::after{content:'';position:absolute;right:-80px;bottom:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(244,169,106,.06) 0%,transparent 70%);pointer-events:none;}
+    .legal-hero-inner{max-width:820px;margin:0 auto;position:relative;z-index:1;}
+    .legal-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(200,221,212,.10);border:0.5px solid rgba(200,221,212,.22);border-radius:100px;padding:5px 14px;font-size:11px;color:var(--mist);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;}
+    .legal-hero h1{font-family:'Instrument Serif',serif;font-size:clamp(32px,4.5vw,52px);font-weight:400;color:#E8F5EE;line-height:1.1;margin-bottom:14px;}
+    .legal-hero h1 em{font-style:italic;color:var(--orange);}
+    .legal-hero .meta{font-size:13px;color:#5A8A75;display:flex;gap:20px;flex-wrap:wrap;}
+    .legal-content{max-width:820px;margin:0 auto;padding:64px 52px 96px;}
+    .doc-index{background:var(--white);border:0.5px solid var(--border);border-radius:16px;padding:24px 28px;margin-bottom:48px;}
+    .doc-index h3{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-mid);margin-bottom:14px;}
+    .doc-index ol{list-style:none;display:flex;flex-direction:column;gap:6px;counter-reset:idx;}
+    .doc-index ol li{counter-increment:idx;}
+    .doc-index ol li a{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:0.5px solid var(--border);transition:color .2s;}
+    .doc-index ol li:last-child a{border-bottom:none;}
+    .doc-index ol li a::before{content:counter(idx,decimal-leading-zero);font-size:10px;color:var(--sage-mid);font-weight:600;min-width:22px;}
+    .doc-index ol li a:hover{color:var(--sage-deep);}
+    .doc-section{margin-bottom:48px;scroll-margin-top:84px;}
+    .doc-section h2{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;color:var(--sage-deep);margin-bottom:16px;padding-bottom:10px;border-bottom:0.5px solid var(--border);display:flex;align-items:baseline;gap:12px;}
+    .doc-section h2 .sec-n{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:var(--sage-mid);letter-spacing:.1em;}
+    .doc-section p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:12px;}
+    .doc-section p:last-child{margin-bottom:0;}
+    .doc-section ul{margin:12px 0;display:flex;flex-direction:column;gap:8px;}
+    .doc-section ul li{font-size:14px;color:var(--muted);line-height:1.75;padding-left:20px;position:relative;}
+    .doc-section ul li::before{content:'–';position:absolute;left:0;color:var(--sage-mid);}
+    .doc-section strong{color:var(--sage-deep);font-weight:600;}
+    .callout{border-radius:12px;padding:16px 20px;font-size:13px;line-height:1.75;margin:16px 0;display:flex;gap:12px;align-items:flex-start;}
+    .callout.ok{background:#E8F8F2;border:0.5px solid #A8D5C0;color:#14532D;}
+    .callout.info{background:var(--sand);border:0.5px solid var(--border);color:var(--muted);}
+    .callout.warn{background:#FFFBEB;border:0.5px solid #FCD34D;color:#713F12;}
+    .callout-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+    .flow{display:flex;flex-direction:column;gap:0;margin:24px 0;}
+    .flow-step{display:flex;gap:20px;align-items:flex-start;}
+    .flow-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+    .flow-num{width:36px;height:36px;border-radius:50%;background:var(--sage-deep);color:#E8F5EE;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0;}
+    .flow-line{width:1px;flex:1;background:var(--border);min-height:28px;margin:4px 0;}
+    .flow-step:last-child .flow-line{display:none;}
+    .flow-body{padding-bottom:24px;flex:1;}
+    .flow-body h4{font-size:14px;font-weight:600;color:var(--sage-deep);margin-bottom:5px;margin-top:5px;}
+    .flow-body p{font-size:13px;color:var(--muted);line-height:1.75;margin:0;}
+    .commit-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;}
+    .commit-card{background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:18px 20px;border-left:3px solid var(--sage-mid);transition:box-shadow .2s;}
+    .commit-card:hover{box-shadow:0 4px 16px rgba(45,79,64,.07);}
+    .commit-card .cc-icon{font-size:20px;margin-bottom:8px;display:block;}
+    .commit-card h4{font-size:13px;font-weight:600;color:var(--sage-deep);margin-bottom:5px;}
+    .commit-card p{font-size:12px;color:var(--muted);line-height:1.7;margin:0;}
+    .legal-footer{background:var(--carbon);padding:36px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+    .legal-footer p{font-size:11px;color:#3D6652;}
+    .legal-footer .lf-links{display:flex;gap:20px;}
+    .legal-footer .lf-links a{font-size:12px;color:#5A8A75;transition:color .2s;}
+    .legal-footer .lf-links a:hover{color:#9BB8AD;}
+    @media(max-width:768px){nav{padding:0 20px;}.legal-hero{padding:96px 20px 48px;}.legal-content{padding:40px 20px 64px;}.commit-grid{grid-template-columns:1fr;}.legal-footer{padding:28px 20px;flex-direction:column;align-items:flex-start;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html"><div class="logo-b"><span class="l-btc">₿TCash</span><span class="l-domain">.com.ar</span></div></a>
+  <a href="index.html" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<div class="legal-hero">
+  <div class="legal-hero-inner">
+    <div class="legal-tag">Documento legal</div>
+    <h1>Custodia de<br><em>Garantías</em></h1>
+    <div class="meta">
+      <span>📅 Última actualización: mayo 2026</span>
+      <span>🔐 Una billetera por préstamo · Verificable en blockchain</span>
+    </div>
+  </div>
+</div>
+
+<div class="legal-content">
+
+  <div class="doc-index">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#c1">¿Qué es la custodia de garantías?</a></li>
+      <li><a href="#c2">Tecnología de custodia: billetera fría</a></li>
+      <li><a href="#c3">Proceso de ingreso del colateral</a></li>
+      <li><a href="#c4">Durante la vigencia del préstamo</a></li>
+      <li><a href="#c5">Verificación pública del colateral</a></li>
+      <li><a href="#c6">Devolución del colateral</a></li>
+      <li><a href="#c7">Procedimiento de liquidación</a></li>
+      <li><a href="#c8">Compromisos de BTCash</a></li>
+      <li><a href="#c9">Limitaciones y riesgos</a></li>
+    </ol>
+  </div>
+
+  <div class="callout ok">
+    <span class="callout-icon">🔐</span>
+    <span>El Bitcoin entregado como garantía <strong>no se vende, no se mueve y no se invierte</strong> durante la vigencia del préstamo. Se asigna una billetera fría exclusiva por operación, cuyo saldo puede ser verificado públicamente en la blockchain en cualquier momento.</span>
+  </div>
+
+  <div class="doc-section" id="c1">
+    <h2><span class="sec-n">01</span> ¿Qué es la custodia de garantías?</h2>
+    <p>La custodia de garantías es el proceso mediante el cual BTCash recibe, resguarda y administra el Bitcoin que el cliente entrega como colateral al formalizar un préstamo.</p>
+    <p>A diferencia de un exchange o plataforma de inversión, BTCash no tiene acceso operativo a los activos del cliente más allá de las facultades expresamente establecidas en el contrato: la posibilidad de ejecutar la garantía exclusivamente ante los eventos de liquidación previstos.</p>
+    <p>El modelo está diseñado para que el cliente pueda verificar en todo momento que su Bitcoin está intacto, sin necesidad de confiar únicamente en la palabra de la Empresa.</p>
+  </div>
+
+  <div class="doc-section" id="c2">
+    <h2><span class="sec-n">02</span> Tecnología de custodia: billetera fría</h2>
+    <p>El Bitcoin es custodiado en una <strong>billetera fría (cold wallet)</strong>: las claves privadas que controlan los fondos están almacenadas en un dispositivo físico que no está conectado permanentemente a internet.</p>
+    <p>Este esquema ofrece ventajas significativas respecto a las billeteras conectadas:</p>
+    <ul>
+      <li>Elimina el riesgo de hackeo remoto, dado que las claves no están expuestas en línea.</li>
+      <li>Los fondos no pueden ser transferidos sin acceso físico al dispositivo de custodia.</li>
+      <li>La dirección pública puede ser compartida con el cliente para verificación permanente sin comprometer la seguridad.</li>
+    </ul>
+    <div class="callout info">
+      <span class="callout-icon">ℹ️</span>
+      <span>En Bitcoin, una "billetera" almacena claves criptográficas que permiten firmar transacciones. La billetera fría mantiene esas claves fuera de internet, lo que hace virtualmente imposible un robo remoto.</span>
+    </div>
+  </div>
+
+  <div class="doc-section" id="c3">
+    <h2><span class="sec-n">03</span> Proceso de ingreso del colateral</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
+        <div class="flow-body">
+          <h4>Firma del contrato</h4>
+          <p>Se formaliza el contrato digital con todos los términos: monto, plazo, tasa, precio de referencia CoinMarketCap, precio de advertencia (75%) y precio de liquidación (59%). La dirección de billetera asignada queda registrada en el contrato.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
+        <div class="flow-body">
+          <h4>Dirección de custodia — una por operación</h4>
+          <p>BTCash informa al cliente la dirección pública de la billetera fría designada. Esta dirección es única para cada préstamo, lo que permite verificar su saldo de forma inequívoca.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
+        <div class="flow-body">
+          <h4>Transferencia del Bitcoin</h4>
+          <p>El cliente transfiere el BTC desde su propia billetera. La transacción queda registrada en la blockchain de manera inmutable y pública.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
+        <div class="flow-body">
+          <h4>Confirmación y desembolso</h4>
+          <p>Una vez confirmada la transacción en la blockchain, BTCash procede al desembolso del préstamo en la modalidad elegida (efectivo, ARS o stablecoin).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section" id="c4">
+    <h2><span class="sec-n">04</span> Durante la vigencia del préstamo</h2>
+    <p>El Bitcoin permanece en la billetera fría asignada sin ningún movimiento, salvo en los casos de liquidación previstos en el contrato. BTCash monitorea el precio continuamente. Ante variaciones relevantes:</p>
+    <ul>
+      <li><strong>Precio de advertencia (BTC cae por debajo del 75% del inicial):</strong> el cliente es notificado por WhatsApp. Puede agregar más BTC, cancelar parte del capital, o asumir el mayor riesgo.</li>
+      <li><strong>Precio de liquidación (BTC cae por debajo del 59% del inicial):</strong> BTCash procede a ejecutar la garantía conforme a la sección 7.</li>
+    </ul>
+    <p>Si el precio del Bitcoin <strong>sube más de un 50%</strong> respecto al precio inicial, el cliente puede solicitar la liberación del excedente de garantía —a solicitud, siempre que el préstamo esté al día y sin intereses vencidos.</p>
+  </div>
+
+  <div class="doc-section" id="c5">
+    <h2><span class="sec-n">05</span> Verificación pública del colateral</h2>
+    <p>El cliente recibe la dirección de billetera donde se custodia su Bitcoin y puede verificar su saldo en cualquier momento a través de un explorador de bloques público:</p>
+    <ul>
+      <li><a href="https://mempool.space" target="_blank" rel="noopener">mempool.space</a> — explorador avanzado, sin publicidad</li>
+      <li><a href="https://blockstream.info" target="_blank" rel="noopener">blockstream.info</a> — explorador oficial de Blockstream</li>
+      <li><a href="https://blockchain.com/explorer" target="_blank" rel="noopener">blockchain.com/explorer</a></li>
+    </ul>
+    <div class="callout ok">
+      <span class="callout-icon">✅</span>
+      <span>Si el saldo de la dirección coincide con el Bitcoin entregado y no registra salidas, el colateral está intacto. Esto no requiere confiar en BTCash: la blockchain es el registro definitivo.</span>
+    </div>
+  </div>
+
+  <div class="doc-section" id="c6">
+    <h2><span class="sec-n">06</span> Devolución del colateral</h2>
+    <p>Una vez cancelada la totalidad del préstamo (capital e intereses), BTCash devuelve el Bitcoin custodiado:</p>
+    <ul>
+      <li>El cliente indica la dirección de billetera de destino.</li>
+      <li>BTCash realiza la transferencia del Bitcoin a la dirección indicada.</li>
+      <li>La transacción de devolución queda registrada en la blockchain.</li>
+    </ul>
+    <p>El mismo procedimiento aplica para cancelaciones anticipadas, calculando los intereses proporcionales al período efectivamente transcurrido.</p>
+    <div class="callout warn">
+      <span class="callout-icon">⚠️</span>
+      <span>BTCash no se responsabiliza por errores en la dirección de billetera indicada por el cliente para la devolución. Las transacciones en Bitcoin son irreversibles. Verificá cuidadosamente la dirección antes de indicarla.</span>
+    </div>
+  </div>
+
+  <div class="doc-section" id="c7">
+    <h2><span class="sec-n">07</span> Procedimiento de liquidación</h2>
+    <p>La liquidación ocurre cuando el precio del BTC cae al nivel de liquidación pactado en el contrato (59% del precio inicial). El procedimiento es el siguiente:</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-num">1</div><div class="flow-line"></div></div>
+        <div class="flow-body">
+          <h4>Activación del umbral</h4>
+          <p>El precio del BTC alcanza el 59% del precio de referencia inicial. BTCash notifica al cliente por WhatsApp.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-num">2</div><div class="flow-line"></div></div>
+        <div class="flow-body">
+          <h4>Cálculo de la deuda</h4>
+          <p>Se calcula el capital pendiente más los intereses devengados. Los pagos parciales ya realizados se descuentan del total.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-num">3</div><div class="flow-line"></div></div>
+        <div class="flow-body">
+          <h4>Venta del BTC necesario</h4>
+          <p>BTCash vende únicamente el Bitcoin necesario para cubrir la deuda total. Se busca minimizar la cantidad de BTC liquidada.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-left"><div class="flow-num">4</div><div class="flow-line"></div></div>
+        <div class="flow-body">
+          <h4>Devolución del remanente</h4>
+          <p>Si tras cubrir la deuda queda Bitcoin remanente, es devuelto al cliente en <strong>BTC o USD según determine la Empresa</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section" id="c8">
+    <h2><span class="sec-n">08</span> Compromisos de BTCash</h2>
+    <div class="commit-grid">
+      <div class="commit-card"><span class="cc-icon">🔒</span><h4>No movemos tu BTC</h4><p>El Bitcoin no se mueve de la dirección de custodia durante la vigencia del préstamo, salvo liquidación contractualmente prevista.</p></div>
+      <div class="commit-card"><span class="cc-icon">👁</span><h4>Verificación transparente</h4><p>Compartimos la dirección pública de custodia para que puedas verificar tu colateral en cualquier momento sin depender de nuestra palabra.</p></div>
+      <div class="commit-card"><span class="cc-icon">📢</span><h4>Alertas proactivas</h4><p>Notificamos por WhatsApp ante cualquier situación de alerta antes de llegar al umbral de liquidación.</p></div>
+      <div class="commit-card"><span class="cc-icon">↩️</span><h4>Devolución del remanente</h4><p>Al cancelar, devolvemos la totalidad del Bitcoin. En caso de liquidación, devolvemos el remanente después de cubrir la deuda.</p></div>
+    </div>
+  </div>
+
+  <div class="doc-section" id="c9">
+    <h2><span class="sec-n">09</span> Limitaciones y riesgos</h2>
+    <p>La custodia de activos digitales conlleva riesgos que el cliente debe comprender:</p>
+    <ul>
+      <li><strong>Volatilidad del precio:</strong> el BTC puede caer rápidamente y activar la liquidación sin dar tiempo para agregar colateral adicional.</li>
+      <li><strong>Irreversibilidad de transacciones:</strong> un error en una dirección de destino no puede corregirse.</li>
+      <li><strong>Riesgo de fuerza mayor:</strong> situaciones excepcionales pueden afectar temporalmente la operación.</li>
+      <li><strong>Riesgo operativo:</strong> ningún sistema de custodia es completamente inmune a riesgos técnicos u operativos.</li>
+    </ul>
+    <p>BTCash no garantiza la preservación del valor del Bitcoin. Las fluctuaciones del mercado son responsabilidad exclusiva del cliente como titular del activo.</p>
+    <div class="callout info">
+      <span class="callout-icon">ℹ️</span>
+      <span>Ante cualquier duda sobre el estado de su colateral, comuníquese por WhatsApp al <strong>+54 9 11 7369-5582</strong>. Respondemos de lunes a viernes, 9 a 18 hs.</span>
+    </div>
+  </div>
+
+</div>
+
+<footer class="legal-footer">
+  <p>© 2026 BTCash — Todos los derechos reservados.</p>
+  <div class="lf-links">
+    <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+    <a href="politica-de-privacidad.html">Privacidad</a>
+    <a href="custodia-de-garantias.html">Custodia</a>
+    <a href="index.html">← Inicio</a>
+  </div>
+</footer>
+</body>
+</html>

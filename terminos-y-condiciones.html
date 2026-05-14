@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos y Condiciones — BTCash</title>
+  <meta name="description" content="Términos y condiciones del servicio de préstamos con colateral en Bitcoin de BTCash.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://btcash.com.ar/terminos">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage:#C8DDD4;--sage-dark:#3B6B57;--sage-mid:#5A9E84;--sage-deep:#2D4F40;
+      --orange:#F4A96A;--orange-dk:#D4824A;--mist:#9BB8AD;--cream:#FAF8F4;
+      --sand:#F0EBE3;--text:#1C2B24;--muted:#6B8078;--border:#E2EDE8;
+      --white:#FFFFFF;--carbon:#1A1F1D;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden;}
+    a{text-decoration:none;color:var(--sage-mid);}
+    a:hover{color:var(--sage-deep);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:64px;background:rgba(250,248,244,.96);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);}
+    .logo-b{display:inline-flex;align-items:baseline;gap:0;line-height:1;}
+    .logo-b .l-btc{font-family:'DM Sans',sans-serif;font-weight:700;color:var(--orange);letter-spacing:-.02em;font-size:26px;}
+    .logo-b .l-domain{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--mist);margin-left:6px;letter-spacing:.04em;font-size:11px;}
+    .nav-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);font-weight:500;border:0.5px solid var(--border);border-radius:10px;padding:7px 14px;transition:color .2s,border-color .2s;}
+    .nav-back:hover{color:var(--sage-deep);border-color:var(--sage);}
+    .legal-hero{background:var(--sage-deep);padding:110px 52px 64px;position:relative;overflow:hidden;}
+    .legal-hero::after{content:'';position:absolute;right:-80px;bottom:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(244,169,106,.06) 0%,transparent 70%);pointer-events:none;}
+    .legal-hero-inner{max-width:820px;margin:0 auto;position:relative;z-index:1;}
+    .legal-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(200,221,212,.10);border:0.5px solid rgba(200,221,212,.22);border-radius:100px;padding:5px 14px;font-size:11px;color:var(--mist);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;}
+    .legal-hero h1{font-family:'Instrument Serif',serif;font-size:clamp(32px,4.5vw,52px);font-weight:400;color:#E8F5EE;line-height:1.1;margin-bottom:14px;}
+    .legal-hero h1 em{font-style:italic;color:var(--orange);}
+    .legal-hero .meta{font-size:13px;color:#5A8A75;display:flex;gap:20px;flex-wrap:wrap;}
+    .legal-content{max-width:820px;margin:0 auto;padding:64px 52px 96px;}
+    .doc-index{background:var(--white);border:0.5px solid var(--border);border-radius:16px;padding:24px 28px;margin-bottom:48px;}
+    .doc-index h3{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-mid);margin-bottom:14px;}
+    .doc-index ol{list-style:none;display:flex;flex-direction:column;gap:6px;counter-reset:idx;}
+    .doc-index ol li{counter-increment:idx;}
+    .doc-index ol li a{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:0.5px solid var(--border);transition:color .2s;}
+    .doc-index ol li:last-child a{border-bottom:none;}
+    .doc-index ol li a::before{content:counter(idx,decimal-leading-zero);font-size:10px;color:var(--sage-mid);font-weight:600;min-width:22px;}
+    .doc-index ol li a:hover{color:var(--sage-deep);}
+    .doc-section{margin-bottom:48px;scroll-margin-top:84px;}
+    .doc-section h2{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;color:var(--sage-deep);margin-bottom:16px;padding-bottom:10px;border-bottom:0.5px solid var(--border);display:flex;align-items:baseline;gap:12px;}
+    .doc-section h2 .sec-n{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:var(--sage-mid);letter-spacing:.1em;}
+    .doc-section p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:12px;}
+    .doc-section p:last-child{margin-bottom:0;}
+    .doc-section ul{margin:12px 0;display:flex;flex-direction:column;gap:8px;}
+    .doc-section ul li{font-size:14px;color:var(--muted);line-height:1.75;padding-left:20px;position:relative;}
+    .doc-section ul li::before{content:'–';position:absolute;left:0;color:var(--sage-mid);}
+    .doc-section strong{color:var(--sage-deep);font-weight:600;}
+    .callout{border-radius:12px;padding:16px 20px;font-size:13px;line-height:1.75;margin:16px 0;display:flex;gap:12px;align-items:flex-start;}
+    .callout.warn{background:#FFFBEB;border:0.5px solid #FCD34D;color:#713F12;}
+    .callout.info{background:var(--sand);border:0.5px solid var(--border);color:var(--muted);}
+    .callout.alert{background:#FEF2F2;border:0.5px solid #FCA5A5;color:#7F1D1D;}
+    .callout-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+    .doc-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+    .doc-table th{background:var(--sand);padding:10px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-mid);border-bottom:0.5px solid var(--border);}
+    .doc-table td{padding:10px 14px;border-bottom:0.5px solid var(--border);color:var(--muted);vertical-align:top;}
+    .doc-table tr:last-child td{border-bottom:none;}
+    .doc-table tr:hover td{background:var(--cream);}
+    .thresholds{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+    .thr{display:grid;grid-template-columns:12px 1fr;gap:16px;align-items:start;background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:16px 18px;}
+    .thr-dot{width:10px;height:10px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+    .thr-dot.g{background:#16A34A;}
+    .thr-dot.y{background:#EAB308;}
+    .thr-dot.r{background:#DC2626;}
+    .thr-body h4{font-size:13px;font-weight:600;color:var(--sage-deep);margin-bottom:4px;}
+    .thr-body p{font-size:13px;color:var(--muted);line-height:1.7;margin:0;}
+    .legal-footer{background:var(--carbon);padding:36px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+    .legal-footer p{font-size:11px;color:#3D6652;}
+    .legal-footer .lf-links{display:flex;gap:20px;}
+    .legal-footer .lf-links a{font-size:12px;color:#5A8A75;transition:color .2s;}
+    .legal-footer .lf-links a:hover{color:#9BB8AD;}
+    @media(max-width:768px){nav{padding:0 20px;}.legal-hero{padding:96px 20px 48px;}.legal-content{padding:40px 20px 64px;}.legal-footer{padding:28px 20px;flex-direction:column;align-items:flex-start;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html"><div class="logo-b"><span class="l-btc">₿TCash</span><span class="l-domain">.com.ar</span></div></a>
+  <a href="index.html" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<div class="legal-hero">
+  <div class="legal-hero-inner">
+    <div class="legal-tag">Documento legal</div>
+    <h1>Términos y<br><em>Condiciones</em></h1>
+    <div class="meta">
+      <span>📅 Última actualización: mayo 2026</span>
+      <span>🌐 Provincia de Buenos Aires, Argentina</span>
+    </div>
+  </div>
+</div>
+
+<div class="legal-content">
+
+  <div class="doc-index">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#s1">Objeto y naturaleza del servicio</a></li>
+      <li><a href="#s2">Aceptación de los términos</a></li>
+      <li><a href="#s3">Condiciones del préstamo</a></li>
+      <li><a href="#s4">Garantía en Bitcoin (colateral)</a></li>
+      <li><a href="#s5">Tasa de interés y forma de pago</a></li>
+      <li><a href="#s6">Umbrales de advertencia y liquidación</a></li>
+      <li><a href="#s7">Revalorización del BTC — devolución parcial de garantía</a></li>
+      <li><a href="#s8">Cancelación anticipada y cancelación con colateral</a></li>
+      <li><a href="#s9">Gastos y costos de red</a></li>
+      <li><a href="#s10">Prohibición de rolleo o renovación</a></li>
+      <li><a href="#s11">Incumplimiento</a></li>
+      <li><a href="#s12">Obligaciones del cliente</a></li>
+      <li><a href="#s13">Confidencialidad</a></li>
+      <li><a href="#s14">Limitación de responsabilidad</a></li>
+      <li><a href="#s15">Jurisdicción y ley aplicable</a></li>
+    </ol>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-icon">⚠️</span>
+    <span><strong>Aviso importante:</strong> BTCash no es una entidad financiera regulada por el Banco Central de la República Argentina (BCRA). Los servicios aquí descritos constituyen acuerdos privados de crédito entre partes. Recomendamos leer este documento en su totalidad antes de suscribir cualquier contrato.</span>
+  </div>
+
+  <div class="doc-section" id="s1">
+    <h2><span class="sec-n">01</span> Objeto y naturaleza del servicio</h2>
+    <p>BTCash ofrece un servicio de préstamos privados con garantía colateral en Bitcoin (BTC). El servicio consiste en el otorgamiento de dinero en préstamo —en dólares estadounidenses en efectivo, pesos argentinos al tipo de cambio vigente, o stablecoins equivalentes (USDT u otras)— a cambio de la custodia temporal de una cantidad de Bitcoin como garantía.</p>
+    <p>Este servicio <strong>no constituye</strong> una oferta pública de valores, ni una actividad de intermediación financiera sujeta a regulación del BCRA. Se trata de un acuerdo privado entre las partes, regido por el derecho civil y comercial argentino.</p>
+    <p>La Empresa no vende, invierte, ni utiliza el Bitcoin del cliente durante el período de custodia. El activo queda bloqueado exclusivamente como garantía de la obligación contraída.</p>
+  </div>
+
+  <div class="doc-section" id="s2">
+    <h2><span class="sec-n">02</span> Aceptación de los términos</h2>
+    <p>Al suscribir el contrato individual de préstamo, el cliente declara haber leído, comprendido y aceptado en su totalidad los presentes Términos y Condiciones, así como la Política de Privacidad y el documento de Custodia de Garantías.</p>
+    <p>Estos términos rigen de manera complementaria al contrato individual firmado digitalmente entre las partes. En caso de contradicción, prevalecerá lo establecido en el contrato individual.</p>
+    <p>La Empresa se reserva el derecho de modificar estos términos en cualquier momento. Los cambios serán notificados al cliente con al menos 15 días de anticipación mediante el número de WhatsApp registrado, y serán aplicables únicamente a contratos celebrados con posterioridad a la notificación.</p>
+  </div>
+
+  <div class="doc-section" id="s3">
+    <h2><span class="sec-n">03</span> Condiciones del préstamo</h2>
+    <p>Los préstamos se otorgan bajo las siguientes condiciones generales, sujetas a confirmación en el contrato individual:</p>
+    <table class="doc-table">
+      <thead><tr><th>Parámetro</th><th>Condición</th></tr></thead>
+      <tbody>
+        <tr><td>Monto mínimo</td><td>USD 1.000 (equivalente)</td></tr>
+        <tr><td>Monto máximo</td><td>USD 100.000 (equivalente)</td></tr>
+        <tr><td>LTV máximo</td><td>50% del valor del colateral al momento del contrato</td></tr>
+        <tr><td>Plazo mínimo</td><td>30 días</td></tr>
+        <tr><td>Plazo máximo</td><td>12 meses</td></tr>
+        <tr><td>Frecuencia de cuotas</td><td>Semanal, mensual o trimestral (según contrato individual)</td></tr>
+        <tr><td>Tasa de interés</td><td>18% anual, interés simple</td></tr>
+        <tr><td>Cancelación anticipada</td><td>Permitida en cualquier momento, sin penalidades</td></tr>
+        <tr><td>Moneda de desembolso</td><td>USD efectivo, ARS al tipo de cambio comprador, o stablecoin</td></tr>
+        <tr><td>Referencia de precio BTC</td><td>CoinMarketCap a la fecha y hora de firma del contrato</td></tr>
+      </tbody>
+    </table>
+    <p>El otorgamiento de cada préstamo está sujeto a la disponibilidad de fondos de la Empresa y a la aceptación de condiciones por ambas partes. La Empresa se reserva el derecho de rechazar solicitudes sin necesidad de expresar causa.</p>
+    <div class="callout info">
+      <span class="callout-icon">ℹ️</span>
+      <span>Los valores del simulador disponible en el sitio web son <strong>estimativos</strong>. El tipo de cambio aplicado, el precio del Bitcoin de referencia y los umbrales de advertencia y liquidación quedan establecidos únicamente en el contrato firmado.</span>
+    </div>
+  </div>
+
+  <div class="doc-section" id="s4">
+    <h2><span class="sec-n">04</span> Garantía en Bitcoin (colateral)</h2>
+    <p>El cliente transfiere voluntariamente una cantidad de Bitcoin a la billetera fría designada por la Empresa, en concepto de garantía real del préstamo. Esta transferencia no implica la venta ni cesión de titularidad del activo.</p>
+    <p>Durante la vigencia del préstamo:</p>
+    <ul>
+      <li>El Bitcoin no será vendido, invertido ni utilizado, salvo en los casos de liquidación previstos en la cláusula 6.</li>
+      <li>Se asigna una billetera única por operación. El saldo es verificable por el cliente en todo momento mediante un explorador de bloques público.</li>
+      <li>El colateral permanece en poder de la Empresa hasta la cancelación total del préstamo.</li>
+    </ul>
+    <p>El cliente reconoce que las transferencias de criptomonedas están sujetas a riesgos tecnológicos (fallas de red, demoras en blockchain, errores en transacciones) y que el valor del BTC es volátil, asumiendo íntegramente dicho riesgo.</p>
+    <p>Una vez cancelado el préstamo en su totalidad, la Empresa procederá a devolver el Bitcoin a la dirección indicada por el cliente.</p>
+  </div>
+
+  <div class="doc-section" id="s5">
+    <h2><span class="sec-n">05</span> Tasa de interés y forma de pago</h2>
+    <p>La tasa aplicable es del <strong>18% anual, calculada de manera simple</strong> sobre el capital prestado.</p>
+    <ul>
+      <li><strong>Cuotas periódicas:</strong> el cliente abona únicamente los intereses devengados según la frecuencia pactada (semanal, mensual o trimestral).</li>
+      <li><strong>Última cuota:</strong> incluye los intereses del período más la devolución íntegra del capital.</li>
+    </ul>
+    <p>Los pagos podrán realizarse en dólares en efectivo, pesos argentinos al tipo de cambio comprador del día, USDT u otra stablecoin. <strong>No se cobran gastos de mantenimiento, seguros ni comisiones ocultas.</strong></p>
+    <p>El incumplimiento de dos o más cuotas consecutivas habilita a la Empresa a declarar la deuda en mora y actuar conforme a la cláusula 11.</p>
+  </div>
+
+  <div class="doc-section" id="s6">
+    <h2><span class="sec-n">06</span> Umbrales de advertencia y liquidación</h2>
+    <p>Los umbrales se calculan sobre el <strong>Precio de Referencia Inicial del BTC</strong> publicado por CoinMarketCap a la fecha y hora de firma del contrato:</p>
+    <div class="thresholds">
+      <div class="thr">
+        <div class="thr-dot g"></div>
+        <div class="thr-body">
+          <h4>Zona segura</h4>
+          <p>El precio del BTC cubre holgadamente el préstamo. Sin acción requerida. Monitoreo continuo.</p>
+        </div>
+      </div>
+      <div class="thr">
+        <div class="thr-dot y"></div>
+        <div class="thr-body">
+          <h4>Precio de advertencia — BTC por debajo del 75% del precio inicial</h4>
+          <p>La Empresa notifica al cliente por WhatsApp u otro medio fehaciente. Dentro de las <strong>48 horas</strong> el cliente deberá: (a) agregar BTC adicional como colateral, (b) cancelar parcialmente el préstamo, o (c) asumir el mayor riesgo de liquidación manteniendo el colateral original.</p>
+        </div>
+      </div>
+      <div class="thr">
+        <div class="thr-dot r"></div>
+        <div class="thr-body">
+          <h4>Precio de liquidación — BTC por debajo del 59% del precio inicial</h4>
+          <p>La Empresa queda expresamente autorizada a <strong>liquidar unilateralmente</strong>, de manera parcial o total, el colateral en BTC sin necesidad de autorización judicial, para cubrir capital e intereses adeudados. Los pagos parciales ya realizados se descuentan de la deuda total. Si existe remanente, es devuelto al cliente en BTC o USD según determine la Empresa.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout alert">
+      <span class="callout-icon">🔴</span>
+      <span>Los porcentajes exactos de cada umbral (75% advertencia / 59% liquidación) corresponden a los parámetros estándar y quedan ratificados en el contrato individual de cada operación.</span>
+    </div>
+  </div>
+
+  <div class="doc-section" id="s7">
+    <h2><span class="sec-n">07</span> Revalorización del BTC — devolución parcial de garantía</h2>
+    <p>Si el precio de mercado del BTC supera en más de un <strong>50% el precio de referencia inicial</strong>, el cliente podrá solicitar la devolución parcial de la garantía excedente, de modo que el valor de cobertura vuelva a los niveles originales del préstamo.</p>
+    <p>La devolución se efectúa en BTC, calculada según el precio vigente en CoinMarketCap al momento de procesar la solicitud, y está sujeta a que:</p>
+    <ul>
+      <li>Solo se solicite una devolución por préstamo vigente.</li>
+      <li>El préstamo esté al día, sin intereses ni capital vencidos pendientes.</li>
+      <li>La operación no afecte las condiciones de seguridad o solvencia del préstamo.</li>
+    </ul>
+    <p>La ganancia derivada de la revalorización pertenece íntegramente al cliente. La Empresa no utiliza ni se apropia del colateral bajo ningún concepto.</p>
+  </div>
+
+  <div class="doc-section" id="s8">
+    <h2><span class="sec-n">08</span> Cancelación anticipada y cancelación con colateral</h2>
+    <p><strong>Cancelación anticipada en efectivo o stablecoin:</strong> el cliente puede cancelar el préstamo en cualquier momento sin penalidades. Se calcula el interés simple proporcional al período transcurrido. El Bitcoin es liberado una vez confirmado el pago completo.</p>
+    <p><strong>Cancelación utilizando el colateral en BTC:</strong> el cliente también puede solicitar la cancelación parcial o total usando su propio Bitcoin en garantía. En ese caso:</p>
+    <ul>
+      <li>La valuación se realiza según el precio BTC/USD de CoinMarketCap al momento de la solicitud.</li>
+      <li>La Empresa liquida el BTC necesario para cubrir capital e intereses adeudados.</li>
+      <li>El remanente de colateral, si lo hubiera, se devuelve al cliente en BTC o USD según determine la Empresa.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section" id="s9">
+    <h2><span class="sec-n">09</span> Gastos y costos de red</h2>
+    <p>Todos los gastos, comisiones de red (fees de blockchain), costos de transferencia, impuestos presentes o futuros y cualquier erogación derivada de la operación serán soportados exclusivamente por el cliente, salvo acuerdo expreso en contrario en el contrato individual.</p>
+  </div>
+
+  <div class="doc-section" id="s10">
+    <h2><span class="sec-n">10</span> Prohibición de rolleo o renovación</h2>
+    <p>Queda expresamente prohibido el rolleo, renovación o sustitución de deuda mediante el uso del colateral o de cualquier saldo de un préstamo vigente como base para uno nuevo. Cada operación es autónoma e independiente.</p>
+    <p>Para acceder a un nuevo préstamo, el cliente debe haber cancelado íntegramente el anterior —capital, intereses y liberación del colateral— antes de constituir una nueva operación. Si desea tener dos préstamos simultáneos, cada uno deberá estar respaldado por un colateral en BTC independiente y transferido a la dirección designada para esa operación.</p>
+  </div>
+
+  <div class="doc-section" id="s11">
+    <h2><span class="sec-n">11</span> Incumplimiento</h2>
+    <p>Se considerará incumplimiento cuando el cliente: no devuelva el capital o intereses en los plazos pactados; no atienda la notificación de advertencia dentro de las 48 horas; o incumpla cualquier otra obligación del contrato.</p>
+    <p>Ante incumplimiento, la Empresa podrá: (a) liquidar el colateral BTC para cubrir la deuda; (b) exigir judicialmente el pago adeudado; (c) reclamar daños y perjuicios. Si tras la liquidación queda remanente, es devuelto al cliente.</p>
+  </div>
+
+  <div class="doc-section" id="s12">
+    <h2><span class="sec-n">12</span> Obligaciones del cliente</h2>
+    <p>Al aceptar estos términos, el cliente se compromete a:</p>
+    <ul>
+      <li>Proveer información veraz sobre su identidad y medios de contacto al momento de la firma.</li>
+      <li>Ser el titular legítimo del Bitcoin entregado, libre de medidas judiciales, embargos o restricciones.</li>
+      <li>Abonar las cuotas en los plazos pactados.</li>
+      <li>Mantener activo el número de WhatsApp registrado para recibir alertas.</li>
+      <li>Notificar a la Empresa ante cualquier cambio de datos de contacto.</li>
+      <li>No utilizar el servicio para actividades ilícitas, lavado de activos o financiamiento del terrorismo.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section" id="s13">
+    <h2><span class="sec-n">13</span> Confidencialidad</h2>
+    <p>Ambas partes se obligan a guardar estricta confidencialidad respecto de la información económica, financiera y personal vinculada al contrato, salvo requerimiento legal o judicial expreso.</p>
+  </div>
+
+  <div class="doc-section" id="s14">
+    <h2><span class="sec-n">14</span> Limitación de responsabilidad</h2>
+    <p>La Empresa no será responsable por: la variación del precio del Bitcoin; fallas o demoras en la red blockchain; pérdidas indirectas o lucro cesante derivados de la ejecución de la garantía; errores en la dirección de billetera indicada por el cliente; o fuerza mayor y actos ajenos a su control.</p>
+    <p>La responsabilidad de la Empresa queda limitada al monto del capital efectivamente prestado, siempre que haya actuado conforme al contrato y utilizando medios diligentes para la custodia y liquidación del colateral.</p>
+  </div>
+
+  <div class="doc-section" id="s15">
+    <h2><span class="sec-n">15</span> Jurisdicción y ley aplicable</h2>
+    <p>Los presentes Términos se rigen por las leyes de la República Argentina. Para cualquier controversia, las partes se someten a los <strong>Tribunales Ordinarios de la Provincia de Buenos Aires</strong>, renunciando a cualquier otro fuero.</p>
+    <p>Consultas: WhatsApp <strong>+54 9 11 7369-5582</strong>, lunes a viernes de 9 a 18 hs.</p>
+  </div>
+
+</div>
+
+<footer class="legal-footer">
+  <p>© 2026 BTCash — Todos los derechos reservados.</p>
+  <div class="lf-links">
+    <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+    <a href="politica-de-privacidad.html">Privacidad</a>
+    <a href="custodia-de-garantias.html">Custodia</a>
+    <a href="index.html">← Inicio</a>
+  </div>
+</footer>
+</body>
+</html>

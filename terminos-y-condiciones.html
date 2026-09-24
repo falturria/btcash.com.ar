@@ -7,85 +7,270 @@
   <meta name="description" content="Términos y condiciones del servicio de préstamos con colateral en Bitcoin de BTCash.">
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://btcash.com.ar/terminos">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --sage:#C8DDD4;--sage-dark:#3B6B57;--sage-mid:#5A9E84;--sage-deep:#2D4F40;
-      --orange:#F4A96A;--orange-dk:#D4824A;--mist:#9BB8AD;--cream:#FAF8F4;
-      --sand:#F0EBE3;--text:#1C2B24;--muted:#6B8078;--border:#E2EDE8;
-      --white:#FFFFFF;--carbon:#1A1F1D;
+      --bg-glass-base:  #F4F6F9;
+      --glass-white:    rgba(255, 255, 255, 0.75);
+      --glass-border:   rgba(255, 255, 255, 0.8);
+      --glass-shadow:   0 8px 32px 0 rgba(31, 38, 135, 0.05);
+      
+      --accent:         #D97706;
+      --accent-hover:   #B45309;
+      --accent-soft:    rgba(217, 119, 6, 0.08);
+      
+      --text-main:      #1E293B;
+      --text-muted:     #64748B;
+      
+      --green-ok:       #059669;
+      --green-bg:       rgba(5, 150, 105, 0.06);
+      --yellow-bg:      rgba(217, 119, 6, 0.06);
+      --red-bg:         rgba(225, 29, 72, 0.06);
+      --blue-ok:        #2563EB;
+      --blue-bg:        rgba(37, 99, 235, 0.06);
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden;}
-    a{text-decoration:none;color:var(--sage-mid);}
-    a:hover{color:var(--sage-deep);}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:64px;background:rgba(250,248,244,.96);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);}
-    .logo-b{display:inline-flex;align-items:baseline;gap:0;line-height:1;}
-    .logo-b .l-btc{font-family:'DM Sans',sans-serif;font-weight:700;color:var(--orange);letter-spacing:-.02em;font-size:26px;}
-    .logo-b .l-domain{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--mist);margin-left:6px;letter-spacing:.04em;font-size:11px;}
-    .nav-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);font-weight:500;border:0.5px solid var(--border);border-radius:10px;padding:7px 14px;transition:color .2s,border-color .2s;}
-    .nav-back:hover{color:var(--sage-deep);border-color:var(--sage);}
-    .legal-hero{background:var(--sage-deep);padding:110px 52px 64px;position:relative;overflow:hidden;}
-    .legal-hero::after{content:'';position:absolute;right:-80px;bottom:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(244,169,106,.06) 0%,transparent 70%);pointer-events:none;}
-    .legal-hero-inner{max-width:820px;margin:0 auto;position:relative;z-index:1;}
-    .legal-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(200,221,212,.10);border:0.5px solid rgba(200,221,212,.22);border-radius:100px;padding:5px 14px;font-size:11px;color:var(--mist);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;}
-    .legal-hero h1{font-family:'Instrument Serif',serif;font-size:clamp(32px,4.5vw,52px);font-weight:400;color:#E8F5EE;line-height:1.1;margin-bottom:14px;}
-    .legal-hero h1 em{font-style:italic;color:var(--orange);}
-    .legal-hero .meta{font-size:13px;color:#5A8A75;display:flex;gap:20px;flex-wrap:wrap;}
-    .legal-content{max-width:820px;margin:0 auto;padding:64px 52px 96px;}
-    .doc-index{background:var(--white);border:0.5px solid var(--border);border-radius:16px;padding:24px 28px;margin-bottom:48px;}
-    .doc-index h3{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-mid);margin-bottom:14px;}
-    .doc-index ol{list-style:none;display:flex;flex-direction:column;gap:6px;counter-reset:idx;}
-    .doc-index ol li{counter-increment:idx;}
-    .doc-index ol li a{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:0.5px solid var(--border);transition:color .2s;}
-    .doc-index ol li:last-child a{border-bottom:none;}
-    .doc-index ol li a::before{content:counter(idx,decimal-leading-zero);font-size:10px;color:var(--sage-mid);font-weight:600;min-width:22px;}
-    .doc-index ol li a:hover{color:var(--sage-deep);}
-    .doc-section{margin-bottom:48px;scroll-margin-top:84px;}
-    .doc-section h2{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;color:var(--sage-deep);margin-bottom:16px;padding-bottom:10px;border-bottom:0.5px solid var(--border);display:flex;align-items:baseline;gap:12px;}
-    .doc-section h2 .sec-n{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:var(--sage-mid);letter-spacing:.1em;}
-    .doc-section p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:12px;}
-    .doc-section p:last-child{margin-bottom:0;}
-    .doc-section ul{margin:12px 0;display:flex;flex-direction:column;gap:8px;}
-    .doc-section ul li{font-size:14px;color:var(--muted);line-height:1.75;padding-left:20px;position:relative;}
-    .doc-section ul li::before{content:'–';position:absolute;left:0;color:var(--sage-mid);}
-    .doc-section strong{color:var(--sage-deep);font-weight:600;}
-    .callout{border-radius:12px;padding:16px 20px;font-size:13px;line-height:1.75;margin:16px 0;display:flex;gap:12px;align-items:flex-start;}
-    .callout.warn{background:#FFFBEB;border:0.5px solid #FCD34D;color:#713F12;}
-    .callout.info{background:var(--sand);border:0.5px solid var(--border);color:var(--muted);}
-    .callout.alert{background:#FEF2F2;border:0.5px solid #FCA5A5;color:#7F1D1D;}
-    .callout-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
-    .doc-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
-    .doc-table th{background:var(--sand);padding:10px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-mid);border-bottom:0.5px solid var(--border);}
-    .doc-table td{padding:10px 14px;border-bottom:0.5px solid var(--border);color:var(--muted);vertical-align:top;}
-    .doc-table tr:last-child td{border-bottom:none;}
-    .doc-table tr:hover td{background:var(--cream);}
-    .thresholds{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
-    .thr{display:grid;grid-template-columns:12px 1fr;gap:16px;align-items:start;background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:16px 18px;}
-    .thr-dot{width:10px;height:10px;border-radius:50%;margin-top:5px;flex-shrink:0;}
-    .thr-dot.g{background:#16A34A;}
-    .thr-dot.y{background:#EAB308;}
-    .thr-dot.r{background:#DC2626;}
-    .thr-body h4{font-size:13px;font-weight:600;color:var(--sage-deep);margin-bottom:4px;}
-    .thr-body p{font-size:13px;color:var(--muted);line-height:1.7;margin:0;}
-    .legal-footer{background:var(--carbon);padding:36px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-    .legal-footer p{font-size:11px;color:#3D6652;}
-    .legal-footer .lf-links{display:flex;gap:20px;}
-    .legal-footer .lf-links a{font-size:12px;color:#5A8A75;transition:color .2s;}
-    .legal-footer .lf-links a:hover{color:#9BB8AD;}
-    @media(max-width:768px){nav{padding:0 20px;}.legal-hero{padding:96px 20px 48px;}.legal-content{padding:40px 20px 64px;}.legal-footer{padding:28px 20px;flex-direction:column;align-items:flex-start;}}
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: linear-gradient(135deg, #F8FAFC 0%, #EEF2F6 100%); 
+      color: var(--text-main); 
+      font-size: 15px; 
+      line-height: 1.7; 
+      overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased; 
+    }
+    a { text-decoration: none; color: var(--accent); transition: color .2s; }
+    a:hover { color: var(--accent-hover); }
+
+    /* ── LOGO ────────────────────────────────────── */
+    .logo-b { display:inline-flex; align-items:baseline; gap:0; line-height:1; }
+    .logo-b .l-btc    { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; color:var(--accent); letter-spacing:-.02em; }
+    .logo-b .l-cash   { font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; color:var(--text-main); letter-spacing:-.02em; }
+    .logo-b .l-domain { font-family:'Inter',sans-serif; font-weight:400; color:var(--text-muted); margin-left:4px; letter-spacing:.02em; }
+
+    /* ── NAV CENTRADO ────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; height: 70px;
+      background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4); transition: all .3s;
+    }
+    nav.scrolled { background: rgba(255, 255, 255, 0.85); box-shadow: 0 4px 20px rgba(0,0,0,0.03); border-bottom-color: rgba(226, 232, 240, 0.6); }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255, 255, 255, 0.8); color: var(--text-main);
+      border: 1px solid rgba(226, 232, 240, 0.8); border-radius: 12px; padding: 8px 16px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif; transition: all .2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .nav-back:hover { background: #FFFFFF; border-color: var(--accent); transform: translateY(-1px); color: var(--accent); }
+
+    /* ── LEGAL HERO ────────────────────────────────── */
+    .legal-hero {
+      background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+      padding: 120px 52px 64px; position: relative; overflow: hidden;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .legal-hero-inner { max-width: 880px; margin: 0 auto; position: relative; z-index: 1; }
+    .legal-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px); border-radius: 100px; padding: 6px 16px;
+      font-size: 11px; color: var(--accent); font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px;
+      font-family: 'Plus Jakarta Sans', sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .legal-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 700; color: var(--text-main); line-height: 1.15; margin-bottom: 16px; letter-spacing: -.02em;
+    }
+    .legal-hero h1 em { font-style: normal; color: var(--accent); }
+    .legal-hero .meta { font-size: 13px; color: var(--text-muted); display: flex; gap: 20px; flex-wrap: wrap; font-weight: 500; }
+
+    /* ── LEGAL CONTENT ─────────────────────────────── */
+    .legal-content { max-width: 880px; margin: 0 auto; padding: 56px 52px 96px; }
+    
+    .doc-index {
+      background: var(--glass-white); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border); border-radius: 20px; padding: 28px 32px;
+      margin-bottom: 48px; box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    }
+    .doc-index h3 {
+      font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px; font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .doc-index ol { list-style: none; display: flex; flex-direction: column; gap: 8px; counter-reset: idx; }
+    .doc-index ol li { counter-increment: idx; }
+    .doc-index ol li a {
+      font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; border-bottom: 1px solid rgba(226, 232, 240, 0.6); font-weight: 500; transition: color .2s;
+    }
+    .doc-index ol li:last-child a { border-bottom: none; }
+    .doc-index ol li a::before {
+      content: counter(idx, decimal-leading-zero); font-size: 11px; color: var(--accent);
+      font-weight: 700; min-width: 24px; font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .doc-index ol li a:hover { color: var(--accent); }
+
+    .doc-section { margin-bottom: 48px; scroll-margin-top: 90px; }
+    .doc-section h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 700;
+      color: var(--text-main); margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8); display: flex; align-items: baseline; gap: 12px;
+    }
+    .doc-section h2 .sec-n { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .1em; }
+    .doc-section p { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; }
+    .doc-section p:last-child { margin-bottom: 0; }
+    .doc-section ul { margin: 14px 0; display: flex; flex-direction: column; gap: 10px; }
+    .doc-section ul li { font-size: 14px; color: var(--text-muted); line-height: 1.75; padding-left: 20px; position: relative; }
+    .doc-section ul li::before { content: '•'; position: absolute; left: 4px; color: var(--accent); font-weight: bold; }
+    .doc-section strong { color: var(--text-main); font-weight: 600; }
+
+    /* CALLOUTS */
+    .callout {
+      border-radius: 16px; padding: 20px 24px; font-size: 13.5px; line-height: 1.75;
+      margin: 20px 0; display: flex; gap: 14px; align-items: flex-start;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .callout.warn { background: var(--yellow-bg); border: 1px solid rgba(217, 119, 6, 0.25); color: #92400E; }
+    .callout.info { background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(226, 232, 240, 0.9); color: var(--text-muted); }
+    .callout.alert { background: var(--red-bg); border: 1px solid rgba(225, 29, 72, 0.25); color: #9F1239; }
+
+    /* TABLES */
+    .doc-table {
+      width: 100%; border-collapse: separate; border-spacing: 0; margin: 20px 0; font-size: 13.5px;
+      background: var(--glass-white); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border); border-radius: 18px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+    }
+    .doc-table th {
+      background: rgba(248, 250, 252, 0.8); padding: 14px 18px; text-align: left;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent); border-bottom: 1px solid rgba(226, 232, 240, 0.8); font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .doc-table td { padding: 12px 18px; border-bottom: 1px solid rgba(226, 232, 240, 0.6); color: var(--text-muted); vertical-align: middle; }
+    .doc-table tr:last-child td { border-bottom: none; }
+    .doc-table tr:hover td { background: rgba(255, 255, 255, 0.8); }
+
+    /* THRESHOLDS */
+    .thresholds { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+    .thr {
+      display: grid; grid-template-columns: 12px 1fr; gap: 16px; align-items: start;
+      background: var(--glass-white); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border); border-radius: 18px; padding: 18px 20px; transition: all .25s; box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+    }
+    .thr:hover { transform: translateY(-2px); background: #FFFFFF; }
+    .thr-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .thr-dot.g { background: var(--green-ok); }
+    .thr-dot.y { background: var(--accent); }
+    .thr-dot.r { background: #E11D48; }
+    .thr-body h4 { font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .thr-body p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      background: #E2E8F0; padding: 56px 52px 36px; color: var(--text-main); border-top: 1px solid rgba(203, 213, 225, 0.6);
+    }
+    .footer-grid {
+      max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(203, 213, 225, 0.8);
+    }
+    .footer-brand .logo-b { margin-bottom: 16px; display: inline-flex; }
+    .footer-brand .logo-b .l-btc  { font-size: 26px; }
+    .footer-brand .logo-b .l-cash { font-size: 22px; color: var(--text-main); }
+    .footer-brand .logo-b .l-domain { font-size: 11px; color: var(--text-muted); }
+    .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 280px; margin-bottom: 20px; }
+    .footer-contact-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer-contact-row svg { flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-row .fc-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .footer-contact-row .fc-text strong { display: block; color: var(--text-main); font-weight: 600; font-size: 13px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .footer-contact-row a { color: var(--accent); transition: color .2s; font-weight: 500; }
+    .footer-contact-row a:hover { color: var(--accent-hover); }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); transition: color .2s; font-weight: 500; }
+    .footer-links a:hover { color: var(--text-main); }
+    .footer-bottom { max-width: 1060px; margin: 28px auto 0; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 11px; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
+    .footer-bottom .copy { font-size: 11px; color: var(--text-muted); white-space: nowrap; font-weight: 500; }
+    .footer-legal-entity { max-width: 1060px; margin: 14px auto 0; text-align: center; font-size: 11px; color: var(--text-muted); }
+    .footer-legal-entity a { color: var(--text-muted); text-decoration: underline; transition: color .2s; }
+    .footer-legal-entity a:hover { color: var(--text-main); }
+
+    /* ── BOTONES FLOTANTES ────────────── */
+    .floating-contact {
+      position: fixed; right: 24px; bottom: 24px; z-index: 9999;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .floating-contact a {
+      width: 56px; height: 56px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
+    }
+    .floating-contact a:hover { transform: translateY(-3px) scale(1.08); }
+    .floating-whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .floating-telegram {
+      background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%); color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(42, 171, 238, 0.4); border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .floating-contact svg { width: 28px; height: 28px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+
+    /* ── ANIMACIONES ────────── */
+    .obs { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+    .obs.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width:1000px) {
+      nav { padding: 0 20px; }
+      .legal-hero { padding: 96px 20px 48px; }
+      .legal-content { padding: 40px 20px 64px; }
+      footer { padding: 40px 20px 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width:600px) {
+      .floating-contact { right: 16px; bottom: 16px; gap: 10px; }
+      .floating-contact a { width: 48px; height: 48px; }
+      .floating-contact svg { width: 22px; height: 22px; }
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html"><div class="logo-b"><span class="l-btc">₿TCash</span><span class="l-domain">.com.ar</span></div></a>
+<!-- BOTONES FLOTANTES -->
+<div class="floating-contact">
+  <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.05 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/>
+    </svg>
+  </a>
+
+  <a href="https://t.me/FedericoAlturria" target="_blank" rel="noopener" class="floating-telegram" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M9.78 18.65l.28-4.28 7.72-6.97c.34-.31-.07-.48-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.17-3.08-2.01 1.93c-.23.23-.42.42-.83.42z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <div class="logo-b">
+      <span class="l-btc" style="font-size:26px;">₿TCash</span>
+      <span class="l-domain" style="font-size:11px;">.com.ar</span>
+    </div>
+  </a>
   <a href="index.html" class="nav-back">← Volver al inicio</a>
 </nav>
 
+<!-- HERO -->
 <div class="legal-hero">
-  <div class="legal-hero-inner">
+  <div class="legal-hero-inner obs">
     <div class="legal-tag">Documento legal</div>
     <h1>Términos y<br><em>Condiciones</em></h1>
     <div class="meta">
@@ -95,9 +280,10 @@
   </div>
 </div>
 
+<!-- CONTENT -->
 <div class="legal-content">
 
-  <div class="doc-index">
+  <div class="doc-index obs">
     <h3>Índice</h3>
     <ol>
       <li><a href="#s1">Objeto y naturaleza del servicio</a></li>
@@ -118,26 +304,26 @@
     </ol>
   </div>
 
-  <div class="callout warn">
+  <div class="callout warn obs">
     <span class="callout-icon">⚠️</span>
     <span><strong>Aviso importante:</strong> BTCash no es una entidad financiera regulada por el Banco Central de la República Argentina (BCRA). Los servicios aquí descritos constituyen acuerdos privados de crédito entre partes. Recomendamos leer este documento en su totalidad antes de suscribir cualquier contrato.</span>
   </div>
 
-  <div class="doc-section" id="s1">
+  <div class="doc-section obs" id="s1">
     <h2><span class="sec-n">01</span> Objeto y naturaleza del servicio</h2>
     <p>BTCash ofrece un servicio de préstamos privados con garantía colateral en Bitcoin (BTC). El servicio consiste en el otorgamiento de dinero en préstamo —en dólares estadounidenses en efectivo, pesos argentinos al tipo de cambio vigente, o stablecoins equivalentes (USDT u otras)— a cambio de la custodia temporal de una cantidad de Bitcoin como garantía.</p>
     <p>Este servicio <strong>no constituye</strong> una oferta pública de valores, ni una actividad de intermediación financiera sujeta a regulación del BCRA. Se trata de un acuerdo privado entre las partes, regido por el derecho civil y comercial argentino.</p>
     <p>La Empresa no vende, invierte, ni utiliza el Bitcoin del cliente durante el período de custodia. El activo queda bloqueado exclusivamente como garantía de la obligación contraída.</p>
   </div>
 
-  <div class="doc-section" id="s2">
+  <div class="doc-section obs" id="s2">
     <h2><span class="sec-n">02</span> Aceptación de los términos</h2>
     <p>Al suscribir el contrato individual de préstamo, el cliente declara haber leído, comprendido y aceptado en su totalidad los presentes Términos y Condiciones, así como la Política de Privacidad y el documento de Custodia de Garantías.</p>
     <p>Estos términos rigen de manera complementaria al contrato individual firmado digitalmente entre las partes. En caso de contradicción, prevalecerá lo establecido en el contrato individual.</p>
     <p>La Empresa se reserva el derecho de modificar estos términos en cualquier momento. Los cambios serán notificados al cliente con al menos 15 días de anticipación mediante el número de WhatsApp registrado, y serán aplicables únicamente a contratos celebrados con posterioridad a la notificación.</p>
   </div>
 
-  <div class="doc-section" id="s3">
+  <div class="doc-section obs" id="s3">
     <h2><span class="sec-n">03</span> Condiciones del préstamo</h2>
     <p>Los préstamos se otorgan bajo las siguientes condiciones generales, sujetas a confirmación en el contrato individual:</p>
     <table class="doc-table">
@@ -162,7 +348,7 @@
     </div>
   </div>
 
-  <div class="doc-section" id="s4">
+  <div class="doc-section obs" id="s4">
     <h2><span class="sec-n">04</span> Garantía en Bitcoin (colateral)</h2>
     <p>El cliente transfiere voluntariamente una cantidad de Bitcoin a la billetera fría designada por la Empresa, en concepto de garantía real del préstamo. Esta transferencia no implica la venta ni cesión de titularidad del activo.</p>
     <p>Durante la vigencia del préstamo:</p>
@@ -175,7 +361,7 @@
     <p>Una vez cancelado el préstamo en su totalidad, la Empresa procederá a devolver el Bitcoin a la dirección indicada por el cliente.</p>
   </div>
 
-  <div class="doc-section" id="s5">
+  <div class="doc-section obs" id="s5">
     <h2><span class="sec-n">05</span> Tasa de interés y forma de pago</h2>
     <p>La tasa aplicable es del <strong>18% anual, calculada de manera simple</strong> sobre el capital prestado.</p>
     <ul>
@@ -186,7 +372,7 @@
     <p>El incumplimiento de dos o más cuotas consecutivas habilita a la Empresa a declarar la deuda en mora y actuar conforme a la cláusula 11.</p>
   </div>
 
-  <div class="doc-section" id="s6">
+  <div class="doc-section obs" id="s6">
     <h2><span class="sec-n">06</span> Umbrales de advertencia y liquidación</h2>
     <p>Los umbrales se calculan sobre el <strong>Precio de Referencia Inicial del BTC</strong> publicado por CoinMarketCap a la fecha y hora de firma del contrato:</p>
     <div class="thresholds">
@@ -218,7 +404,7 @@
     </div>
   </div>
 
-  <div class="doc-section" id="s7">
+  <div class="doc-section obs" id="s7">
     <h2><span class="sec-n">07</span> Revalorización del BTC — devolución parcial de garantía</h2>
     <p>Si el precio de mercado del BTC supera en más de un <strong>50% el precio de referencia inicial</strong>, el cliente podrá solicitar la devolución parcial de la garantía excedente, de modo que el valor de cobertura vuelva a los niveles originales del préstamo.</p>
     <p>La devolución se efectúa en BTC, calculada según el precio vigente en CoinMarketCap al momento de procesar la solicitud, y está sujeta a que:</p>
@@ -230,7 +416,7 @@
     <p>La ganancia derivada de la revalorización pertenece íntegramente al cliente. La Empresa no utiliza ni se apropia del colateral bajo ningún concepto.</p>
   </div>
 
-  <div class="doc-section" id="s8">
+  <div class="doc-section obs" id="s8">
     <h2><span class="sec-n">08</span> Cancelación anticipada y cancelación con colateral</h2>
     <p><strong>Cancelación anticipada en efectivo o stablecoin:</strong> el cliente puede cancelar el préstamo en cualquier momento sin penalidades. Se calcula el interés simple proporcional al período transcurrido. El Bitcoin es liberado una vez confirmado el pago completo.</p>
     <p><strong>Cancelación utilizando el colateral en BTC:</strong> el cliente también puede solicitar la cancelación parcial o total usando su propio Bitcoin en garantía. En ese caso:</p>
@@ -241,24 +427,24 @@
     </ul>
   </div>
 
-  <div class="doc-section" id="s9">
+  <div class="doc-section obs" id="s9">
     <h2><span class="sec-n">09</span> Gastos y costos de red</h2>
     <p>Todos los gastos, comisiones de red (fees de blockchain), costos de transferencia, impuestos presentes o futuros y cualquier erogación derivada de la operación serán soportados exclusivamente por el cliente, salvo acuerdo expreso en contrario en el contrato individual.</p>
   </div>
 
-  <div class="doc-section" id="s10">
+  <div class="doc-section obs" id="s10">
     <h2><span class="sec-n">10</span> Prohibición de rolleo o renovación</h2>
     <p>Queda expresamente prohibido el rolleo, renovación o sustitución de deuda mediante el uso del colateral o de cualquier saldo de un préstamo vigente como base para uno nuevo. Cada operación es autónoma e independiente.</p>
     <p>Para acceder a un nuevo préstamo, el cliente debe haber cancelado íntegramente el anterior —capital, intereses y liberación del colateral— antes de constituir una nueva operación. Si desea tener dos préstamos simultáneos, cada uno deberá estar respaldado por un colateral en BTC independiente y transferido a la dirección designada para esa operación.</p>
   </div>
 
-  <div class="doc-section" id="s11">
+  <div class="doc-section obs" id="s11">
     <h2><span class="sec-n">11</span> Incumplimiento</h2>
     <p>Se considerará incumplimiento cuando el cliente: no devuelva el capital o intereses en los plazos pactados; no atienda la notificación de advertencia dentro de las 48 horas; o incumpla cualquier otra obligación del contrato.</p>
     <p>Ante incumplimiento, la Empresa podrá: (a) liquidar el colateral BTC para cubrir la deuda; (b) exigir judicialmente el pago adeudado; (c) reclamar daños y perjuicios. Si tras la liquidación queda remanente, es devuelto al cliente.</p>
   </div>
 
-  <div class="doc-section" id="s12">
+  <div class="doc-section obs" id="s12">
     <h2><span class="sec-n">12</span> Obligaciones del cliente</h2>
     <p>Al aceptar estos términos, el cliente se compromete a:</p>
     <ul>
@@ -271,18 +457,18 @@
     </ul>
   </div>
 
-  <div class="doc-section" id="s13">
+  <div class="doc-section obs" id="s13">
     <h2><span class="sec-n">13</span> Confidencialidad</h2>
     <p>Ambas partes se obligan a guardar estricta confidencialidad respecto de la información económica, financiera y personal vinculada al contrato, salvo requerimiento legal o judicial expreso.</p>
   </div>
 
-  <div class="doc-section" id="s14">
+  <div class="doc-section obs" id="s14">
     <h2><span class="sec-n">14</span> Limitación de responsabilidad</h2>
     <p>La Empresa no será responsable por: la variación del precio del Bitcoin; fallas o demoras en la red blockchain; pérdidas indirectas o lucro cesante derivados de la ejecución de la garantía; errores en la dirección de billetera indicada por el cliente; o fuerza mayor y actos ajenos a su control.</p>
     <p>La responsabilidad de la Empresa queda limitada al monto del capital efectivamente prestado, siempre que haya actuado conforme al contrato y utilizando medios diligentes para la custodia y liquidación del colateral.</p>
   </div>
 
-  <div class="doc-section" id="s15">
+  <div class="doc-section obs" id="s15">
     <h2><span class="sec-n">15</span> Jurisdicción y ley aplicable</h2>
     <p>Los presentes Términos se rigen por las leyes de la República Argentina. Para cualquier controversia, las partes se someten a los <strong>Tribunales Ordinarios de la Provincia de Buenos Aires</strong>, renunciando a cualquier otro fuero.</p>
     <p>Consultas: WhatsApp <strong>+54 9 11 7369-5582</strong>, lunes a viernes de 9 a 18 hs.</p>
@@ -290,14 +476,82 @@
 
 </div>
 
-<footer class="legal-footer">
-  <p>© 2026 BTCash — Todos los derechos reservados.</p>
-  <div class="lf-links">
-    <a href="terminos-y-condiciones.html">Términos y condiciones</a>
-    <a href="politica-de-privacidad.html">Privacidad</a>
-    <a href="custodia-de-garantias.html">Custodia</a>
-    <a href="index.html">← Inicio</a>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-b" style="margin-bottom:16px;">
+        <span class="l-btc" style="font-size:26px;">₿TCash</span>
+        <span class="l-domain" style="font-size:11px; color:var(--text-muted); margin-left:4px;">.com.ar</span>
+      </div>
+      <p>Préstamos con colateral en Bitcoin. Liquidez inmediata sin vender tu posición.</p>
+
+      <div class="footer-contact-row">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15.46l-5.27-.61-2.52 2.52a15.05 15.05 0 0 1-6.59-6.59l2.53-2.53L8.54 3H3.03C2.45 13.18 10.82 21.55 21 20.97v-5.51z"/></svg>
+        <div class="fc-text">
+          <strong>WhatsApp</strong>
+          <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20un%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank">+54 9 11 7369-5582</a>
+        </div>
+      </div>
+
+      <div class="footer-contact-row">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 16 14"/></svg>
+        <div class="fc-text">
+          <strong>Horario de atención</strong>
+          <span>Lunes a viernes, 9 a 18 hs</span>
+        </div>
+      </div>
+
+      <div class="footer-contact-row">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="fc-text">
+          <strong>Atención presencial</strong>
+          <span>Olivos · Microcentro, Buenos Aires</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Navegación</div>
+      <ul class="footer-links">
+        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a href="index.html#calculadora">Calculadora</a></li>
+        <li><a href="index.html#seguimiento">Panel de seguimiento</a></li>
+        <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+        <li><a href="https://script.google.com/macros/s/AKfycbwMRZTYyJ5AAsmwFU2I0N6TCBh-AQdxr3eSmWmktShMYekW2NN1qjtje0xzLCTTnllm/exec?page=prestamo" target="_blank">Mi préstamo</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="terminos-y-condiciones.html">Términos y condiciones</a></li>
+        <li><a href="politica-de-privacidad.html">Política de privacidad</a></li>
+        <li><a href="custodia-de-garantias.html">Custodia de garantías</a></li>
+      </ul>
+    </div>
   </div>
+
+  <div class="footer-bottom">
+    <p>BTCash no es una entidad financiera regulada por el BCRA. Los valores del simulador son estimativos y no constituyen oferta vinculante. El otorgamiento de préstamos está sujeto a disponibilidad y condiciones acordadas en el contrato.</p>
+    <span class="copy">© 2026 BTCash — Todos los derechos reservados.</span>
+  </div>
+  <p class="footer-legal-entity">Altur Financial S.A. — CUIT <a href="https://seti.afip.gob.ar/padron-puc-constancia-internet/ConsultaConstanciaAction.do" target="_blank" rel="noopener">30-71046994-2</a></p>
 </footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.obs').forEach(el => io.observe(el));
+</script>
 </body>
 </html>

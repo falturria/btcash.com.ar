@@ -209,6 +209,33 @@
       font-family: 'Plus Jakarta Sans', sans-serif; transition: all .2s; text-decoration: none;
     }
     .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    /* Estilos específicos para la Chip de Dirección BTC y Botón Copiar */
+    .btc-address-chip {
+      font-family: 'Inter', monospace;
+      font-size: 11px;
+      letter-spacing: -0.01em;
+      max-width: 280px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .btn-copy {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 6px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .btn-copy:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
     
     .close-x {
       background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px;
@@ -367,12 +394,14 @@
       .floating-contact { right: 16px; bottom: 16px; gap: 10px; }
       .floating-contact a { width: 48px; height: 48px; }
       .floating-contact svg { width: 22px; height: 22px; }
+      .btc-address-chip { max-width: 200px; }
     }
 
     @media (max-width: 380px) {
       .btc-grid { grid-template-columns: 1fr; }
       .btc-card.full { grid-column: span 1; }
       .risk-badge { grid-column: span 1; }
+      .btc-address-chip { max-width: 150px; }
     }
   </style>
 </head>
@@ -434,12 +463,56 @@
   </div>
 
   <script>
-    // ⚠️ REEMPLAZAR CON TU URL DE APPS SCRIPT SI USAS HOSTING ESTÁTICO (sino usa google.script.run automáticamente)
+    // ⚠️ REEMPLAZAR CON TU URL DE APPS SCRIPT SI USAS HOSTING ESTÁTICO
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7hNpmyth9Nvyh4XMc0K_ZxDc0VFA4CT-Ox5Fv7fspGxuIDScYi4s2Vaq33t3r5lM/exec";
+
+    // LÓGICA DE RATE LIMITING (Límite de intentos local)
+    const MAX_ATTEMPTS = 5;
+    const TIME_WINDOW_MS = 60000; // 1 minuto
+    const BLOCK_DURATION_MS = 120000; // 2 minutos de bloqueo
+    
+    function checkRateLimit() {
+      const now = Date.now();
+      let attemptsData = JSON.parse(localStorage.getItem('loan_search_attempts') || '{"attempts":[], "blockedUntil":0}');
+
+      if (now < attemptsData.blockedUntil) {
+        const remainingSec = Math.ceil((attemptsData.blockedUntil - now) / 1000);
+        return { allowed: false, message: `Demasiados intentos. Por favor esperá ${remainingSec} segundos.` };
+      }
+
+      // Filtrar intentos dentro de la ventana de tiempo
+      attemptsData.attempts = attemptsData.attempts.filter(timestamp => now - timestamp < TIME_WINDOW_MS);
+
+      if (attemptsData.attempts.length >= MAX_ATTEMPTS) {
+        attemptsData.blockedUntil = now + BLOCK_DURATION_MS;
+        localStorage.setItem('loan_search_attempts', JSON.stringify(attemptsData));
+        return { allowed: false, message: `Límite de intentos superado. Bloqueado por 2 minutos.` };
+      }
+
+      // Registrar nuevo intento
+      attemptsData.attempts.push(now);
+      localStorage.setItem('loan_search_attempts', JSON.stringify(attemptsData));
+      return { allowed: true };
+    }
 
     function tip(text, pos) {
       var cls = 'tip-wrap' + (pos ? ' ' + pos : '');
       return '<span class="' + cls + '"><span class="tip-icon">i</span><span class="tip-box">' + text + '</span></span>';
+    }
+
+    // Copiar dirección al portapapeles
+    function copyToClipboard(text, btnEl) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btnEl.innerHTML;
+        btnEl.innerHTML = '✓ ¡Copiado!';
+        btnEl.style.color = 'var(--green-ok)';
+        setTimeout(() => {
+          btnEl.innerHTML = originalText;
+          btnEl.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Error al copiar: ', err);
+      });
     }
 
     document.getElementById('dmSw').addEventListener('change', e => {
@@ -455,9 +528,17 @@
     function esc(s) { return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
 
     async function searchLoan() {
-      const code = document.getElementById('loanCode').value.trim();
+      // Aplicar verificación de Rate Limiting
+      const limitCheck = checkRateLimit();
       const msg = document.getElementById('statusMsg');
       const btn = document.getElementById('btnSearch');
+
+      if (!limitCheck.allowed) {
+        msg.innerHTML = '<div class="err">' + limitCheck.message + '</div>';
+        return;
+      }
+
+      const code = document.getElementById('loanCode').value.trim();
       if (!code) { msg.innerHTML = '<div class="err">Por favor ingresá un código de préstamo válido.</div>'; return; }
 
       msg.innerHTML = '<span style="color:var(--text-muted);font-size:13px;font-weight:500;">Cargando datos del préstamo...</span>';
@@ -530,9 +611,19 @@
       H.push('<div class="client-row">');
       H.push('<img class="client-avatar" src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/LatGL1sf4VN9iHEDGn9X/pub/1B2aQ4bNdBQvQxAgdOVo/asdsadsad.png" alt="Cliente">');
       H.push('<span class="client-name">' + esc(L.Client_name || 'Cliente') + '</span>');
-      H.push('<div style="display:flex;gap:8px;flex-wrap:wrap;">');
+      H.push('<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">');
       if (L.Contract_PDF) H.push('<a class="chip" href="' + encodeURI(L.Contract_PDF) + '" target="_blank">📄 Ver Contrato</a>');
-      if (L.BTC_Adress) H.push('<a class="chip" href="https://mempool.space/es/address/' + encodeURIComponent(L.BTC_Adress) + '" target="_blank">🟠 Explorador BTC</a>');
+      
+      /* Dirección de BTC completa linkeada a mempool.space + Botón de copiar */
+      if (L.BTC_Adress) {
+        const fullAddress = esc(L.BTC_Adress);
+        H.push('<div class="chip" style="gap:4px;">');
+        H.push('<span>🟠</span>');
+        H.push('<a href="https://mempool.space/es/address/' + encodeURIComponent(L.BTC_Adress) + '" target="_blank" class="btc-address-chip" title="' + fullAddress + '">' + fullAddress + '</a>');
+        H.push('<button class="btn-copy" onclick="copyToClipboard(\'' + fullAddress + '\', this)" title="Copiar dirección">📋 Copiar</button>');
+        H.push('</div>');
+      }
+
       H.push('</div></div>');
       H.push('<button class="close-x" onclick="resetView()">✕</button>');
       H.push('</div>');

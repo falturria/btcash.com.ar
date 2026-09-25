@@ -1,375 +1,476 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>BTCash — Mi Préstamo</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <style>
-      :root {
-        --sage:      #C8DDD4;
-        --sage-dark: #3B6B57;
-        --sage-mid:  #5A9E84;
-        --sage-deep: #2D4F40;
-        --orange:    #F4A96A;
-        --orange-dk: #D4824A;
-        --mist:      #9BB8AD;
-        --cream:     #FAF8F4;
-        --sand:      #F0EBE3;
-        --text:      #1C2B24;
-        --muted:     #6B8078;
-        --border:    #E2EDE8;
-        --white:     #FFFFFF;
-        --green-ok:  #16A34A;
-        --red-bg:    #FEF2F2;
-      }
-      body.dark {
-        --text:   #E8F5EE;
-        --muted:  #9BB8AD;
-        --border: #2A3F34;
-        --white:  #1C2B24;
-        --cream:  #1A1F1D;
-        --sand:   #243028;
-      }
-      *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-      body {
-        font-family:'DM Sans',sans-serif;
-        background:var(--cream);
-        color:var(--text);
-        font-size:15px;
-        line-height:1.7;
-        transition:background .3s,color .3s;
-        min-height:100vh;
-        -webkit-text-size-adjust:100%;
-      }
-      a { text-decoration:none; }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>BTCash — Mi Préstamo | btcash.com.ar</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-glass-base:  #F4F6F9;
+      --glass-white:    rgba(255, 255, 255, 0.75);
+      --glass-border:   rgba(255, 255, 255, 0.8);
+      --glass-shadow:   0 8px 32px 0 rgba(31, 38, 135, 0.05);
+      
+      --accent:         #D97706; /* Ámbar/Bitcoin suave mate */
+      --accent-hover:   #B45309;
+      --accent-soft:    rgba(217, 119, 6, 0.08);
+      
+      --text-main:      #1E293B;
+      --text-muted:     #64748B;
+      
+      --green-ok:       #059669;
+      --green-bg:       rgba(5, 150, 105, 0.06);
+      --yellow-bg:      rgba(217, 119, 6, 0.06);
+      --red-bg:         rgba(225, 29, 72, 0.06);
+      --blue-ok:        #2563EB;
+      --blue-bg:        rgba(37, 99, 235, 0.06);
+      --card-bg:        rgba(255, 255, 255, 0.85);
+      --input-bg:       rgba(255, 255, 255, 0.9);
+      --border-color:   rgba(226, 232, 240, 0.8);
+    }
 
-      /* ── TOPNAV ─── */
-      .topnav {
-        position:sticky; top:0; z-index:50;
-        display:flex; align-items:center; justify-content:space-between;
-        padding:0 24px; height:58px;
-        background:rgba(250,248,244,.96); backdrop-filter:blur(16px);
-        border-bottom:0.5px solid var(--border); transition:background .3s,box-shadow .3s;
-      }
-      body.dark .topnav { background:rgba(26,25,22,.96); }
-      .topnav.scrolled { box-shadow:0 4px 20px rgba(45,79,64,.08); }
-      .nav-left { display:flex; align-items:center; gap:12px; }
-      .nav-tag  { font-size:11px; color:var(--mist); letter-spacing:.08em; text-transform:uppercase; }
-      .dm-wrap  { display:flex; align-items:center; gap:8px; }
-      .dm-wrap label { font-size:12px; color:var(--mist); cursor:pointer; }
-      .sw { position:relative; display:inline-block; width:38px; height:21px; flex-shrink:0; }
-      .sw input { display:none; }
-      .sw-sl { position:absolute; cursor:pointer; inset:0; background:var(--sage); transition:.3s; border-radius:21px; }
-      .sw-sl:before { position:absolute; content:""; height:15px; width:15px; left:3px; bottom:3px; background:var(--white); transition:.3s; border-radius:50%; }
-      input:checked+.sw-sl { background:var(--orange); }
-      input:checked+.sw-sl:before { transform:translateX(17px); }
+    body.dark {
+      --bg-glass-base:  #0F172A;
+      --text-main:      #F8FAFC;
+      --text-muted:     #94A3B8;
+      --card-bg:        rgba(30, 41, 59, 0.75);
+      --glass-white:    rgba(30, 41, 59, 0.75);
+      --glass-border:   rgba(255, 255, 255, 0.1);
+      --input-bg:       rgba(15, 23, 42, 0.6);
+      --border-color:   rgba(51, 65, 85, 0.8);
+      --green-bg:       rgba(5, 150, 105, 0.2);
+      --yellow-bg:      rgba(217, 119, 6, 0.2);
+      --red-bg:         rgba(225, 29, 72, 0.2);
+    }
 
-      /* ── LOGO SVG ─── */
-      .logo-b { display:flex; align-items:baseline; line-height:1; }
-      .logo-b .l-btc { font-family:'DM Sans',sans-serif; font-size:24px; font-weight:700; color:var(--orange); letter-spacing:-.02em; }
-      .logo-b .l-cash { font-family:'DM Sans',sans-serif; font-size:22px; font-weight:600; color:var(--sage-deep); letter-spacing:-.02em; }
-      .logo-b .l-domain { font-family:'DM Sans',sans-serif; font-size:9px; font-weight:400; color:var(--mist); margin-left:5px; letter-spacing:.04em; }
-      body.dark .logo-b .l-cash { color:#E8F5EE; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: linear-gradient(135deg, #F8FAFC 0%, #EEF2F6 100%); 
+      color: var(--text-main); 
+      font-size: 15px; 
+      line-height: 1.7; 
+      min-height: 100vh;
+      overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased; 
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background: linear-gradient(135deg, #0F172A 0%, #020617 100%);
+    }
+    a { text-decoration: none; }
 
-      /* ── MAIN ─── */
-      .main { max-width:1180px; margin:0 auto; padding:28px 20px 52px; }
+    /* ── LOGO ────────────────────────────────────── */
+    .logo-b { display: inline-flex; align-items: baseline; gap: 0; line-height: 1; }
+    .logo-b .l-btc { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--accent); letter-spacing: -.02em; font-size: 24px; }
+    .logo-b .l-cash { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; color: var(--text-main); letter-spacing: -.02em; font-size: 20px; }
+    .logo-b .l-domain { font-family: 'Inter', sans-serif; font-weight: 400; color: var(--text-muted); margin-left: 4px; letter-spacing: .02em; font-size: 10px; }
 
-      /* ── SEARCH ─── */
-      .search-wrap { max-width:460px; margin:60px auto 0; text-align:center; padding:0 4px; }
-      .search-wrap h1 { font-family:'Instrument Serif',serif; font-size:clamp(26px,6vw,36px); font-weight:400; color:var(--sage-deep); margin-bottom:8px; line-height:1.15; }
-      .search-wrap p  { font-size:14px; color:var(--muted); margin-bottom:24px; font-weight:300; }
-      .search-box {
-        display:flex; gap:10px;
-        background:var(--white); border:0.5px solid var(--sage);
-        border-radius:16px; padding:8px 8px 8px 18px;
-        box-shadow:0 4px 20px rgba(45,79,64,.08); transition:box-shadow .2s;
-      }
-      .search-box:focus-within { box-shadow:0 6px 28px rgba(45,79,64,.13); border-color:var(--sage-mid); }
-      .search-box input {
-        flex:1; min-width:0; background:transparent; border:none;
-        color:var(--text); font-size:16px; font-family:'DM Sans',sans-serif; outline:none;
-      }
-      .search-box input::placeholder { color:var(--mist); }
-      .btn-search {
-        background:var(--orange); color:var(--sage-deep);
-        border:none; border-radius:12px; padding:12px 20px; font-size:14px; font-weight:600;
-        cursor:pointer; font-family:'DM Sans',sans-serif; white-space:nowrap; flex-shrink:0;
-        transition:background .15s,transform .1s; min-height:44px;
-      }
-      .btn-search:hover  { background:var(--orange-dk); color:var(--white); transform:translateY(-1px); }
-      .btn-search:disabled { opacity:.5; cursor:not-allowed; transform:none; }
-      .status-msg { margin-top:14px; font-size:14px; }
-      .err { color:#7F1D1D; background:var(--red-bg); border:0.5px solid #FCA5A5; border-radius:12px; padding:12px 16px; font-size:14px; text-align:left; }
+    /* ── NAV TOPBAR ──────────────────────────────── */
+    nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 70px;
+      background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color); transition: all .3s;
+    }
+    body.dark nav { background: rgba(15, 23, 42, 0.75); }
+    nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-tag { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
+    
+    .dm-wrap { display: flex; align-items: center; gap: 8px; }
+    .dm-wrap label { font-size: 12px; color: var(--text-muted); cursor: pointer; font-weight: 500; }
+    .sw { position: relative; display: inline-block; width: 38px; height: 21px; flex-shrink: 0; }
+    .sw input { display: none; }
+    .sw-sl { position: absolute; cursor: pointer; inset: 0; background: rgba(226, 232, 240, 0.8); transition: .3s; border-radius: 21px; border: 1px solid var(--border-color); }
+    body.dark .sw-sl { background: rgba(51, 65, 85, 0.8); }
+    .sw-sl:before { position: absolute; content: ""; height: 15px; width: 15px; left: 2px; bottom: 2px; background: var(--text-main); transition: .3s; border-radius: 50%; }
+    input:checked + .sw-sl { background: var(--accent); border-color: var(--accent); }
+    input:checked + .sw-sl:before { transform: translateX(17px); background: #FFFFFF; }
 
-      /* ── ALERTAS ─── */
-      .alert-banner {
-        display:flex; align-items:flex-start; gap:14px;
-        border-radius:16px; padding:16px 20px; margin-bottom:20px;
-        border:1px solid transparent;
-        animation:alertSlideIn .4s cubic-bezier(.25,.46,.45,.94);
-      }
-      @keyframes alertSlideIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
-      .alert-banner.warning { background:#FFFBEB; border-color:#FDE68A; color:#92400E; }
-      body.dark .alert-banner.warning { background:#2D2500; border-color:#7C5E00; color:#FDE68A; }
-      .alert-banner.danger {
-        background:var(--red-bg); border-color:#FCA5A5; color:#7F1D1D;
-        animation:alertSlideIn .4s cubic-bezier(.25,.46,.45,.94), alertPulse 2.5s ease-in-out .5s infinite;
-      }
-      body.dark .alert-banner.danger { background:#2D0000; border-color:#7F1D1D; color:#FCA5A5; }
-      @keyframes alertPulse { 0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,0)} 50%{box-shadow:0 0 0 5px rgba(220,38,38,.12)} }
-      .alert-icon  { font-size:22px; flex-shrink:0; line-height:1; margin-top:1px; }
-      .alert-body  { flex:1; }
-      .alert-title { font-weight:700; font-size:14px; margin-bottom:2px; }
-      .alert-desc  { font-size:13px; opacity:.85; font-weight:400; line-height:1.5; }
+    /* ── BOTONES FLOTANTES REDISEÑADOS ────────────── */
+    .floating-contact {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .floating-contact a {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+    .floating-contact a:hover {
+      transform: translateY(-3px) scale(1.08);
+    }
+    
+    .floating-whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .floating-whatsapp:hover {
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+    }
 
-      /* ── ANIMACIONES ─── */
-      .card-anim   { opacity:0; transform:translateY(18px); animation:cardIn .45s cubic-bezier(.25,.46,.45,.94) forwards; }
-      .header-anim { opacity:0; transform:translateY(10px);  animation:cardIn .35s cubic-bezier(.25,.46,.45,.94) forwards; }
-      @keyframes cardIn { to { opacity:1; transform:translateY(0); } }
+    .floating-telegram {
+      background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
+      color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(42, 171, 238, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .floating-telegram:hover {
+      box-shadow: 0 10px 28px rgba(42, 171, 238, 0.55);
+    }
 
-      /* ── LOAN HEADER ─── */
-      .loan-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
-      .client-row  { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-      .client-avatar { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--sage); flex-shrink:0; }
-      .client-name { font-family:'Instrument Serif',serif; font-size:22px; font-weight:400; color:var(--sage-deep); }
-      .chip {
-        display:inline-flex; align-items:center; gap:5px;
-        background:var(--cream); border:0.5px solid var(--border);
-        border-radius:8px; padding:5px 11px; font-size:12px; color:var(--muted);
-        transition:border-color .15s,color .15s,background .15s; min-height:36px;
-      }
-      .chip:hover { border-color:var(--sage-mid); color:var(--sage-dark); background:var(--sand); }
-      .close-x {
-        background:none; border:0.5px solid var(--border); border-radius:8px;
-        padding:7px 11px; font-size:16px; color:var(--muted); cursor:pointer;
-        transition:border-color .15s,color .15s; flex-shrink:0; min-height:36px;
-      }
-      .close-x:hover { border-color:#FCA5A5; color:#DC2626; }
+    .floating-contact svg {
+      width: 28px;
+      height: 28px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
 
-      /* ── GRID 2 COLS ─── */
-      .loan-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
-      .loan-col  { display:flex; flex-direction:column; gap:18px; }
+    /* ── MAIN CONTAINER ──────────────────────────── */
+    .main { max-width: 1060px; margin: 0 auto; padding: 40px 24px 64px; }
 
-      /* ── CARDS ─── */
-      .card { background:var(--white); border:0.5px solid var(--border); border-radius:18px; padding:22px; transition:background .3s,border .3s,box-shadow .3s; }
-      .card:hover { box-shadow:0 4px 20px rgba(45,79,64,.06); }
-      .card-title { font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--sage-mid); margin-bottom:16px; }
+    /* ── BUSCADOR DE PRÉSTAMO ───────────────────── */
+    .search-wrap { max-width: 480px; margin: 60px auto 0; text-align: center; }
+    .search-wrap h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(28px, 5vw, 38px); font-weight: 700; color: var(--text-main); margin-bottom: 10px; letter-spacing: -.02em; line-height: 1.2; }
+    .search-wrap h1 em { font-style: normal; color: var(--accent); }
+    .search-wrap p { font-size: 15px; color: var(--text-muted); margin-bottom: 28px; font-weight: 400; }
+    
+    .search-box {
+      display: flex; gap: 10px;
+      background: var(--card-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border); border-radius: 16px; padding: 8px 8px 8px 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all .2s;
+    }
+    .search-box:focus-within { border-color: var(--accent); box-shadow: 0 12px 32px rgba(217, 119, 6, 0.1); }
+    .search-box input {
+      flex: 1; min-width: 0; background: transparent; border: none;
+      color: var(--text-main); font-size: 15px; font-family: 'Inter', sans-serif; font-weight: 600; outline: none;
+    }
+    .search-box input::placeholder { color: var(--text-muted); font-weight: 400; }
+    
+    .btn-primary { 
+      background: var(--accent); color: #FFFFFF; border: none; border-radius: 12px; padding: 12px 22px; 
+      font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; 
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s; 
+      box-shadow: 0 4px 16px rgba(217, 119, 6, 0.25); white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35); }
+    .btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 
-      /* ── KPI GRID ─── */
-      .kpi-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-      .kpi { background:var(--cream); border:0.5px solid var(--border); border-radius:14px; padding:14px; transition:background .2s,border-color .2s; }
-      .kpi:hover { border-color:var(--sage); }
-      .kpi .kl { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--sage-mid); margin-bottom:5px; display:flex; align-items:center; gap:5px; }
-      .kpi .kv { font-size:clamp(16px,3.5vw,22px); font-weight:600; color:var(--sage-deep); margin-top:2px; word-break:break-word; }
-      .kpi .ks { font-size:11px; color:var(--muted); margin-top:3px; }
+    .status-msg { margin-top: 16px; font-size: 14px; }
+    .err { color: #E11D48; background: var(--red-bg); border: 1px solid rgba(225, 29, 72, 0.2); border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 500; }
 
-      /* ── PROGRESO ─── */
-      .prog-wrap  { margin-top:14px; background:var(--cream); border:0.5px solid var(--border); border-radius:14px; padding:14px; }
-      .prog-label { font-size:12px; font-weight:600; color:var(--text); margin-bottom:8px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px; }
-      .prog-label .prog-pct { color:var(--sage-mid); }
-      .prog-bg    { background:var(--sand); border-radius:6px; height:24px; overflow:hidden; position:relative; }
-      .prog-fill  { height:100%; background:var(--orange); border-radius:6px; width:0%; transition:width 1.1s cubic-bezier(.25,.46,.45,.94); }
-      .prog-bg::after {
-        content:''; position:absolute; inset:0;
-        background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.22) 50%,transparent 100%);
-        animation:shimmer 2.2s ease-in-out infinite; pointer-events:none;
-      }
-      @keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
-      .prog-pct-label { position:absolute; top:50%; transform:translateY(-50%); font-size:11px; font-weight:700; white-space:nowrap; pointer-events:none; transition:left 1.1s cubic-bezier(.25,.46,.45,.94); }
-      .prog-pct-label.outside { left:calc(var(--prog-w) + 6px); color:var(--sage-deep); }
-      .prog-pct-label.inside  { left:auto; right:8px; color:var(--white); }
+    /* ── ALERTAS Y BANNERS ───────────────────────── */
+    .alert-banner {
+      display: flex; align-items: flex-start; gap: 14px;
+      border-radius: 18px; padding: 16px 20px; margin-bottom: 24px;
+      border: 1px solid transparent; backdrop-filter: blur(12px);
+      animation: fadeUp .4s ease both;
+    }
+    .alert-banner.warning { background: var(--yellow-bg); border-color: rgba(217, 119, 6, 0.3); color: #B45309; }
+    body.dark .alert-banner.warning { color: #FBBF24; }
+    .alert-banner.danger { background: var(--red-bg); border-color: rgba(225, 29, 72, 0.3); color: #E11D48; animation: fadeUp .4s ease both, alertPulse 2.5s ease-in-out infinite; }
+    @keyframes alertPulse { 0%,100%{box-shadow: 0 0 0 0 rgba(225, 29, 72, 0)} 50%{box-shadow: 0 0 0 6px rgba(225, 29, 72, 0.15)} }
+    .alert-icon { font-size: 20px; flex-shrink: 0; line-height: 1; }
+    .alert-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+    .alert-desc { font-size: 13px; opacity: .9; font-weight: 400; line-height: 1.6; }
 
-      /* ── BADGES ─── */
-      .badges-row { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
-      .badge { background:var(--sand); border:0.5px solid var(--border); color:var(--muted); padding:5px 11px; border-radius:8px; font-size:11px; font-weight:500; }
-      .badge.right { margin-left:auto; }
+    /* ── HEADER DEL PRÉSTAMO ──────────────────────── */
+    .loan-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 16px; }
+    .client-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .client-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); flex-shrink: 0; }
+    .client-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 700; color: var(--text-main); letter-spacing: -.02em; }
+    
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--card-bg); border: 1px solid var(--border-color); backdrop-filter: blur(8px);
+      border-radius: 12px; padding: 7px 14px; font-size: 12px; font-weight: 600; color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif; transition: all .2s; text-decoration: none;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    
+    .close-x {
+      background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px;
+      padding: 8px 14px; font-size: 14px; font-weight: 600; color: var(--text-muted); cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif; transition: all .2s;
+    }
+    .close-x:hover { border-color: #E11D48; color: #E11D48; }
 
-      /* ── TABLE ─── */
-      .table-wrap { max-height:290px; overflow-y:auto; border:0.5px solid var(--border); border-radius:14px; margin-top:6px; -webkit-overflow-scrolling:touch; }
-      table { width:100%; border-collapse:collapse; font-size:13px; table-layout:fixed; }
-      thead th { background:var(--cream); color:var(--sage-dark); text-align:left; padding:10px 12px; font-weight:600; font-size:11px; letter-spacing:.06em; text-transform:uppercase; border-bottom:0.5px solid var(--border); position:sticky; top:0; z-index:1; }
-      tbody td { padding:10px 12px; border-bottom:0.5px solid var(--border); color:var(--text); vertical-align:top; }
-      tbody tr:last-child td { border-bottom:none; }
-      tbody tr:hover { background:var(--cream); }
-      table td:nth-child(3),table th:nth-child(3) { white-space:pre-wrap; word-break:break-word; }
-      .td-muted { color:var(--mist); font-size:11px; }
+    /* ── DASHBOARD GRID & CARDS ──────────────────── */
+    .loan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .loan-col { display: flex; flex-direction: column; gap: 24px; }
 
-      /* ── EMPTY STATE ─── */
-      .empty-state { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 16px; gap:10px; text-align:center; }
-      .empty-state svg { opacity:.35; }
-      .empty-state .empty-title { font-size:14px; font-weight:600; color:var(--text); opacity:.6; }
-      .empty-state .empty-sub   { font-size:12px; color:var(--muted); font-weight:300; max-width:220px; line-height:1.5; }
+    .card {
+      background: var(--card-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border); border-radius: 24px; padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02); transition: all .3s;
+    }
+    .card:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.04); }
+    .card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
 
-      /* ── BADGE RIESGO ─── */
-      .risk-badge {
-        grid-column:span 2;
-        display:flex; flex-direction:column; align-items:center; justify-content:center;
-        gap:6px; text-align:center; border-radius:14px; padding:18px 20px;
-        border:0.5px solid var(--border); background:var(--cream);
-      }
-      .risk-dot { width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:6px; flex-shrink:0; }
-      .risk-badge .risk-row  { display:flex; align-items:center; justify-content:center; }
-      .risk-badge .risk-title { font-size:13px; font-weight:600; color:var(--text); }
-      .risk-badge .risk-sub   { font-size:11px; font-weight:400; color:var(--muted); line-height:1.5; max-width:260px; }
-      .risk-dot.safe    { background:#16A34A; box-shadow:0 0 0 3px rgba(22,163,74,.15); }
-      .risk-dot.warning { background:#EAB308; box-shadow:0 0 0 3px rgba(234,179,8,.15); }
-      .risk-dot.danger  { background:#DC2626; box-shadow:0 0 0 3px rgba(220,38,38,.15); animation:dotPulse 2s ease-in-out infinite; }
-      @keyframes dotPulse { 0%,100%{box-shadow:0 0 0 3px rgba(220,38,38,.15)} 50%{box-shadow:0 0 0 6px rgba(220,38,38,.08)} }
+    /* KPIs */
+    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .kpi { background: rgba(255, 255, 255, 0.5); border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; transition: all .2s; }
+    body.dark .kpi { background: rgba(15, 23, 42, 0.4); }
+    .kpi .kl { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
+    .kpi .kv { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(18px, 3.5vw, 22px); font-weight: 700; color: var(--text-main); word-break: break-word; }
+    .kpi .ks { font-size: 11px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
 
-      /* ── BTC CARDS ─── */
-      .btc-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:6px; }
-      .btc-card { background:var(--cream); border:0.5px solid var(--border); border-radius:12px; padding:14px; text-align:center; transition:background .2s,border-color .2s,transform .2s; }
-      .btc-card:hover { transform:translateY(-2px); border-color:var(--sage); }
-      .btc-card.full { grid-column:span 2; }
-      .btc-card .bl { font-size:10px; color:var(--mist); margin-bottom:5px; text-transform:uppercase; letter-spacing:.06em; display:flex; align-items:center; justify-content:center; gap:5px; }
-      .btc-card .bv { font-size:clamp(13px,2.8vw,16px); font-weight:600; color:var(--sage-deep); word-break:break-word; }
-      .btc-card.live { background:var(--sage-deep); border-color:var(--sage-deep); }
-      .btc-card.live .bl { color:rgba(200,221,212,.6); }
-      .btc-card.live .bv { font-size:clamp(16px,3.5vw,20px); color:#7EC9AB; }
+    /* BARRAS DE PROGRESO */
+    .prog-wrap { margin-top: 18px; background: rgba(255, 255, 255, 0.5); border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; }
+    body.dark .prog-wrap { background: rgba(15, 23, 42, 0.4); }
+    .prog-label { font-size: 12px; font-weight: 600; color: var(--text-main); margin-bottom: 10px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .prog-bg { background: rgba(226, 232, 240, 0.6); border-radius: 8px; height: 12px; overflow: hidden; position: relative; }
+    body.dark .prog-bg { background: rgba(51, 65, 85, 0.6); }
+    .prog-fill { height: 100%; background: var(--accent); border-radius: 8px; width: 0%; transition: width 1.2s cubic-bezier(.25,.46,.45,.94); }
+    
+    .badges-row { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+    .badge { background: rgba(255, 255, 255, 0.6); border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body.dark .badge { background: rgba(15, 23, 42, 0.5); }
+    .badge.right { margin-left: auto; }
 
-      /* ── SPARKLINE ─── */
-      .sparkline-card { background:var(--white); border:0.5px solid var(--border); border-radius:18px; padding:22px; transition:background .3s,border .3s,box-shadow .3s; }
-      .sparkline-card:hover { box-shadow:0 4px 20px rgba(45,79,64,.06); }
-      .sparkline-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px; }
-      .sparkline-title  { font-size:10px; font-weight:600; color:var(--sage-mid); text-transform:uppercase; letter-spacing:.16em; display:flex; align-items:center; gap:6px; }
-      .sparkline-legend { display:flex; gap:14px; }
-      .spark-leg { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
-      .spark-leg-line { width:16px; height:2px; border-radius:2px; }
-      .spark-svg { width:100%; overflow:visible; display:block; }
-      .spark-loading { font-size:12px; color:var(--mist); text-align:center; padding:24px 0; }
+    /* TABLA HISTORIAL */
+    .table-wrap { max-height: 280px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 16px; margin-top: 8px; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+    thead th { background: rgba(255, 255, 255, 0.8); color: var(--text-main); text-align: left; padding: 12px 14px; font-weight: 700; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body.dark thead th { background: rgba(30, 41, 59, 0.9); }
+    tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border-color); color: var(--text-main); vertical-align: middle; font-size: 13px; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: rgba(255, 255, 255, 0.4); }
+    body.dark tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
+    .td-muted { color: var(--text-muted); font-size: 11px; }
 
-      /* ── SEMÁFORO ─── */
-      .c-green  { color:var(--green-ok) !important; }
-      .c-yellow { color:#B45309 !important; }
-      .c-red    { color:#DC2626 !important; }
-      .live-dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; animation:liveBlink 2s ease-in-out infinite; }
-      .live-dot.green  { background:var(--green-ok); }
-      .live-dot.yellow { background:#EAB308; }
-      .live-dot.red    { background:#DC2626; }
-      @keyframes liveBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px 16px; gap: 10px; text-align: center; }
+    .empty-state .empty-title { font-size: 14px; font-weight: 600; color: var(--text-main); font-family: 'Plus Jakarta Sans', sans-serif; }
+    .empty-state .empty-sub { font-size: 12px; color: var(--text-muted); max-width: 240px; line-height: 1.6; }
 
-      /* ── TOOLTIPS ─── */
-      .tip-wrap { position:relative; display:inline-flex; align-items:center; }
-      .tip-icon {
-        display:inline-flex; align-items:center; justify-content:center;
-        width:14px; height:14px; border-radius:50%; background:var(--border); color:var(--muted);
-        font-size:9px; font-weight:700; cursor:default; transition:background .15s,color .15s;
-        flex-shrink:0; line-height:1; font-style:normal; font-family:'DM Sans',sans-serif; border:none; padding:0;
-      }
-      .tip-wrap:hover .tip-icon { background:var(--sage-mid); color:var(--white); }
-      .tip-box {
-        position:absolute; z-index:200; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(4px);
-        background:var(--sage-deep); color:#E8F5EE; font-size:12px; font-weight:400; line-height:1.5;
-        padding:8px 12px; border-radius:10px; width:200px; text-align:left;
-        box-shadow:0 8px 24px rgba(0,0,0,.18); pointer-events:none; opacity:0; visibility:hidden;
-        transition:opacity .18s,visibility .18s,transform .18s; white-space:normal;
-      }
-      .tip-box::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--sage-deep); }
-      .tip-wrap.tip-right .tip-box { left:0; transform:translateX(0) translateY(4px); }
-      .tip-wrap.tip-right .tip-box::after { left:10px; transform:none; }
-      .tip-wrap.tip-right:hover .tip-box { transform:translateX(0) translateY(0); }
-      .tip-wrap.tip-left .tip-box { left:auto; right:0; transform:translateX(0) translateY(4px); }
-      .tip-wrap.tip-left .tip-box::after { left:auto; right:10px; transform:none; }
-      .tip-wrap.tip-left:hover .tip-box { transform:translateX(0) translateY(0); }
-      .tip-wrap:hover .tip-box { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+    /* BADGE RIESGO & BITCOIN CARDS */
+    .risk-badge {
+      grid-column: span 2; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; text-align: center; border-radius: 16px; padding: 16px 20px;
+      border: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.5);
+    }
+    body.dark .risk-badge { background: rgba(15, 23, 42, 0.4); }
+    .risk-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; flex-shrink: 0; }
+    .risk-badge .risk-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .risk-badge .risk-sub { font-size: 11px; font-weight: 400; color: var(--text-muted); line-height: 1.5; max-width: 280px; }
+    .risk-dot.safe { background: var(--green-ok); box-shadow: 0 0 0 3px var(--green-bg); }
+    .risk-dot.warning { background: var(--accent); box-shadow: 0 0 0 3px var(--yellow-bg); }
+    .risk-dot.danger { background: #E11D48; box-shadow: 0 0 0 3px var(--red-bg); animation: dotPulse 2s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100%{box-shadow: 0 0 0 3px var(--red-bg)} 50%{box-shadow: 0 0 0 6px rgba(225, 29, 72, 0.1)} }
 
-      /* ── RESPONSIVE ─── */
-      @media(max-width:900px){
-        .topnav { padding:0 16px; }
-        .main   { padding:16px 16px 40px; }
-        .loan-grid { grid-template-columns:1fr; }
-      }
-      @media(max-width:600px){
-        .search-wrap { margin-top:32px; }
-        .search-box  { flex-direction:column; padding:12px; gap:8px; }
-        .search-box input { font-size:16px; padding:4px 0; }
-        .btn-search { width:100%; padding:14px; justify-content:center; }
-        .loan-header { flex-direction:column; }
-        .client-row  { flex-direction:column; align-items:flex-start; gap:8px; }
-        .client-name { font-size:20px; }
-        .kpi-grid    { grid-template-columns:1fr; }
-        .kpi .kv     { font-size:20px; }
-        .badges-row  { flex-direction:column; gap:6px; }
-        .badge.right { margin-left:0; }
-        .nav-tag     { display:none; }
-        .dm-wrap label { display:none; }
-        .sparkline-legend { display:none; }
-        .chips-row { flex-wrap:wrap; }
-        .chip { font-size:11px; padding:4px 9px; }
-        .risk-badge { grid-column:span 2; }
-      }
-      @media(max-width:360px){
-        .btc-grid { grid-template-columns:1fr; }
-        .btc-card.full { grid-column:span 1; }
-        .risk-badge { grid-column:span 1; }
-      }
-    </style>
-  </head>
-  <body>
+    .btc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
+    .btc-card { background: rgba(255, 255, 255, 0.5); border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; text-align: center; transition: all .2s; }
+    body.dark .btc-card { background: rgba(15, 23, 42, 0.4); }
+    .btc-card.full { grid-column: span 2; }
+    .btc-card .bl { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .btc-card .bv { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(14px, 2.8vw, 17px); font-weight: 700; color: var(--text-main); word-break: break-word; }
+    .btc-card.live { background: rgba(255, 255, 255, 0.85); border-color: rgba(5, 150, 105, 0.3); }
+    body.dark .btc-card.live { background: rgba(15, 23, 42, 0.8); }
+    .btc-card.live .bv { font-size: clamp(18px, 3.5vw, 22px); color: var(--green-ok); }
 
-    <nav class="topnav" id="topnav">
-      <div class="nav-left">
-        <a href="/" style="display:flex;align-items:center;" title="Volver al inicio">
-          <div class="logo-b">
-            <span class="l-btc">₿TCash</span>
-            <span class="l-domain">.com.ar</span>
-          </div>
-        </a>
-        <div style="width:0.5px;height:18px;background:var(--border);"></div>
-        <span class="nav-tag">Panel cliente</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div class="dm-wrap">
-          <label for="dmSw">Modo oscuro</label>
-          <label class="sw"><input type="checkbox" id="dmSw"><span class="sw-sl"></span></label>
+    .c-green { color: var(--green-ok) !important; }
+    .c-yellow { color: var(--accent) !important; }
+    .c-red { color: #E11D48 !important; }
+    
+    .live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; animation: liveBlink 2s ease-in-out infinite; }
+    .live-dot.green { background: var(--green-ok); }
+    .live-dot.yellow { background: var(--accent); }
+    .live-dot.red { background: #E11D48; }
+    @keyframes liveBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    /* SPARKLINE CHART */
+    .sparkline-card { margin-top: 24px; }
+    .sparkline-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+    .sparkline-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .12em; display: flex; align-items: center; gap: 6px; }
+    .sparkline-legend { display: flex; gap: 16px; }
+    .spark-leg { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 500; }
+    .spark-leg-line { width: 14px; height: 2px; border-radius: 2px; }
+    .spark-svg { width: 100%; overflow: visible; display: block; }
+    .spark-loading { font-size: 12px; color: var(--text-muted); text-align: center; padding: 28px 0; font-weight: 500; }
+
+    /* TOOLTIPS */
+    .tip-wrap { position: relative; display: inline-flex; align-items: center; }
+    .tip-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 14px; height: 14px; border-radius: 50%; background: rgba(226, 232, 240, 0.8); color: var(--text-muted);
+      font-size: 9px; font-weight: 700; cursor: default; transition: all .15s; flex-shrink: 0; line-height: 1; font-style: normal;
+    }
+    body.dark .tip-icon { background: rgba(51, 65, 85, 0.8); }
+    .tip-wrap:hover .tip-icon { background: var(--accent); color: #FFFFFF; }
+    .tip-box {
+      position: absolute; z-index: 200; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px);
+      background: var(--text-main); color: var(--bg-glass-base); font-size: 11px; font-weight: 500; line-height: 1.5;
+      padding: 8px 12px; border-radius: 10px; width: 210px; text-align: left;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15); pointer-events: none; opacity: 0; visibility: hidden;
+      transition: all .18s; white-space: normal; font-family: 'Inter', sans-serif;
+    }
+    .tip-box::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: var(--text-main); }
+    .tip-wrap.tip-right .tip-box { left: 0; transform: translateX(0) translateY(4px); }
+    .tip-wrap.tip-right .tip-box::after { left: 10px; transform: none; }
+    .tip-wrap.tip-right:hover .tip-box { transform: translateX(0) translateY(0); }
+    .tip-wrap.tip-left .tip-box { left: auto; right: 0; transform: translateX(0) translateY(4px); }
+    .tip-wrap.tip-left .tip-box::after { left: auto; right: 10px; transform: none; }
+    .tip-wrap.tip-left:hover .tip-box { transform: translateX(0) translateY(0); }
+    .tip-wrap:hover .tip-box { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+    /* ANIMACIONES */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .card-anim { animation: fadeUp .5s ease both; }
+
+    /* ── RESPONSIVE / MOBILE OPTIMIZATIONS ───────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .main { padding: 24px 16px 48px; }
+      .loan-grid { grid-template-columns: 1fr; gap: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .search-wrap { margin-top: 28px; }
+      .search-box { flex-direction: column; padding: 10px; gap: 10px; }
+      .search-box input { font-size: 16px; padding: 4px 6px; text-align: center; }
+      .btn-primary { width: 100%; padding: 14px; }
+      .loan-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .client-row { flex-direction: column; align-items: flex-start; gap: 10px; width: 100%; }
+      .client-name { font-size: 20px; }
+      .close-x { align-self: flex-end; width: 100%; text-align: center; margin-top: 4px; }
+      .card { padding: 20px; border-radius: 20px; }
+      .kpi-grid { grid-template-columns: 1fr; }
+      .kpi .kv { font-size: 20px; }
+      .badges-row { flex-direction: column; gap: 8px; }
+      .badge.right { margin-left: 0; }
+      .nav-tag { display: none; }
+      .dm-wrap label { display: none; }
+      .sparkline-legend { display: none; }
+      .risk-badge { grid-column: span 2; }
+      .floating-contact { right: 16px; bottom: 16px; gap: 10px; }
+      .floating-contact a { width: 48px; height: 48px; }
+      .floating-contact svg { width: 22px; height: 22px; }
+    }
+
+    @media (max-width: 380px) {
+      .btc-grid { grid-template-columns: 1fr; }
+      .btc-card.full { grid-column: span 1; }
+      .risk-badge { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BOTONES FLOTANTES -->
+  <div class="floating-contact">
+    <a href="https://wa.me/5491173695582?text=Hola%2C%20quiero%20consultar%20sobre%20mi%20pr%C3%A9stamo%20con%20colateral%20en%20BTC" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.05 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/>
+      </svg>
+    </a>
+
+    <a href="https://t.me/FedericoAlturria" target="_blank" rel="noopener" class="floating-telegram" aria-label="Telegram">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M9.78 18.65l.28-4.28 7.72-6.97c.34-.31-.07-.48-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.17-3.08-2.01 1.93c-.23.23-.42.42-.83.42z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- TOPNAV CENTRADO CON LANDING -->
+  <nav id="topnav">
+    <div class="nav-left">
+      <a href="/" style="display:flex;align-items:center;" title="Volver al inicio">
+        <div class="logo-b">
+          <span class="l-btc">₿TCash</span>
+          <span class="l-domain">.com.ar</span>
         </div>
+      </a>
+      <div style="width:1px;height:18px;background:var(--border-color);margin:0 4px;"></div>
+      <span class="nav-tag">Panel Cliente</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="dm-wrap">
+        <label for="dmSw">Modo oscuro</label>
+        <label class="sw"><input type="checkbox" id="dmSw"><span class="sw-sl"></span></label>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <div class="main">
-      <div class="search-wrap" id="searchScreen">
-        <h1>Buscá tu préstamo</h1>
-        <p>Ingresá tu código para consultar el estado de tu préstamo en tiempo real</p>
-        <div class="search-box">
-          <input type="text" id="loanCode" placeholder="Código (ej: BTC-001)"
-                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-          <button class="btn-search" id="btnSearch" onclick="searchLoan()">Buscar</button>
-        </div>
-        <div class="status-msg" id="statusMsg"></div>
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="main">
+    
+    <!-- PANTALLA BÚSQUEDA -->
+    <div class="search-wrap" id="searchScreen">
+      <h1>Consultá tu <em>préstamo.</em></h1>
+      <p>Ingresá tu código único para ver el estado, garantía y pagos en tiempo real.</p>
+      <div class="search-box">
+        <input type="text" id="loanCode" placeholder="Código (ej: BTC-001)"
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <button class="btn-primary" id="btnSearch" onclick="searchLoan()">Buscar préstamo</button>
       </div>
-      <div id="loanResult" style="display:none"></div>
+      <div class="status-msg" id="statusMsg"></div>
     </div>
 
-    <script>
-      // ⚠️ REEMPLAZA ESTA URL CON LA URL DE TU WEB APP DE APPS SCRIPT DEPLOYADA EN EL PASO 1
-      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7hNpmyth9Nvyh4XMc0K_ZxDc0VFA4CT-Ox5Fv7fspGxuIDScYi4s2Vaq33t3r5lM/exec";
+    <!-- RESULTADOS DEL DASHBOARD -->
+    <div id="loanResult" style="display:none"></div>
 
-      function tip(text,pos){
-        var cls='tip-wrap'+(pos?' '+pos:'');
-        return '<span class="'+cls+'"><span class="tip-icon">i</span><span class="tip-box">'+text+'</span></span>';
-      }
+  </div>
 
-      document.getElementById('dmSw').addEventListener('change',e=>{
-        document.body.classList.toggle('dark',e.target.checked);
-      });
-      window.addEventListener('scroll',()=>{
-        document.getElementById('topnav').classList.toggle('scrolled',window.scrollY>10);
-      });
+  <script>
+    // ⚠️ REEMPLAZAR CON TU URL DE APPS SCRIPT SI USAS HOSTING ESTÁTICO (sino usa google.script.run automáticamente)
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7hNpmyth9Nvyh4XMc0K_ZxDc0VFA4CT-Ox5Fv7fspGxuIDScYi4s2Vaq33t3r5lM/exec";
 
-      function fmt(n){ n=parseFloat(n)||0; return n.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2})+' USD'; }
-      function normPct(v){ let x=Number(v)||0; if(x<=1)x*=100; return Math.max(0,Math.min(100,x)); }
-      function esc(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+    function tip(text, pos) {
+      var cls = 'tip-wrap' + (pos ? ' ' + pos : '');
+      return '<span class="' + cls + '"><span class="tip-icon">i</span><span class="tip-box">' + text + '</span></span>';
+    }
 
-      async function searchLoan(){
-        const code=document.getElementById('loanCode').value.trim();
-        const msg=document.getElementById('statusMsg');
-        const btn=document.getElementById('btnSearch');
-        if(!code){ msg.innerHTML='<div class="err">Ingresá un código de préstamo válido.</div>'; return; }
-        
-        msg.innerHTML='<span style="color:var(--mist);font-size:13px">Buscando...</span>';
-        btn.disabled=true;
+    document.getElementById('dmSw').addEventListener('change', e => {
+      document.body.classList.toggle('dark', e.target.checked);
+    });
 
+    window.addEventListener('scroll', () => {
+      document.getElementById('topnav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    function fmt(n) { n = parseFloat(n) || 0; return '$' + n.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD'; }
+    function normPct(v) { let x = Number(v) || 0; if (x <= 1) x *= 100; return Math.max(0, Math.min(100, x)); }
+    function esc(s) { return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+
+    async function searchLoan() {
+      const code = document.getElementById('loanCode').value.trim();
+      const msg = document.getElementById('statusMsg');
+      const btn = document.getElementById('btnSearch');
+      if (!code) { msg.innerHTML = '<div class="err">Por favor ingresá un código de préstamo válido.</div>'; return; }
+
+      msg.innerHTML = '<span style="color:var(--text-muted);font-size:13px;font-weight:500;">Cargando datos del préstamo...</span>';
+      btn.disabled = true;
+
+      // 1. Detección automática de entorno Google Apps Script
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(r => { btn.disabled = false; renderLoan(r); })
+          .withFailureHandler(e => { btn.disabled = false; msg.innerHTML = '<div class="err">Error: ' + (e && e.message ? e.message : e) + '</div>'; })
+          .getLoanAndPayments(code);
+      } else {
+        // 2. Entorno Web Estático vía fetch()
         try {
           const response = await fetch(`${APPS_SCRIPT_URL}?code=${encodeURIComponent(code)}`);
           const result = await response.json();
@@ -382,212 +483,198 @@
           }
         } catch (error) {
           btn.disabled = false;
-          msg.innerHTML = '<div class="err">Error al conectar con el servidor. Intente nuevamente.</div>';
+          msg.innerHTML = '<div class="err">Error al conectar con el servidor. Verifique su conexión.</div>';
         }
       }
-      document.getElementById('loanCode').addEventListener('keydown',e=>{ if(e.key==='Enter') searchLoan(); });
+    }
 
-      function renderLoan(res){
-        const msg=document.getElementById('statusMsg');
-        if(!res||!res.loan){ msg.innerHTML='<div class="err">Préstamo no encontrado. Verificá el código.</div>'; return; }
-        document.getElementById('searchScreen').style.display='none';
-        msg.innerHTML='';
-        window._lastLoan=res;
+    document.getElementById('loanCode').addEventListener('keydown', e => { if (e.key === 'Enter') searchLoan(); });
 
-        const L=res.loan, C=res.computed;
-        const P=(res.payments||[]).sort((a,b)=>new Date(b.DateISO)-new Date(a.DateISO));
-        const pct=normPct(L.Payment_Progress_Percent).toFixed(1);
+    function renderLoan(res) {
+      const msg = document.getElementById('statusMsg');
+      if (!res || !res.loan) { msg.innerHTML = '<div class="err">Préstamo no encontrado. Verificá el código ingresado.</div>'; return; }
+      document.getElementById('searchScreen').style.display = 'none';
+      msg.innerHTML = '';
+      window._lastLoan = res;
 
-        const live=Number(L.BTC_Price_RealTime_USD)||0;
-        const warn=Number(L.BTC_Warning_Price_USD)||0;
-        const liq=Number(L.BTC_Sell_Threshold_USD)||0;
-        let liveClass='c-green', dotClass='green', semLabel='Al día';
-        if(live<=warn&&live>liq){ liveClass='c-yellow'; dotClass='yellow'; semLabel='Advertencia'; }
-        if(live<=liq){ liveClass='c-red'; dotClass='red'; semLabel='Liquidación'; }
+      const L = res.loan, C = res.computed;
+      const P = (res.payments || []).sort((a, b) => new Date(b.DateISO) - new Date(a.DateISO));
+      const pct = normPct(L.Payment_Progress_Percent).toFixed(1);
 
-        const result=document.getElementById('loanResult');
-        result.style.display='block';
-        var H=[];
+      const live = Number(L.BTC_Price_RealTime_USD) || 0;
+      const warn = Number(L.BTC_Warning_Price_USD) || 0;
+      const liq = Number(L.BTC_Sell_Threshold_USD) || 0;
+      let liveClass = 'c-green', dotClass = 'green', semLabel = 'Al día';
+      if (live <= warn && live > liq) { liveClass = 'c-yellow'; dotClass = 'yellow'; semLabel = 'Advertencia'; }
+      if (live <= liq) { liveClass = 'c-red'; dotClass = 'red'; semLabel = 'Liquidación'; }
 
-        /* BANNER ALERTA */
-        if(live<=liq){
-          H.push('<div class="alert-banner danger header-anim" style="animation-delay:.05s"><div class="alert-icon">🚨</div><div class="alert-body">');
-          H.push('<div class="alert-title">Precio en zona de liquidación</div>');
-          H.push('<div class="alert-desc">El precio de BTC ('+fmt(live)+') está por debajo del umbral de liquidación ('+fmt(liq)+'). Tu garantía puede ejecutarse en cualquier momento. Contactá a BTCash de inmediato.</div>');
-          H.push('</div></div>');
-        } else if(live<=warn){
-          H.push('<div class="alert-banner warning header-anim" style="animation-delay:.05s"><div class="alert-icon">⚠️</div><div class="alert-body">');
-          H.push('<div class="alert-title">Precio en zona de advertencia</div>');
-          H.push('<div class="alert-desc">El precio de BTC ('+fmt(live)+') está cerca del umbral de liquidación ('+fmt(liq)+'). Seguí de cerca el mercado o contactá a BTCash.</div>');
-          H.push('</div></div>');
-        }
+      const result = document.getElementById('loanResult');
+      result.style.display = 'block';
+      var H = [];
 
-        /* HEADER */
-        H.push('<div class="loan-header header-anim" style="animation-delay:.08s">');
-        H.push('<div class="client-row">');
-        H.push('<img class="client-avatar" src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/LatGL1sf4VN9iHEDGn9X/pub/1B2aQ4bNdBQvQxAgdOVo/asdsadsad.png" alt="Cliente">');
-        H.push('<span class="client-name">'+esc(L.Client_name||'-')+'</span>');
-        H.push('<div class="chips-row" style="display:flex;gap:8px;flex-wrap:wrap;">');
-        if(L.Contract_PDF) H.push('<a class="chip" href="'+encodeURI(L.Contract_PDF)+'" target="_blank">📄 Ver contrato</a>');
-        if(L.BTC_Adress)   H.push('<a class="chip" href="https://mempool.space/es/address/'+encodeURIComponent(L.BTC_Adress)+'" target="_blank">🟠 '+esc(L.BTC_Adress)+'</a>');
+      /* BANNER ALERTA */
+      if (live <= liq) {
+        H.push('<div class="alert-banner danger"><div class="alert-icon">🚨</div><div class="alert-body">');
+        H.push('<div class="alert-title">Atención: Zona de liquidación</div>');
+        H.push('<div class="alert-desc">El precio actual de BTC (' + fmt(live) + ') cayó por debajo del precio de liquidación (' + fmt(liq) + '). Contactá a BTCash urgentemente.</div>');
         H.push('</div></div>');
-        H.push('<button class="close-x" onclick="resetView()">✕</button>');
-        H.push('</div>');
-
-        /* GRID */
-        H.push('<div class="loan-grid">');
-
-        /* ── COLUMNA IZQUIERDA ── */
-        H.push('<div class="loan-col">');
-
-        /* Card resumen */
-        H.push('<div class="card card-anim" id="cardResumen" style="animation-delay:.12s">');
-        H.push('<div class="card-title">Resumen del préstamo</div>');
-        H.push('<div class="kpi-grid">');
-        H.push('<div class="kpi"><div class="kl">Capital prestado '+tip('Monto original que recibiste como préstamo en dólares.')+'</div><div class="kv">'+fmt(L.Loan_Amount_USD)+'</div><div class="ks">Tasa: '+Number(L.Interest_Rate_Percent).toFixed(2)+'% anual '+tip('Tasa de interés anual aplicada sobre el capital prestado.')+'</div></div>');
-        H.push('<div class="kpi"><div class="kl">Total adeudado '+tip('Capital + intereses totales que debés pagar al finalizar el préstamo.')+'</div><div class="kv">'+fmt(L.Total_Amount_Due_USD)+'</div><div class="ks">Pendiente: '+fmt(C.Remaining_USD)+'</div></div>');
-        H.push('</div>');
-        H.push('<div class="prog-wrap">');
-        H.push('<div class="prog-label"><span>Progreso de pago</span><span class="prog-pct">'+fmt(L.Total_Amount_Paid_USD)+' / '+fmt(L.Total_Amount_Due_USD)+'</span></div>');
-        H.push('<div class="prog-bg"><div id="progFill" class="prog-fill"></div><span id="progLabel" class="prog-pct-label outside" style="--prog-w:0%">0%</span></div>');
-        H.push('</div>');
-        H.push('<div class="badges-row"><span class="badge">Inicio: '+esc(L.Loan_Start_Date||'-')+'</span><span class="badge right">Vencimiento: '+esc(L.Loan_Due_Date||'-')+'</span></div>');
-        H.push('</div>');
-
-        /* Card historial */
-        H.push('<div class="card card-anim" style="animation-delay:.20s">');
-        H.push('<div class="card-title">Historial de pagos</div>');
-        H.push(P.length ? paymentsHtml(P) : emptyState());
-        H.push('</div>');
-
-        H.push('</div>'); /* fin col izq */
-
-        /* ── COLUMNA DERECHA ── */
-        H.push('<div class="loan-col">');
-        H.push('<div class="card card-anim" style="animation-delay:.16s">');
-        H.push('<div class="card-title">Detalle Bitcoin</div>');
-        H.push('<div class="btc-grid">');
-
-        /* Badge riesgo */
-        var riskDotClass='safe', riskTitle='Zona segura', riskSub='El precio está por encima del umbral de advertencia.';
-        if(live<=warn&&live>liq){ riskDotClass='warning'; riskTitle='Zona de advertencia'; riskSub='El precio se acerca al umbral crítico. Mantenete alerta.'; }
-        if(live<=liq){ riskDotClass='danger'; riskTitle='Zona de liquidación'; riskSub='El precio superó el límite. La garantía puede ejecutarse.'; }
-        H.push('<div class="risk-badge">');
-        H.push('<div class="risk-row"><span class="risk-dot '+riskDotClass+'"></span><span class="risk-title">'+riskTitle+'</span></div>');
-        H.push('<div class="risk-sub">'+riskSub+'</div>');
-        H.push('</div>');
-
-        H.push('<div class="btc-card"><div class="bl">Garantía '+tip('Cantidad de BTC depositada como colateral.','tip-right')+'</div><div class="bv">'+esc((Number(L.BTC_Collateral)||0).toFixed(6).replace('.',','))+' BTC</div></div>');
-        H.push('<div class="btc-card"><div class="bl">Precio al inicio '+tip('Precio del BTC al momento de originarse el préstamo.')+'</div><div class="bv">'+fmt(L.BTC_Initial_Price_USD)+'</div></div>');
-        H.push('<div class="btc-card"><div class="bl">Precio advertencia '+tip('Al llegar a este nivel BTCash te notificará.','tip-right')+'</div><div class="bv c-yellow">'+fmt(L.BTC_Warning_Price_USD)+'</div></div>');
-        H.push('<div class="btc-card"><div class="bl">Precio liquidación '+tip('Si el BTC cae a este precio tu garantía se ejecuta automáticamente.','tip-left')+'</div><div class="bv c-red">'+fmt(L.BTC_Sell_Threshold_USD)+'</div></div>');
-        H.push('<div class="btc-card full live"><div class="bl"><span class="live-dot '+dotClass+'"></span>Precio en vivo · '+semLabel+' '+tip('Precio actual de BTC en tiempo real.')+'</div>');
-        H.push('<div class="bv '+liveClass+'"><a href="https://coinmarketcap.com/es/currencies/bitcoin/" target="_blank" style="color:inherit;">'+fmt(L.BTC_Price_RealTime_USD)+'</a></div></div>');
-
-        H.push('</div>'); /* fin btc-grid */
-        H.push('</div>'); /* fin card BTC */
-        H.push('</div>'); /* fin col der */
-        H.push('</div>'); /* fin loan-grid */
-
-        /* SPARKLINE */
-        H.push('<div class="sparkline-card card-anim" style="margin-top:20px;animation-delay:.28s">');
-        H.push('<div class="sparkline-header">');
-        H.push('<div class="sparkline-title">📈 Precio BTC — últimos 30 días '+tip('Evolución del precio de Bitcoin en los últimos 30 días con tus umbrales marcados.')+'</div>');
-        H.push('<div class="sparkline-legend"><div class="spark-leg"><div class="spark-leg-line" style="background:#EAB308"></div>Advertencia</div><div class="spark-leg"><div class="spark-leg-line" style="background:#DC2626"></div>Liquidación</div></div>');
-        H.push('</div><div id="sparklineChart"><div class="spark-loading">Cargando datos de mercado...</div></div></div>');
-
-        result.innerHTML=H.join('');
-
-        /* Barra de progreso */
-        setTimeout(()=>{
-          const fill=document.getElementById('progFill');
-          const label=document.getElementById('progLabel');
-          const pctNum=parseFloat(pct);
-          fill.style.width=pct+'%';
-          label.style.setProperty('--prog-w',pct+'%');
-          label.textContent=pct+'%';
-          label.className='prog-pct-label '+(pctNum>=15?'inside':'outside');
-        },200);
-
-        window.onresize=null;
-        loadSparkline(warn,liq);
+      } else if (live <= warn) {
+        H.push('<div class="alert-banner warning"><div class="alert-icon">⚠️</div><div class="alert-body">');
+        H.push('<div class="alert-title">Aviso: Zona de advertencia</div>');
+        H.push('<div class="alert-desc">El precio de BTC (' + fmt(live) + ') se encuentra cerca del umbral límite (' + fmt(liq) + '). Recomendamos monitorear la garantía.</div>');
+        H.push('</div></div>');
       }
 
-      function emptyState(){
-        return '<div class="empty-state">'+
-          '<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">'+
-            '<rect x="8" y="12" width="36" height="30" rx="5" stroke="#9BB8AD" stroke-width="1.5" fill="none"/>'+
-            '<path d="M8 19h36" stroke="#9BB8AD" stroke-width="1.5"/>'+
-            '<path d="M16 9v6M26 9v6M36 9v6" stroke="#9BB8AD" stroke-width="1.5" stroke-linecap="round"/>'+
-            '<circle cx="17" cy="28" r="2" fill="#C8DDD4"/>'+
-            '<circle cx="26" cy="28" r="2" fill="#C8DDD4"/>'+
-            '<circle cx="35" cy="28" r="2" fill="#C8DDD4"/>'+
-            '<circle cx="17" cy="36" r="2" fill="#C8DDD4"/>'+
-            '<circle cx="26" cy="36" r="2" fill="#C8DDD4"/>'+
-          '</svg>'+
-          '<div class="empty-title">Sin pagos registrados</div>'+
-          '<div class="empty-sub">Cuando realices tu primer pago aparecerá acá el historial completo.</div>'+
-        '</div>';
-      }
+      /* HEADER PRÉSTAMO */
+      H.push('<div class="loan-header card-anim" style="animation-delay:.05s">');
+      H.push('<div class="client-row">');
+      H.push('<img class="client-avatar" src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/LatGL1sf4VN9iHEDGn9X/pub/1B2aQ4bNdBQvQxAgdOVo/asdsadsad.png" alt="Cliente">');
+      H.push('<span class="client-name">' + esc(L.Client_name || 'Cliente') + '</span>');
+      H.push('<div style="display:flex;gap:8px;flex-wrap:wrap;">');
+      if (L.Contract_PDF) H.push('<a class="chip" href="' + encodeURI(L.Contract_PDF) + '" target="_blank">📄 Ver Contrato</a>');
+      if (L.BTC_Adress) H.push('<a class="chip" href="https://mempool.space/es/address/' + encodeURIComponent(L.BTC_Adress) + '" target="_blank">🟠 Explorador BTC</a>');
+      H.push('</div></div>');
+      H.push('<button class="close-x" onclick="resetView()">Volver a buscar ✕</button>');
+      H.push('</div>');
 
-      function paymentsHtml(P){
-        var rows=P.map(function(p){
-          return '<tr><td>'+esc(p.Date)+'</td><td>'+fmt(p.Amount_USD)+'</td><td>'+esc(p.Notes||'')+'</td><td class="td-muted">'+esc(p.Payment_ID||'')+'</td></tr>';
-        }).join('');
-        return '<div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Monto</th><th>Notas</th><th>ID</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
-      }
+      /* GRID DOS COLUMNAS */
+      H.push('<div class="loan-grid">');
 
-      function loadSparkline(warnPrice,liqPrice){
-        fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily')
-          .then(r=>r.json())
-          .then(data=>{ renderSparkline(data.prices.map(p=>p[1]),warnPrice,liqPrice); })
-          .catch(()=>{
-            const el=document.getElementById('sparklineChart');
-            if(el) el.innerHTML='<div class="spark-loading" style="color:var(--muted)">No se pudieron cargar los datos de mercado.</div>';
-          });
-      }
+      /* COLUMNA IZQUIERDA */
+      H.push('<div class="loan-col">');
 
-      function renderSparkline(prices,warnPrice,liqPrice){
-        const el=document.getElementById('sparklineChart');
-        if(!el||!prices.length) return;
-        const W=el.getBoundingClientRect().width||700;
-        const H=140, pad={t:14,b:26,l:10,r:10};
-        const w=W-pad.l-pad.r, h=H-pad.t-pad.b;
-        const minP=Math.min(...prices,liqPrice*0.97);
-        const maxP=Math.max(...prices,warnPrice*1.03);
-        const sx=i=>(i/(prices.length-1))*w+pad.l;
-        const sy=v=>H-pad.b-((v-minP)/(maxP-minP))*h;
-        const pts=prices.map((p,i)=>sx(i)+','+sy(p)).join(' ');
-        const areaPath=sx(0)+','+sy(prices[0])+' '+pts.split(' ').slice(1).join(' ')+' '+sx(prices.length-1)+','+(H-pad.b)+' '+sx(0)+','+(H-pad.b);
-        const lastX=sx(prices.length-1), lastY=sy(prices[prices.length-1]);
-        const yWarn=sy(warnPrice), yLiq=sy(liqPrice);
-        const fmtK=v=>v>=1000?'$'+(v/1000).toFixed(0)+'k':'$'+v.toFixed(0);
-        const dark=document.body.classList.contains('dark');
-        const lineColor=dark?'#5A9E84':'#3B6B57';
-        el.innerHTML=`<svg class="spark-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="${lineColor}" stop-opacity="0.15"/>
-            <stop offset="100%" stop-color="${lineColor}" stop-opacity="0"/>
-          </linearGradient></defs>
-          <polygon points="${areaPath}" fill="url(#sg)"/>
-          ${warnPrice>minP&&warnPrice<maxP?`<line x1="${pad.l}" y1="${yWarn}" x2="${W-pad.r}" y2="${yWarn}" stroke="#EAB308" stroke-width="1" stroke-dasharray="4,3" opacity=".75"/><text x="${W-pad.r-2}" y="${yWarn-4}" fill="#EAB308" font-size="9" text-anchor="end" font-family="DM Sans,sans-serif">${fmtK(warnPrice)}</text>`:''}
-          ${liqPrice>minP&&liqPrice<maxP?`<line x1="${pad.l}" y1="${yLiq}" x2="${W-pad.r}" y2="${yLiq}" stroke="#DC2626" stroke-width="1" stroke-dasharray="4,3" opacity=".75"/><text x="${W-pad.r-2}" y="${yLiq-4}" fill="#DC2626" font-size="9" text-anchor="end" font-family="DM Sans,sans-serif">${fmtK(liqPrice)}</text>`:''}
-          <polyline points="${pts}" fill="none" stroke="${lineColor}" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-          <circle cx="${lastX}" cy="${lastY}" r="3.5" fill="${lineColor}" stroke="white" stroke-width="1.5"/>
-          <text x="${pad.l}" y="${H-pad.b+14}" fill="var(--mist)" font-size="9" font-family="DM Sans,sans-serif">${fmtK(minP)}</text>
-          <text x="${pad.l}" y="${pad.t+6}" fill="var(--mist)" font-size="9" font-family="DM Sans,sans-serif">${fmtK(maxP)}</text>
-        </svg>`;
-      }
+      /* Card Resumen */
+      H.push('<div class="card card-anim" style="animation-delay:.10s">');
+      H.push('<div class="card-title">Resumen del Préstamo</div>');
+      H.push('<div class="kpi-grid">');
+      H.push('<div class="kpi"><div class="kl">Capital prestado ' + tip('Monto total desembolsado originalmente en dólares.') + '</div><div class="kv">' + fmt(L.Loan_Amount_USD) + '</div><div class="ks">Tasa: ' + Number(L.Interest_Rate_Percent).toFixed(2) + '% anual ' + tip('Tasa de interés simple anual acordada.') + '</div></div>');
+      H.push('<div class="kpi"><div class="kl">Total adeudado ' + tip('Suma de capital prestado más los intereses al vencimiento.') + '</div><div class="kv">' + fmt(L.Total_Amount_Due_USD) + '</div><div class="ks">Pendiente: ' + fmt(C.Remaining_USD) + '</div></div>');
+      H.push('</div>');
+      H.push('<div class="prog-wrap">');
+      H.push('<div class="prog-label"><span>Progreso de Pagos</span><span style="color:var(--accent)">' + fmt(L.Total_Amount_Paid_USD) + ' / ' + fmt(L.Total_Amount_Due_USD) + '</span></div>');
+      H.push('<div class="prog-bg"><div id="progFill" class="prog-fill"></div></div>');
+      H.push('</div>');
+      H.push('<div class="badges-row"><span class="badge">Inicio: ' + esc(L.Loan_Start_Date || '-') + '</span><span class="badge right">Vencimiento: ' + esc(L.Loan_Due_Date || '-') + '</span></div>');
+      H.push('</div>');
 
-      function resetView(){
-        document.getElementById('searchScreen').style.display='block';
-        document.getElementById('loanResult').style.display='none';
-        document.getElementById('loanResult').innerHTML='';
-        document.getElementById('loanCode').value='';
-        document.getElementById('statusMsg').innerHTML='';
-        window._lastLoan=null;
-        window.onresize=null;
-      }
-    </script>
-  </body>
+      /* Card Historial */
+      H.push('<div class="card card-anim" style="animation-delay:.15s">');
+      H.push('<div class="card-title">Historial de Pagos</div>');
+      H.push(P.length ? paymentsHtml(P) : emptyState());
+      H.push('</div>');
+
+      H.push('</div>'); /* fin col izq */
+
+      /* COLUMNA DERECHA */
+      H.push('<div class="loan-col">');
+      H.push('<div class="card card-anim" style="animation-delay:.12s">');
+      H.push('<div class="card-title">Monitoreo de Garantía BTC</div>');
+      H.push('<div class="btc-grid">');
+
+      /* Badge estado de riesgo */
+      var riskDotClass = 'safe', riskTitle = 'Estado: Zona Segura', riskSub = 'El precio de la garantía cubre óptimamente el préstamo.';
+      if (live <= warn && live > liq) { riskDotClass = 'warning'; riskTitle = 'Estado: Zona de Advertencia'; riskSub = 'El precio se aproxima al límite de seguridad.'; }
+      if (live <= liq) { riskDotClass = 'danger'; riskTitle = 'Estado: Zona de Liquidación'; riskSub = 'Garantía en riesgo imminente de ejecución.'; }
+      H.push('<div class="risk-badge">');
+      H.push('<div style="display:flex;align-items:center;"><span class="risk-dot ' + riskDotClass + '"></span><span class="risk-title">' + riskTitle + '</span></div>');
+      H.push('<div class="risk-sub">' + riskSub + '</div>');
+      H.push('</div>');
+
+      H.push('<div class="btc-card"><div class="bl">Garantía ' + tip('Cantidad de Bitcoin custodiada.', 'tip-right') + '</div><div class="bv">' + esc((Number(L.BTC_Collateral) || 0).toFixed(6).replace('.', ',')) + ' BTC</div></div>');
+      H.push('<div class="btc-card"><div class="bl">Precio Inicial ' + tip('Precio de referencia al firmar el contrato.') + '</div><div class="bv">' + fmt(L.BTC_Initial_Price_USD) + '</div></div>');
+      H.push('<div class="btc-card"><div class="bl">Precio Advertencia ' + tip('Nivel de precio que activa notificaciones preventivas.', 'tip-right') + '</div><div class="bv c-yellow">' + fmt(L.BTC_Warning_Price_USD) + '</div></div>');
+      H.push('<div class="btc-card"><div class="bl">Precio Liquidación ' + tip('Umbral de cierre de posición por resguardo.', 'tip-left') + '</div><div class="bv c-red">' + fmt(L.BTC_Sell_Threshold_USD) + '</div></div>');
+      H.push('<div class="btc-card full live"><div class="bl"><span class="live-dot ' + dotClass + '"></span>Precio BTC en vivo · ' + semLabel + ' ' + tip('Cotización de mercado en tiempo real.') + '</div>');
+      H.push('<div class="bv ' + liveClass + '"><a href="https://coinmarketcap.com/es/currencies/bitcoin/" target="_blank" style="color:inherit;">' + fmt(L.BTC_Price_RealTime_USD) + '</a></div></div>');
+
+      H.push('</div>'); /* fin btc-grid */
+      H.push('</div>'); /* fin card BTC */
+      H.push('</div>'); /* fin col der */
+      H.push('</div>'); /* fin loan-grid */
+
+      /* SPARKLINE CHART */
+      H.push('<div class="card sparkline-card card-anim" style="animation-delay:.20s">');
+      H.push('<div class="sparkline-header">');
+      H.push('<div class="sparkline-title">📈 Evolución de BTC — ÚLTIMOS 30 DÍAS ' + tip('Gráfico de precio histórico reciente con tus límites de garantía trazados.') + '</div>');
+      H.push('<div class="sparkline-legend"><div class="spark-leg"><div class="spark-leg-line" style="background:var(--accent)"></div>Advertencia</div><div class="spark-leg"><div class="spark-leg-line" style="background:#E11D48"></div>Liquidación</div></div>');
+      H.push('</div><div id="sparklineChart"><div class="spark-loading">Obteniendo gráfico de mercado...</div></div></div>');
+
+      result.innerHTML = H.join('');
+
+      /* Animación de barra */
+      setTimeout(() => {
+        const fill = document.getElementById('progFill');
+        if (fill) fill.style.width = pct + '%';
+      }, 200);
+
+      loadSparkline(warn, liq);
+    }
+
+    function emptyState() {
+      return '<div class="empty-state">' +
+        '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.4;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>' +
+        '<div class="empty-title">Sin pagos registrados aún</div>' +
+        '<div class="empty-sub">Tus cuotas abonadas aparecerán listadas en este panel con su comprobante correspondiente.</div>' +
+      '</div>';
+    }
+
+    function paymentsHtml(P) {
+      var rows = P.map(function(p) {
+        return '<tr><td>' + esc(p.Date) + '</td><td style="font-family:\'Plus Jakarta Sans\',sans-serif;font-weight:600;">' + fmt(p.Amount_USD) + '</td><td>' + esc(p.Notes || '-') + '</td><td class="td-muted">' + esc(p.Payment_ID || '-') + '</td></tr>';
+      }).join('');
+      return '<div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Monto</th><th>Detalle</th><th>ID Pago</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+    }
+
+    function loadSparkline(warnPrice, liqPrice) {
+      fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily')
+        .then(r => r.json())
+        .then(data => { renderSparkline(data.prices.map(p => p[1]), warnPrice, liqPrice); })
+        .catch(() => {
+          const el = document.getElementById('sparklineChart');
+          if (el) el.innerHTML = '<div class="spark-loading">Gráfico temporalmente no disponible.</div>';
+        });
+    }
+
+    function renderSparkline(prices, warnPrice, liqPrice) {
+      const el = document.getElementById('sparklineChart');
+      if (!el || !prices.length) return;
+      const W = el.getBoundingClientRect().width || 700;
+      const H = 140, pad = { t: 14, b: 26, l: 10, r: 10 };
+      const w = W - pad.l - pad.r, h = H - pad.t - pad.b;
+      const minP = Math.min(...prices, liqPrice * 0.97);
+      const maxP = Math.max(...prices, warnPrice * 1.03);
+      const sx = i => (i / (prices.length - 1)) * w + pad.l;
+      const sy = v => H - pad.b - ((v - minP) / (maxP - minP)) * h;
+      const pts = prices.map((p, i) => sx(i) + ',' + sy(p)).join(' ');
+      const areaPath = sx(0) + ',' + sy(prices[0]) + ' ' + pts.split(' ').slice(1).join(' ') + ' ' + sx(prices.length - 1) + ',' + (H - pad.b) + ' ' + sx(0) + ',' + (H - pad.b);
+      const lastX = sx(prices.length - 1), lastY = sy(prices[prices.length - 1]);
+      const yWarn = sy(warnPrice), yLiq = sy(liqPrice);
+      const fmtK = v => v >= 1000 ? '$' + (v / 1000).toFixed(0) + 'k' : '$' + v.toFixed(0);
+      const lineColor = '#D97706';
+
+      el.innerHTML = `<svg class="spark-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${lineColor}" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="${lineColor}" stop-opacity="0"/>
+        </linearGradient></defs>
+        <polygon points="${areaPath}" fill="url(#sg)"/>
+        ${warnPrice > minP && warnPrice < maxP ? `<line x1="${pad.l}" y1="${yWarn}" x2="${W - pad.r}" y2="${yWarn}" stroke="#D97706" stroke-width="1.2" stroke-dasharray="4,3" opacity=".8"/><text x="${W - pad.r - 2}" y="${yWarn - 4}" fill="#D97706" font-size="9" font-weight="600" text-anchor="end" font-family="Plus Jakarta Sans,sans-serif">${fmtK(warnPrice)}</text>` : ''}
+        ${liqPrice > minP && liqPrice < maxP ? `<line x1="${pad.l}" y1="${yLiq}" x2="${W - pad.r}" y2="${yLiq}" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="4,3" opacity=".8"/><text x="${W - pad.r - 2}" y="${yLiq - 4}" fill="#E11D48" font-size="9" font-weight="600" text-anchor="end" font-family="Plus Jakarta Sans,sans-serif">${fmtK(liqPrice)}</text>` : ''}
+        <polyline points="${pts}" fill="none" stroke="${lineColor}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="${lastX}" cy="${lastY}" r="4" fill="${lineColor}" stroke="#FFFFFF" stroke-width="1.5"/>
+        <text x="${pad.l}" y="${H - pad.b + 14}" fill="var(--text-muted)" font-size="9" font-family="Plus Jakarta Sans,sans-serif">${fmtK(minP)}</text>
+        <text x="${pad.l}" y="${pad.t + 6}" fill="var(--text-muted)" font-size="9" font-family="Plus Jakarta Sans,sans-serif">${fmtK(maxP)}</text>
+      </svg>`;
+    }
+
+    function resetView() {
+      document.getElementById('searchScreen').style.display = 'block';
+      document.getElementById('loanResult').style.display = 'none';
+      document.getElementById('loanResult').innerHTML = '';
+      document.getElementById('loanCode').value = '';
+      document.getElementById('statusMsg').innerHTML = '';
+      window._lastLoan = null;
+    }
+  </script>
+</body>
 </html>

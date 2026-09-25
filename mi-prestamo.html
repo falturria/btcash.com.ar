@@ -1,593 +1,571 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>BTCash — Mi Préstamo</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <style>
-      :root {
-        --sage:      #C8DDD4;
-        --sage-dark: #3B6B57;
-        --sage-mid:  #5A9E84;
-        --sage-deep: #2D4F40;
-        --orange:    #F4A96A;
-        --orange-dk: #D4824A;
-        --mist:      #9BB8AD;
-        --cream:     #FAF8F4;
-        --sand:      #F0EBE3;
-        --text:      #1C2B24;
-        --muted:     #6B8078;
-        --border:    #E2EDE8;
-        --white:     #FFFFFF;
-        --green-ok:  #16A34A;
-        --red-bg:    #FEF2F2;
-      }
-      body.dark {
-        --text:   #E8F5EE;
-        --muted:  #9BB8AD;
-        --border: #2A3F34;
-        --white:  #1C2B24;
-        --cream:  #1A1F1D;
-        --sand:   #243028;
-      }
-      *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-      body {
-        font-family:'DM Sans',sans-serif;
-        background:var(--cream);
-        color:var(--text);
-        font-size:15px;
-        line-height:1.7;
-        transition:background .3s,color .3s;
-        min-height:100vh;
-        -webkit-text-size-adjust:100%;
-      }
-      a { text-decoration:none; }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTCash — Mi Préstamo | Panel de Cliente</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- FUENTES DE LA LANDING -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-glass-base:  #F4F6F9;
+      --glass-white:    rgba(255, 255, 255, 0.85);
+      --glass-border:   rgba(255, 255, 255, 0.9);
+      --glass-shadow:   0 8px 32px 0 rgba(31, 38, 135, 0.05);
+      
+      --accent:         #D97706; /* Ámbar/Bitcoin */
+      --accent-hover:   #B45309;
+      --accent-soft:    rgba(217, 119, 6, 0.08);
+      
+      --text-main:      #1E293B;
+      --text-muted:     #64748B;
+      
+      --green-ok:       #059669;
+      --green-bg:       rgba(5, 150, 105, 0.08);
+      --yellow-bg:      rgba(217, 119, 6, 0.08);
+      --red-ok:         #E11D48;
+      --red-bg:         rgba(225, 29, 72, 0.08);
+      --card-border:    rgba(226, 232, 240, 0.8);
+    }
 
-      /* ── TOPNAV ─── */
-      .topnav {
-        position:sticky; top:0; z-index:50;
-        display:flex; align-items:center; justify-content:space-between;
-        padding:0 24px; height:58px;
-        background:rgba(250,248,244,.96); backdrop-filter:blur(16px);
-        border-bottom:0.5px solid var(--border); transition:background .3s,box-shadow .3s;
-      }
-      body.dark .topnav { background:rgba(26,25,22,.96); }
-      .topnav.scrolled { box-shadow:0 4px 20px rgba(45,79,64,.08); }
-      .nav-left { display:flex; align-items:center; gap:12px; }
-      .nav-tag  { font-size:11px; color:var(--mist); letter-spacing:.08em; text-transform:uppercase; }
-      .dm-wrap  { display:flex; align-items:center; gap:8px; }
-      .dm-wrap label { font-size:12px; color:var(--mist); cursor:pointer; }
-      .sw { position:relative; display:inline-block; width:38px; height:21px; flex-shrink:0; }
-      .sw input { display:none; }
-      .sw-sl { position:absolute; cursor:pointer; inset:0; background:var(--sage); transition:.3s; border-radius:21px; }
-      .sw-sl:before { position:absolute; content:""; height:15px; width:15px; left:3px; bottom:3px; background:var(--white); transition:.3s; border-radius:50%; }
-      input:checked+.sw-sl { background:var(--orange); }
-      input:checked+.sw-sl:before { transform:translateX(17px); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #F8FAFC 0%, #EEF2F6 100%);
+      color: var(--text-main);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      user-select: none; /* Seguridad básica de copia */
+      -webkit-user-select: none;
+    }
+    a { text-decoration: none; }
 
-      /* ── LOGO SVG ─── */
-      .logo-b { display:flex; align-items:baseline; line-height:1; }
-      .logo-b .l-btc { font-family:'DM Sans',sans-serif; font-size:24px; font-weight:700; color:var(--orange); letter-spacing:-.02em; }
-      .logo-b .l-cash { font-family:'DM Sans',sans-serif; font-size:22px; font-weight:600; color:var(--sage-deep); letter-spacing:-.02em; }
-      .logo-b .l-domain { font-family:'DM Sans',sans-serif; font-size:9px; font-weight:400; color:var(--mist); margin-left:5px; letter-spacing:.04em; }
-      body.dark .logo-b .l-cash { color:#E8F5EE; }
+    /* ── LOGO ────────────────────────────────────── */
+    .logo-b { display: inline-flex; align-items: baseline; gap: 0; line-height: 1; }
+    .logo-b .l-btc    { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--accent); letter-spacing: -.02em; }
+    .logo-b .l-domain { font-family: 'Inter', sans-serif; font-weight: 400; color: var(--text-muted); margin-left: 4px; letter-spacing: .02em; }
 
-      /* ── MAIN ─── */
-      .main { max-width:1180px; margin:0 auto; padding:28px 20px 52px; }
+    /* ── NAV BAR ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 70px;
+      background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+    .nav-tag {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px; font-weight: 700; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid rgba(217, 119, 6, 0.2);
+      border-radius: 100px; padding: 4px 12px; letter-spacing: .05em; text-transform: uppercase;
+    }
 
-      /* ── SEARCH ─── */
-      .search-wrap { max-width:460px; margin:60px auto 0; text-align:center; padding:0 4px; }
-      .search-wrap h1 { font-family:'Instrument Serif',serif; font-size:clamp(26px,6vw,36px); font-weight:400; color:var(--sage-deep); margin-bottom:8px; line-height:1.15; }
-      .search-wrap p  { font-size:14px; color:var(--muted); margin-bottom:24px; font-weight:300; }
-      .search-box {
-        display:flex; gap:10px;
-        background:var(--white); border:0.5px solid var(--sage);
-        border-radius:16px; padding:8px 8px 8px 18px;
-        box-shadow:0 4px 20px rgba(45,79,64,.08); transition:box-shadow .2s;
-      }
-      .search-box:focus-within { box-shadow:0 6px 28px rgba(45,79,64,.13); border-color:var(--sage-mid); }
-      .search-box input {
-        flex:1; min-width:0; background:transparent; border:none;
-        color:var(--text); font-size:16px; font-family:'DM Sans',sans-serif; outline:none;
-      }
-      .search-box input::placeholder { color:var(--mist); }
-      .btn-search {
-        background:var(--orange); color:var(--sage-deep);
-        border:none; border-radius:12px; padding:12px 20px; font-size:14px; font-weight:600;
-        cursor:pointer; font-family:'DM Sans',sans-serif; white-space:nowrap; flex-shrink:0;
-        transition:background .15s,transform .1s; min-height:44px;
-      }
-      .btn-search:hover  { background:var(--orange-dk); color:var(--white); transform:translateY(-1px); }
-      .btn-search:disabled { opacity:.5; cursor:not-allowed; transform:none; }
-      .status-msg { margin-top:14px; font-size:14px; }
-      .err { color:#7F1D1D; background:var(--red-bg); border:0.5px solid #FCA5A5; border-radius:12px; padding:12px 16px; font-size:14px; text-align:left; }
+    /* ── CONTENEDOR PRINCIPAL ────────────────────── */
+    .main-container {
+      max-width: 1060px; margin: 0 auto; padding: 110px 20px 60px;
+    }
 
-      /* ── ALERTAS ─── */
-      .alert-banner {
-        display:flex; align-items:flex-start; gap:14px;
-        border-radius:16px; padding:16px 20px; margin-bottom:20px;
-        border:1px solid transparent;
-        animation:alertSlideIn .4s cubic-bezier(.25,.46,.45,.94);
-      }
-      @keyframes alertSlideIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
-      .alert-banner.warning { background:#FFFBEB; border-color:#FDE68A; color:#92400E; }
-      body.dark .alert-banner.warning { background:#2D2500; border-color:#7C5E00; color:#FDE68A; }
-      .alert-banner.danger {
-        background:var(--red-bg); border-color:#FCA5A5; color:#7F1D1D;
-        animation:alertSlideIn .4s cubic-bezier(.25,.46,.45,.94), alertPulse 2.5s ease-in-out .5s infinite;
-      }
-      body.dark .alert-banner.danger { background:#2D0000; border-color:#7F1D1D; color:#FCA5A5; }
-      @keyframes alertPulse { 0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,0)} 50%{box-shadow:0 0 0 5px rgba(220,38,38,.12)} }
-      .alert-icon  { font-size:22px; flex-shrink:0; line-height:1; margin-top:1px; }
-      .alert-body  { flex:1; }
-      .alert-title { font-weight:700; font-size:14px; margin-bottom:2px; }
-      .alert-desc  { font-size:13px; opacity:.85; font-weight:400; line-height:1.5; }
+    /* ── COMPONENTE DE BÚSQUEDA ──────────────────── */
+    .search-card {
+      max-width: 480px; margin: 40px auto; text-align: center;
+      background: var(--glass-white); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 28px;
+      box-shadow: var(--glass-shadow);
+    }
+    .search-card h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 700;
+      color: var(--text-main); margin-bottom: 8px; letter-spacing: -.02em;
+    }
+    .search-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+    .search-box {
+      display: flex; gap: 8px; background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--card-border); border-radius: 14px; padding: 6px;
+      transition: all .2s;
+    }
+    .search-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1); }
+    .search-box input {
+      flex: 1; border: none; background: transparent; padding: 10px 14px;
+      font-size: 15px; font-family: 'Inter', sans-serif; font-weight: 600;
+      color: var(--text-main); outline: none; text-transform: uppercase;
+    }
+    .btn-search {
+      background: var(--accent); color: #FFFFFF; border: none; border-radius: 10px;
+      padding: 10px 22px; font-size: 14px; font-weight: 600; cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif; transition: all .2s;
+    }
+    .btn-search:hover { background: var(--accent-hover); }
+    .btn-search:disabled { opacity: .6; cursor: not-allowed; }
+    .status-err {
+      margin-top: 16px; font-size: 13px; color: var(--red-ok);
+      background: var(--red-bg); border: 1px solid rgba(225, 29, 72, 0.2);
+      padding: 10px; border-radius: 10px; display: none;
+    }
 
-      /* ── ANIMACIONES ─── */
-      .card-anim   { opacity:0; transform:translateY(18px); animation:cardIn .45s cubic-bezier(.25,.46,.45,.94) forwards; }
-      .header-anim { opacity:0; transform:translateY(10px);  animation:cardIn .35s cubic-bezier(.25,.46,.45,.94) forwards; }
-      @keyframes cardIn { to { opacity:1; transform:translateY(0); } }
+    /* ── ALERTAS DE SEGURIDAD BTC ────────────────── */
+    .alert-banner {
+      display: flex; align-items: flex-start; gap: 14px;
+      border-radius: 16px; padding: 16px 20px; margin-bottom: 24px;
+      border: 1px solid transparent;
+      animation: fadeUp .4s ease;
+    }
+    .alert-banner.warning { background: var(--yellow-bg); border-color: rgba(217, 119, 6, 0.3); color: #92400E; }
+    .alert-banner.danger { background: var(--red-bg); border-color: rgba(225, 29, 72, 0.3); color: #9F1239; }
+    .alert-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+    .alert-desc { font-size: 13px; opacity: .9; }
 
-      /* ── LOAN HEADER ─── */
-      .loan-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
-      .client-row  { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-      .client-avatar { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--sage); flex-shrink:0; }
-      .client-name { font-family:'Instrument Serif',serif; font-size:22px; font-weight:400; color:var(--sage-deep); }
-      .chip {
-        display:inline-flex; align-items:center; gap:5px;
-        background:var(--cream); border:0.5px solid var(--border);
-        border-radius:8px; padding:5px 11px; font-size:12px; color:var(--muted);
-        transition:border-color .15s,color .15s,background .15s; min-height:36px;
-      }
-      .chip:hover { border-color:var(--sage-mid); color:var(--sage-dark); background:var(--sand); }
-      .close-x {
-        background:none; border:0.5px solid var(--border); border-radius:8px;
-        padding:7px 11px; font-size:16px; color:var(--muted); cursor:pointer;
-        transition:border-color .15s,color .15s; flex-shrink:0; min-height:36px;
-      }
-      .close-x:hover { border-color:#FCA5A5; color:#DC2626; }
+    /* ── ESTRUCTURA DEL DASHBOARD ────────────────── */
+    .dashboard-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
+    }
+    .client-info { display: flex; align-items: center; gap: 14px; }
+    .client-avatar {
+      width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
+      border: 2px solid #FFFFFF; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .client-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 700; color: var(--text-main); }
+    .chips-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.8);
+      border: 1px solid var(--card-border); border-radius: 8px; padding: 4px 10px;
+      font-size: 12px; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all .2s;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); background: #FFFFFF; }
+    .btn-exit {
+      background: rgba(255,255,255,0.8); border: 1px solid var(--card-border);
+      border-radius: 10px; padding: 8px 14px; font-size: 13px; font-weight: 600;
+      color: var(--text-muted); cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; transition: all .2s;
+    }
+    .btn-exit:hover { background: #FFFFFF; color: var(--red-ok); border-color: rgba(225, 29, 72, 0.3); }
 
-      /* ── GRID 2 COLS ─── */
-      .loan-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
-      .loan-col  { display:flex; flex-direction:column; gap:18px; }
+    .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .dash-col { display: flex; flex-direction: column; gap: 24px; }
 
-      /* ── CARDS ─── */
-      .card { background:var(--white); border:0.5px solid var(--border); border-radius:18px; padding:22px; transition:background .3s,border .3s,box-shadow .3s; }
-      .card:hover { box-shadow:0 4px 20px rgba(45,79,64,.06); }
-      .card-title { font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--sage-mid); margin-bottom:16px; }
+    /* ── TARJETAS ESTILO GLASS ───────────────────── */
+    .card {
+      background: var(--glass-white); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border); border-radius: 20px; padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    }
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px;
+    }
 
-      /* ── KPI GRID ─── */
-      .kpi-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-      .kpi { background:var(--cream); border:0.5px solid var(--border); border-radius:14px; padding:14px; transition:background .2s,border-color .2s; }
-      .kpi:hover { border-color:var(--sage); }
-      .kpi .kl { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--sage-mid); margin-bottom:5px; display:flex; align-items:center; gap:5px; }
-      .kpi .kv { font-size:clamp(16px,3.5vw,22px); font-weight:600; color:var(--sage-deep); margin-top:2px; word-break:break-word; }
-      .kpi .ks { font-size:11px; color:var(--muted); margin-top:3px; }
+    /* KPI METRICS */
+    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .kpi {
+      background: rgba(255, 255, 255, 0.6); border-radius: 14px; padding: 14px;
+      border: 1px solid var(--card-border);
+    }
+    .kpi .kl { font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; }
+    .kpi .kv { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 700; color: var(--text-main); }
+    .kpi .ks { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
-      /* ── PROGRESO ─── */
-      .prog-wrap  { margin-top:14px; background:var(--cream); border:0.5px solid var(--border); border-radius:14px; padding:14px; }
-      .prog-label { font-size:12px; font-weight:600; color:var(--text); margin-bottom:8px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px; }
-      .prog-label .prog-pct { color:var(--sage-mid); }
-      .prog-bg    { background:var(--sand); border-radius:6px; height:24px; overflow:hidden; position:relative; }
-      .prog-fill  { height:100%; background:var(--orange); border-radius:6px; width:0%; transition:width 1.1s cubic-bezier(.25,.46,.45,.94); }
-      .prog-bg::after {
-        content:''; position:absolute; inset:0;
-        background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.22) 50%,transparent 100%);
-        animation:shimmer 2.2s ease-in-out infinite; pointer-events:none;
-      }
-      @keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
-      .prog-pct-label { position:absolute; top:50%; transform:translateY(-50%); font-size:11px; font-weight:700; white-space:nowrap; pointer-events:none; transition:left 1.1s cubic-bezier(.25,.46,.45,.94); }
-      .prog-pct-label.outside { left:calc(var(--prog-w) + 6px); color:var(--sage-deep); }
-      .prog-pct-label.inside  { left:auto; right:8px; color:var(--white); }
+    /* BARRA PROGRESO */
+    .prog-wrap { margin-top: 18px; background: rgba(255, 255, 255, 0.6); border: 1px solid var(--card-border); border-radius: 14px; padding: 14px; }
+    .prog-head { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+    .prog-bar-bg { background: rgba(226, 232, 240, 0.8); border-radius: 6px; height: 10px; overflow: hidden; }
+    .prog-bar-fill { height: 100%; background: var(--accent); border-radius: 6px; width: 0%; transition: width 1s ease; }
+    
+    .dates-row { display: flex; justify-content: space-between; margin-top: 14px; font-size: 11px; font-weight: 500; color: var(--text-muted); }
 
-      /* ── BADGES ─── */
-      .badges-row { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
-      .badge { background:var(--sand); border:0.5px solid var(--border); color:var(--muted); padding:5px 11px; border-radius:8px; font-size:11px; font-weight:500; }
-      .badge.right { margin-left:auto; }
+    /* TABLA DE PAGOS RESPONSIVE */
+    .table-responsive { max-height: 260px; overflow-y: auto; border: 1px solid var(--card-border); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+    th { background: rgba(248, 250, 252, 0.9); padding: 10px 12px; font-weight: 600; color: var(--text-muted); border-bottom: 1px solid var(--card-border); position: sticky; top: 0; }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(226, 232, 240, 0.5); color: var(--text-main); }
+    tr:last-child td { border-bottom: none; }
 
-      /* ── TABLE ─── */
-      .table-wrap { max-height:290px; overflow-y:auto; border:0.5px solid var(--border); border-radius:14px; margin-top:6px; -webkit-overflow-scrolling:touch; }
-      table { width:100%; border-collapse:collapse; font-size:13px; table-layout:fixed; }
-      thead th { background:var(--cream); color:var(--sage-dark); text-align:left; padding:10px 12px; font-weight:600; font-size:11px; letter-spacing:.06em; text-transform:uppercase; border-bottom:0.5px solid var(--border); position:sticky; top:0; z-index:1; }
-      tbody td { padding:10px 12px; border-bottom:0.5px solid var(--border); color:var(--text); vertical-align:top; }
-      tbody tr:last-child td { border-bottom:none; }
-      tbody tr:hover { background:var(--cream); }
-      table td:nth-child(3),table th:nth-child(3) { white-space:pre-wrap; word-break:break-word; }
-      .td-muted { color:var(--mist); font-size:11px; }
+    /* BADGE DE RIESGO SEMÁFORO */
+    .risk-badge {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 4px; text-align: center; border-radius: 14px; padding: 14px;
+      border: 1px solid var(--card-border); background: rgba(255, 255, 255, 0.6); margin-bottom: 12px;
+    }
+    .risk-row { display: flex; align-items: center; gap: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 14px; }
+    .risk-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .risk-dot.safe { background: var(--green-ok); box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15); }
+    .risk-dot.warning { background: var(--accent); box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15); }
+    .risk-dot.danger { background: var(--red-ok); box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15); }
+    .risk-sub { font-size: 11px; color: var(--text-muted); }
 
-      /* ── EMPTY STATE ─── */
-      .empty-state { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 16px; gap:10px; text-align:center; }
-      .empty-state svg { opacity:.35; }
-      .empty-state .empty-title { font-size:14px; font-weight:600; color:var(--text); opacity:.6; }
-      .empty-state .empty-sub   { font-size:12px; color:var(--muted); font-weight:300; max-width:220px; line-height:1.5; }
+    /* BTC DETAILS GRID */
+    .btc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .btc-card { background: rgba(255, 255, 255, 0.6); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px; text-align: center; }
+    .btc-card.full { grid-column: span 2; }
+    .btc-card .bl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 2px; }
+    .btc-card .bv { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 15px; color: var(--text-main); }
+    .btc-card.live { background: #FFFFFF; border-color: var(--accent); }
 
-      /* ── BADGE RIESGO ─── */
-      .risk-badge {
-        grid-column:span 2;
-        display:flex; flex-direction:column; align-items:center; justify-content:center;
-        gap:6px; text-align:center; border-radius:14px; padding:18px 20px;
-        border:0.5px solid var(--border); background:var(--cream);
-      }
-      .risk-dot { width:8px; height:8px; border-radius:50%; display:inline-block; margin-right:6px; flex-shrink:0; }
-      .risk-badge .risk-row  { display:flex; align-items:center; justify-content:center; }
-      .risk-badge .risk-title { font-size:13px; font-weight:600; color:var(--text); }
-      .risk-badge .risk-sub   { font-size:11px; font-weight:400; color:var(--muted); line-height:1.5; max-width:260px; }
-      .risk-dot.safe    { background:#16A34A; box-shadow:0 0 0 3px rgba(22,163,74,.15); }
-      .risk-dot.warning { background:#EAB308; box-shadow:0 0 0 3px rgba(234,179,8,.15); }
-      .risk-dot.danger  { background:#DC2626; box-shadow:0 0 0 3px rgba(220,38,38,.15); animation:dotPulse 2s ease-in-out infinite; }
-      @keyframes dotPulse { 0%,100%{box-shadow:0 0 0 3px rgba(220,38,38,.15)} 50%{box-shadow:0 0 0 6px rgba(220,38,38,.08)} }
+    /* GRAPH SPARKLINE CARD */
+    .sparkline-card { margin-top: 24px; }
+    .spark-svg { width: 100%; height: 140px; overflow: visible; }
 
-      /* ── BTC CARDS ─── */
-      .btc-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:6px; }
-      .btc-card { background:var(--cream); border:0.5px solid var(--border); border-radius:12px; padding:14px; text-align:center; transition:background .2s,border-color .2s,transform .2s; }
-      .btc-card:hover { transform:translateY(-2px); border-color:var(--sage); }
-      .btc-card.full { grid-column:span 2; }
-      .btc-card .bl { font-size:10px; color:var(--mist); margin-bottom:5px; text-transform:uppercase; letter-spacing:.06em; display:flex; align-items:center; justify-content:center; gap:5px; }
-      .btc-card .bv { font-size:clamp(13px,2.8vw,16px); font-weight:600; color:var(--sage-deep); word-break:break-word; }
-      .btc-card.live { background:var(--sage-deep); border-color:var(--sage-deep); }
-      .btc-card.live .bl { color:rgba(200,221,212,.6); }
-      .btc-card.live .bv { font-size:clamp(16px,3.5vw,20px); color:#7EC9AB; }
+    /* ── BOTONES FLOTANTES DE CONTACTO ──────────── */
+    .floating-contact {
+      position: fixed; right: 24px; bottom: 24px; z-index: 9999;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .floating-contact a {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .floating-contact a:hover { transform: translateY(-3px) scale(1.05); }
+    .floating-whatsapp {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #FFFFFF; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    }
+    .floating-telegram {
+      background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
+      color: #FFFFFF; box-shadow: 0 6px 20px rgba(42, 171, 238, 0.35);
+    }
+    .floating-contact svg { width: 26px; height: 26px; fill: currentColor; }
 
-      /* ── SPARKLINE ─── */
-      .sparkline-card { background:var(--white); border:0.5px solid var(--border); border-radius:18px; padding:22px; transition:background .3s,border .3s,box-shadow .3s; }
-      .sparkline-card:hover { box-shadow:0 4px 20px rgba(45,79,64,.06); }
-      .sparkline-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px; }
-      .sparkline-title  { font-size:10px; font-weight:600; color:var(--sage-mid); text-transform:uppercase; letter-spacing:.16em; display:flex; align-items:center; gap:6px; }
-      .sparkline-legend { display:flex; gap:14px; }
-      .spark-leg { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
-      .spark-leg-line { width:16px; height:2px; border-radius:2px; }
-      .spark-svg { width:100%; overflow:visible; display:block; }
-      .spark-loading { font-size:12px; color:var(--mist); text-align:center; padding:24px 0; }
+    /* ANIMACIONES */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .animated-fade { animation: fadeUp .5s ease both; }
 
-      /* ── SEMÁFORO ─── */
-      .c-green  { color:var(--green-ok) !important; }
-      .c-yellow { color:#B45309 !important; }
-      .c-red    { color:#DC2626 !important; }
-      .live-dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; animation:liveBlink 2s ease-in-out infinite; }
-      .live-dot.green  { background:var(--green-ok); }
-      .live-dot.yellow { background:#EAB308; }
-      .live-dot.red    { background:#DC2626; }
-      @keyframes liveBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
+    /* RESPONSIVE SMARTPHONES */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .dash-grid { grid-template-columns: 1fr; gap: 16px; }
+      .main-container { padding-top: 90px; }
+    }
+    @media (max-width: 600px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .btc-grid { grid-template-columns: 1fr; }
+      .btc-card.full { grid-column: span 1; }
+      .dashboard-header { flex-direction: column; align-items: flex-start; }
+      .client-info { width: 100%; }
+      .btn-exit { width: 100%; text-align: center; margin-top: 8px; }
+      .floating-contact { right: 16px; bottom: 16px; }
+      .floating-contact a { width: 46px; height: 46px; }
+      .floating-contact svg { width: 22px; height: 22px; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;">
 
-      /* ── TOOLTIPS ─── */
-      .tip-wrap { position:relative; display:inline-flex; align-items:center; }
-      .tip-icon {
-        display:inline-flex; align-items:center; justify-content:center;
-        width:14px; height:14px; border-radius:50%; background:var(--border); color:var(--muted);
-        font-size:9px; font-weight:700; cursor:default; transition:background .15s,color .15s;
-        flex-shrink:0; line-height:1; font-style:normal; font-family:'DM Sans',sans-serif; border:none; padding:0;
-      }
-      .tip-wrap:hover .tip-icon { background:var(--sage-mid); color:var(--white); }
-      .tip-box {
-        position:absolute; z-index:200; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(4px);
-        background:var(--sage-deep); color:#E8F5EE; font-size:12px; font-weight:400; line-height:1.5;
-        padding:8px 12px; border-radius:10px; width:200px; text-align:left;
-        box-shadow:0 8px 24px rgba(0,0,0,.18); pointer-events:none; opacity:0; visibility:hidden;
-        transition:opacity .18s,visibility .18s,transform .18s; white-space:normal;
-      }
-      .tip-box::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--sage-deep); }
-      .tip-wrap.tip-right .tip-box { left:0; transform:translateX(0) translateY(4px); }
-      .tip-wrap.tip-right .tip-box::after { left:10px; transform:none; }
-      .tip-wrap.tip-right:hover .tip-box { transform:translateX(0) translateY(0); }
-      .tip-wrap.tip-left .tip-box { left:auto; right:0; transform:translateX(0) translateY(4px); }
-      .tip-wrap.tip-left .tip-box::after { left:auto; right:10px; transform:none; }
-      .tip-wrap.tip-left:hover .tip-box { transform:translateX(0) translateY(0); }
-      .tip-wrap:hover .tip-box { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+<!-- BOTONES FLOTANTES (WHATSAPP / TELEGRAM) -->
+<div class="floating-contact">
+  <a href="https://wa.me/5491173695582?text=Hola%2C%20tengo%20una%20consulta%20sobre%20mi%20pr%C3%A9stamo" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.05 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+  </a>
+  <a href="https://t.me/FedericoAlturria" target="_blank" rel="noopener noreferrer" class="floating-telegram" aria-label="Telegram">
+    <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.28 7.72-6.97c.34-.31-.07-.48-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.17-3.08-2.01 1.93c-.23.23-.42.42-.83.42z"/></svg>
+  </a>
+</div>
 
-      /* ── RESPONSIVE ─── */
-      @media(max-width:900px){
-        .topnav { padding:0 16px; }
-        .main   { padding:16px 16px 40px; }
-        .loan-grid { grid-template-columns:1fr; }
-      }
-      @media(max-width:600px){
-        .search-wrap { margin-top:32px; }
-        .search-box  { flex-direction:column; padding:12px; gap:8px; }
-        .search-box input { font-size:16px; padding:4px 0; }
-        .btn-search { width:100%; padding:14px; justify-content:center; }
-        .loan-header { flex-direction:column; }
-        .client-row  { flex-direction:column; align-items:flex-start; gap:8px; }
-        .client-name { font-size:20px; }
-        .kpi-grid    { grid-template-columns:1fr; }
-        .kpi .kv     { font-size:20px; }
-        .badges-row  { flex-direction:column; gap:6px; }
-        .badge.right { margin-left:0; }
-        .nav-tag     { display:none; }
-        .dm-wrap label { display:none; }
-        .sparkline-legend { display:none; }
-        .chips-row { flex-wrap:wrap; }
-        .chip { font-size:11px; padding:4px 9px; }
-        .risk-badge { grid-column:span 2; }
-      }
-      @media(max-width:360px){
-        .btc-grid { grid-template-columns:1fr; }
-        .btc-card.full { grid-column:span 1; }
-        .risk-badge { grid-column:span 1; }
-      }
-    </style>
-  </head>
-  <body>
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo-b">
+    <span class="l-btc" style="font-size:24px;">₿TCash</span>
+    <span class="l-domain" style="font-size:11px;">.com.ar</span>
+  </a>
+  <span class="nav-tag">Panel Cliente</span>
+</nav>
 
-    <nav class="topnav" id="topnav">
-      <div class="nav-left">
-        <a href="/" style="display:flex;align-items:center;" title="Volver al inicio">
-          <div class="logo-b">
-            <span class="l-btc">₿TCash</span>
-            <span class="l-domain">.com.ar</span>
-          </div>
-        </a>
-        <div style="width:0.5px;height:18px;background:var(--border);"></div>
-        <span class="nav-tag">Panel cliente</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div class="dm-wrap">
-          <label for="dmSw">Modo oscuro</label>
-          <label class="sw"><input type="checkbox" id="dmSw"><span class="sw-sl"></span></label>
-        </div>
-      </div>
-    </nav>
-
-    <div class="main">
-      <div class="search-wrap" id="searchScreen">
-        <h1>Buscá tu préstamo</h1>
-        <p>Ingresá tu código para consultar el estado de tu préstamo en tiempo real</p>
-        <div class="search-box">
-          <input type="text" id="loanCode" placeholder="Código (ej: BTC-001)"
-                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-          <button class="btn-search" id="btnSearch" onclick="searchLoan()">Buscar</button>
-        </div>
-        <div class="status-msg" id="statusMsg"></div>
-      </div>
-      <div id="loanResult" style="display:none"></div>
+<div class="main-container">
+  <!-- PANTALLA INICIAL DE BÚSQUEDA -->
+  <div class="search-card animated-fade" id="searchScreen">
+    <h1>Consultá tu Préstamo</h1>
+    <p>Ingresá tu código único de seguimiento para acceder a los datos de tu garantía y pagos.</p>
+    <div class="search-box">
+      <input type="text" id="loanCode" placeholder="CÓDIGO (EJ: BTC-001)" autocomplete="off">
+      <button class="btn-search" id="btnSearch" onclick="searchLoan()">Consultar</button>
     </div>
+    <div class="status-err" id="statusErr"></div>
+  </div>
 
-    <script>
-      // ⚠️ REEMPLAZA ESTA URL CON LA URL DE TU WEB APP DE APPS SCRIPT DEPLOYADA EN EL PASO 1
-      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7hNpmyth9Nvyh4XMc0K_ZxDc0VFA4CT-Ox5Fv7fspGxuIDScYi4s2Vaq33t3r5lM/exec";
+  <!-- PANEL DASHBOARD (OCULTO INICIALMENTE) -->
+  <div id="loanResult" style="display:none;" class="animated-fade"></div>
+</div>
 
-      function tip(text,pos){
-        var cls='tip-wrap'+(pos?' '+pos:'');
-        return '<span class="'+cls+'"><span class="tip-icon">i</span><span class="tip-box">'+text+'</span></span>';
-      }
+<script>
+  // URL de tu App Script
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7hNpmyth9Nvyh4XMc0K_ZxDc0VFA4CT-Ox5Fv7fspGxuIDScYi4s2Vaq33t3r5lM/exec";
 
-      document.getElementById('dmSw').addEventListener('change',e=>{
-        document.body.classList.toggle('dark',e.target.checked);
+  function fmtUSD(val) {
+    const num = parseFloat(val) || 0;
+    return '$' + num.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
+  }
+
+  function esc(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  /* BÚSQUEDA DE PRÉSTAMO SEGURO VÍA POST */
+  async function searchLoan() {
+    const code = document.getElementById('loanCode').value.trim();
+    const errEl = document.getElementById('statusErr');
+    const btn = document.getElementById('btnSearch');
+
+    if (!code) {
+      errEl.textContent = "Ingresá un código válido.";
+      errEl.style.display = "block";
+      return;
+    }
+
+    errEl.style.display = "none";
+    btn.disabled = true;
+    btn.textContent = "Buscando...";
+
+    try {
+      // Envío por POST en body para proteger parámetros de enlaces expuestos
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 'code': code })
       });
-      window.addEventListener('scroll',()=>{
-        document.getElementById('topnav').classList.toggle('scrolled',window.scrollY>10);
+
+      const result = await response.json();
+      btn.disabled = false;
+      btn.textContent = "Consultar";
+
+      if (result.status === 'success' && result.data) {
+        renderDashboard(result.data);
+      } else {
+        errEl.textContent = result.message || "No se encontró ningún préstamo con el código proporcionado.";
+        errEl.style.display = "block";
+      }
+    } catch (e) {
+      btn.disabled = false;
+      btn.textContent = "Consultar";
+      errEl.textContent = "Error al conectar con la plataforma. Intente nuevamente.";
+      errEl.style.display = "block";
+    }
+  }
+
+  document.getElementById('loanCode').addEventListener('keydown', (e) => { if (e.key === 'Enter') searchLoan(); });
+
+  function renderDashboard(data) {
+    const L = data.loan;
+    const C = data.computed || {};
+    const P = (data.payments || []).sort((a,b) => new Date(b.DateISO) - new Date(a.DateISO));
+
+    document.getElementById('searchScreen').style.display = 'none';
+
+    const live = Number(L.BTC_Price_RealTime_USD) || 0;
+    const warn = Number(L.BTC_Warning_Price_USD) || 0;
+    const liq = Number(L.BTC_Sell_Threshold_USD) || 0;
+
+    let riskClass = 'safe', riskTitle = 'Zona Segura', riskSub = 'Garantía con cobertura adecuada.';
+    if (live <= warn && live > liq) {
+      riskClass = 'warning'; riskTitle = 'Zona de Advertencia'; riskSub = 'Precio cercano al margen de liquidación.';
+    } else if (live <= liq && live > 0) {
+      riskClass = 'danger'; riskTitle = 'Zona de Liquidación'; riskSub = 'Garantía en riesgo crítico de ejecución.';
+    }
+
+    const pctPaid = Math.min(100, Math.max(0, parseFloat(L.Payment_Progress_Percent) || 0));
+
+    let html = '';
+
+    // ALERTA DE RIESGO
+    if (live <= warn && live > 0) {
+      html += `
+        <div class="alert-banner ${live <= liq ? 'danger' : 'warning'}">
+          <div>
+            <div class="alert-title">⚠️ ${riskTitle}</div>
+            <div class="alert-desc">El valor actual de Bitcoin (${fmtUSD(live)}) ha alcanzado los márgenes previstos. Por favor contactá con soporte si necesitás reajustar tu colateral.</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // HEADER CLIENTE
+    html += `
+      <div class="dashboard-header">
+        <div class="client-info">
+          <img class="client-avatar" src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/LatGL1sf4VN9iHEDGn9X/pub/1B2aQ4bNdBQvQxAgdOVo/asdsadsad.png" alt="User">
+          <div>
+            <div class="client-name">${esc(L.Client_name || 'Cliente')}</div>
+            <div class="chips-group">
+              ${L.Contract_PDF ? `<a href="${encodeURI(L.Contract_PDF)}" target="_blank" rel="noopener" class="chip">📄 Contrato Digital</a>` : ''}
+              ${L.BTC_Adress ? `<a href="https://mempool.space/es/address/${encodeURIComponent(L.BTC_Adress)}" target="_blank" rel="noopener" class="chip">🟠 Explorer Wallet</a>` : ''}
+            </div>
+          </div>
+        </div>
+        <button class="btn-exit" onclick="resetDashboard()">Cerrar sesión</button>
+      </div>
+
+      <div class="dash-grid">
+        <!-- COLUMNA IZQUIERDA: RESUMEN Y PAGOS -->
+        <div class="dash-col">
+          <div class="card">
+            <div class="card-title">Resumen del Préstamo</div>
+            <div class="kpi-grid">
+              <div class="kpi">
+                <div class="kl">Capital Solicitado</div>
+                <div class="kv">${fmtUSD(L.Loan_Amount_USD)}</div>
+                <div class="ks">Tasa: ${Number(L.Interest_Rate_Percent).toFixed(2)}% Anual</div>
+              </div>
+              <div class="kpi">
+                <div class="kl">Total a Cancelar</div>
+                <div class="kv">${fmtUSD(L.Total_Amount_Due_USD)}</div>
+                <div class="ks">Pendiente: ${fmtUSD(C.Remaining_USD)}</div>
+              </div>
+            </div>
+
+            <div class="prog-wrap">
+              <div class="prog-head">
+                <span>Progreso de Cancelación</span>
+                <span style="color:var(--accent);">${pctPaid.toFixed(1)}%</span>
+              </div>
+              <div class="prog-bar-bg">
+                <div class="prog-bar-fill" style="width:${pctPaid}%"></div>
+              </div>
+              <div class="dates-row">
+                <span>Inicio: ${esc(L.Loan_Start_Date || '-')}</span>
+                <span>Vencimiento: ${esc(L.Loan_Due_Date || '-')}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Historial de Pagos</div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Monto</th>
+                    <th>Notas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${P.length ? P.map(p => `
+                    <tr>
+                      <td>${esc(p.Date)}</td>
+                      <td><strong>${fmtUSD(p.Amount_USD)}</strong></td>
+                      <td>${esc(p.Notes || '-')}</td>
+                    </tr>
+                  `).join('') : `<tr><td colspan="3" style="text-align:center;color:var(--text-muted);padding:20px;">Sin pagos registrados aún.</td></tr>`}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: ESTADO BITCOIN -->
+        <div class="dash-col">
+          <div class="card">
+            <div class="card-title">Garantía en Bitcoin</div>
+            
+            <div class="risk-badge">
+              <div class="risk-row">
+                <span class="risk-dot ${riskClass}"></span>
+                <span>${riskTitle}</span>
+              </div>
+              <div class="risk-sub">${riskSub}</div>
+            </div>
+
+            <div class="btc-grid">
+              <div class="btc-card">
+                <div class="bl">Garantía Retenida</div>
+                <div class="bv">${Number(L.BTC_Collateral || 0).toFixed(6).replace('.',',')} BTC</div>
+              </div>
+              <div class="btc-card">
+                <div class="bl">Precio Inicial</div>
+                <div class="bv">${fmtUSD(L.BTC_Initial_Price_USD)}</div>
+              </div>
+              <div class="btc-card">
+                <div class="bl">Umbral Advertencia</div>
+                <div class="bv" style="color:var(--accent);">${fmtUSD(L.BTC_Warning_Price_USD)}</div>
+              </div>
+              <div class="btc-card">
+                <div class="bl">Umbral Liquidación</div>
+                <div class="bv" style="color:var(--red-ok);">${fmtUSD(L.BTC_Sell_Threshold_USD)}</div>
+              </div>
+              <div class="btc-card full live">
+                <div class="bl">Precio BTC en Tiempo Real</div>
+                <div class="bv" style="color:var(--green-ok);">${fmtUSD(L.BTC_Price_RealTime_USD)}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRAFICO SPARKLINE MONITOREO 30 DIAS -->
+      <div class="card sparkline-card">
+        <div class="card-title">Evolución de Mercado BTC (Últimos 30 días)</div>
+        <div id="sparklineChart" style="min-height: 120px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px;">
+          Cargando datos de mercado...
+        </div>
+      </div>
+    `;
+
+    const resultEl = document.getElementById('loanResult');
+    resultEl.innerHTML = html;
+    resultEl.style.display = 'block';
+
+    fetchSparklineData(warn, liq);
+  }
+
+  function resetDashboard() {
+    document.getElementById('loanResult').style.display = 'none';
+    document.getElementById('loanResult').innerHTML = '';
+    document.getElementById('searchScreen').style.display = 'block';
+    document.getElementById('loanCode').value = '';
+  }
+
+  function fetchSparklineData(warnPrice, liqPrice) {
+    fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily')
+      .then(r => r.json())
+      .then(data => {
+        if(data && data.prices) {
+          renderSparkline(data.prices.map(p => p[1]), warnPrice, liqPrice);
+        }
+      })
+      .catch(() => {
+        document.getElementById('sparklineChart').innerHTML = 'Gráfico de mercado no disponible en este momento.';
       });
+  }
 
-      function fmt(n){ n=parseFloat(n)||0; return n.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2})+' USD'; }
-      function normPct(v){ let x=Number(v)||0; if(x<=1)x*=100; return Math.max(0,Math.min(100,x)); }
-      function esc(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+  function renderSparkline(prices, warnPrice, liqPrice) {
+    const el = document.getElementById('sparklineChart');
+    if (!el || !prices.length) return;
 
-      async function searchLoan(){
-        const code=document.getElementById('loanCode').value.trim();
-        const msg=document.getElementById('statusMsg');
-        const btn=document.getElementById('btnSearch');
-        if(!code){ msg.innerHTML='<div class="err">Ingresá un código de préstamo válido.</div>'; return; }
-        
-        msg.innerHTML='<span style="color:var(--mist);font-size:13px">Buscando...</span>';
-        btn.disabled=true;
+    const W = el.getBoundingClientRect().width || 600;
+    const H = 130;
+    const pad = 10;
+    const minP = Math.min(...prices, liqPrice * 0.95);
+    const maxP = Math.max(...prices, warnPrice * 1.05);
 
-        try {
-          const response = await fetch(`${APPS_SCRIPT_URL}?code=${encodeURIComponent(code)}`);
-          const result = await response.json();
-          btn.disabled = false;
+    const sx = i => (i / (prices.length - 1)) * (W - pad * 2) + pad;
+    const sy = v => H - pad - ((v - minP) / (maxP - minP)) * (H - pad * 2);
 
-          if (result.status === 'success') {
-            renderLoan(result.data);
-          } else {
-            msg.innerHTML = '<div class="err">' + (result.message || 'Préstamo no encontrado.') + '</div>';
-          }
-        } catch (error) {
-          btn.disabled = false;
-          msg.innerHTML = '<div class="err">Error al conectar con el servidor. Intente nuevamente.</div>';
-        }
-      }
-      document.getElementById('loanCode').addEventListener('keydown',e=>{ if(e.key==='Enter') searchLoan(); });
+    const points = prices.map((p, i) => `${sx(i)},${sy(p)}`).join(' ');
 
-      function renderLoan(res){
-        const msg=document.getElementById('statusMsg');
-        if(!res||!res.loan){ msg.innerHTML='<div class="err">Préstamo no encontrado. Verificá el código.</div>'; return; }
-        document.getElementById('searchScreen').style.display='none';
-        msg.innerHTML='';
-        window._lastLoan=res;
+    el.innerHTML = `
+      <svg class="spark-svg" viewBox="0 0 ${W} ${H}">
+        <polyline points="${points}" fill="none" stroke="#D97706" stroke-width="2" stroke-linejoin="round"/>
+        ${warnPrice ? `<line x1="0" y1="${sy(warnPrice)}" x2="${W}" y2="${sy(warnPrice)}" stroke="#D97706" stroke-dasharray="4" opacity="0.5"/>` : ''}
+        ${liqPrice ? `<line x1="0" y1="${sy(liqPrice)}" x2="${W}" y2="${sy(liqPrice)}" stroke="#E11D48" stroke-dasharray="4" opacity="0.5"/>` : ''}
+      </svg>
+    `;
+  }
 
-        const L=res.loan, C=res.computed;
-        const P=(res.payments||[]).sort((a,b)=>new Date(b.DateISO)-new Date(a.DateISO));
-        const pct=normPct(L.Payment_Progress_Percent).toFixed(1);
-
-        const live=Number(L.BTC_Price_RealTime_USD)||0;
-        const warn=Number(L.BTC_Warning_Price_USD)||0;
-        const liq=Number(L.BTC_Sell_Threshold_USD)||0;
-        let liveClass='c-green', dotClass='green', semLabel='Al día';
-        if(live<=warn&&live>liq){ liveClass='c-yellow'; dotClass='yellow'; semLabel='Advertencia'; }
-        if(live<=liq){ liveClass='c-red'; dotClass='red'; semLabel='Liquidación'; }
-
-        const result=document.getElementById('loanResult');
-        result.style.display='block';
-        var H=[];
-
-        /* BANNER ALERTA */
-        if(live<=liq){
-          H.push('<div class="alert-banner danger header-anim" style="animation-delay:.05s"><div class="alert-icon">🚨</div><div class="alert-body">');
-          H.push('<div class="alert-title">Precio en zona de liquidación</div>');
-          H.push('<div class="alert-desc">El precio de BTC ('+fmt(live)+') está por debajo del umbral de liquidación ('+fmt(liq)+'). Tu garantía puede ejecutarse en cualquier momento. Contactá a BTCash de inmediato.</div>');
-          H.push('</div></div>');
-        } else if(live<=warn){
-          H.push('<div class="alert-banner warning header-anim" style="animation-delay:.05s"><div class="alert-icon">⚠️</div><div class="alert-body">');
-          H.push('<div class="alert-title">Precio en zona de advertencia</div>');
-          H.push('<div class="alert-desc">El precio de BTC ('+fmt(live)+') está cerca del umbral de liquidación ('+fmt(liq)+'). Seguí de cerca el mercado o contactá a BTCash.</div>');
-          H.push('</div></div>');
-        }
-
-        /* HEADER */
-        H.push('<div class="loan-header header-anim" style="animation-delay:.08s">');
-        H.push('<div class="client-row">');
-        H.push('<img class="client-avatar" src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/LatGL1sf4VN9iHEDGn9X/pub/1B2aQ4bNdBQvQxAgdOVo/asdsadsad.png" alt="Cliente">');
-        H.push('<span class="client-name">'+esc(L.Client_name||'-')+'</span>');
-        H.push('<div class="chips-row" style="display:flex;gap:8px;flex-wrap:wrap;">');
-        if(L.Contract_PDF) H.push('<a class="chip" href="'+encodeURI(L.Contract_PDF)+'" target="_blank">📄 Ver contrato</a>');
-        if(L.BTC_Adress)   H.push('<a class="chip" href="https://mempool.space/es/address/'+encodeURIComponent(L.BTC_Adress)+'" target="_blank">🟠 '+esc(L.BTC_Adress)+'</a>');
-        H.push('</div></div>');
-        H.push('<button class="close-x" onclick="resetView()">✕</button>');
-        H.push('</div>');
-
-        /* GRID */
-        H.push('<div class="loan-grid">');
-
-        /* ── COLUMNA IZQUIERDA ── */
-        H.push('<div class="loan-col">');
-
-        /* Card resumen */
-        H.push('<div class="card card-anim" id="cardResumen" style="animation-delay:.12s">');
-        H.push('<div class="card-title">Resumen del préstamo</div>');
-        H.push('<div class="kpi-grid">');
-        H.push('<div class="kpi"><div class="kl">Capital prestado '+tip('Monto original que recibiste como préstamo en dólares.')+'</div><div class="kv">'+fmt(L.Loan_Amount_USD)+'</div><div class="ks">Tasa: '+Number(L.Interest_Rate_Percent).toFixed(2)+'% anual '+tip('Tasa de interés anual aplicada sobre el capital prestado.')+'</div></div>');
-        H.push('<div class="kpi"><div class="kl">Total adeudado '+tip('Capital + intereses totales que debés pagar al finalizar el préstamo.')+'</div><div class="kv">'+fmt(L.Total_Amount_Due_USD)+'</div><div class="ks">Pendiente: '+fmt(C.Remaining_USD)+'</div></div>');
-        H.push('</div>');
-        H.push('<div class="prog-wrap">');
-        H.push('<div class="prog-label"><span>Progreso de pago</span><span class="prog-pct">'+fmt(L.Total_Amount_Paid_USD)+' / '+fmt(L.Total_Amount_Due_USD)+'</span></div>');
-        H.push('<div class="prog-bg"><div id="progFill" class="prog-fill"></div><span id="progLabel" class="prog-pct-label outside" style="--prog-w:0%">0%</span></div>');
-        H.push('</div>');
-        H.push('<div class="badges-row"><span class="badge">Inicio: '+esc(L.Loan_Start_Date||'-')+'</span><span class="badge right">Vencimiento: '+esc(L.Loan_Due_Date||'-')+'</span></div>');
-        H.push('</div>');
-
-        /* Card historial */
-        H.push('<div class="card card-anim" style="animation-delay:.20s">');
-        H.push('<div class="card-title">Historial de pagos</div>');
-        H.push(P.length ? paymentsHtml(P) : emptyState());
-        H.push('</div>');
-
-        H.push('</div>'); /* fin col izq */
-
-        /* ── COLUMNA DERECHA ── */
-        H.push('<div class="loan-col">');
-        H.push('<div class="card card-anim" style="animation-delay:.16s">');
-        H.push('<div class="card-title">Detalle Bitcoin</div>');
-        H.push('<div class="btc-grid">');
-
-        /* Badge riesgo */
-        var riskDotClass='safe', riskTitle='Zona segura', riskSub='El precio está por encima del umbral de advertencia.';
-        if(live<=warn&&live>liq){ riskDotClass='warning'; riskTitle='Zona de advertencia'; riskSub='El precio se acerca al umbral crítico. Mantenete alerta.'; }
-        if(live<=liq){ riskDotClass='danger'; riskTitle='Zona de liquidación'; riskSub='El precio superó el límite. La garantía puede ejecutarse.'; }
-        H.push('<div class="risk-badge">');
-        H.push('<div class="risk-row"><span class="risk-dot '+riskDotClass+'"></span><span class="risk-title">'+riskTitle+'</span></div>');
-        H.push('<div class="risk-sub">'+riskSub+'</div>');
-        H.push('</div>');
-
-        H.push('<div class="btc-card"><div class="bl">Garantía '+tip('Cantidad de BTC depositada como colateral.','tip-right')+'</div><div class="bv">'+esc((Number(L.BTC_Collateral)||0).toFixed(6).replace('.',','))+' BTC</div></div>');
-        H.push('<div class="btc-card"><div class="bl">Precio al inicio '+tip('Precio del BTC al momento de originarse el préstamo.')+'</div><div class="bv">'+fmt(L.BTC_Initial_Price_USD)+'</div></div>');
-        H.push('<div class="btc-card"><div class="bl">Precio advertencia '+tip('Al llegar a este nivel BTCash te notificará.','tip-right')+'</div><div class="bv c-yellow">'+fmt(L.BTC_Warning_Price_USD)+'</div></div>');
-        H.push('<div class="btc-card"><div class="bl">Precio liquidación '+tip('Si el BTC cae a este precio tu garantía se ejecuta automáticamente.','tip-left')+'</div><div class="bv c-red">'+fmt(L.BTC_Sell_Threshold_USD)+'</div></div>');
-        H.push('<div class="btc-card full live"><div class="bl"><span class="live-dot '+dotClass+'"></span>Precio en vivo · '+semLabel+' '+tip('Precio actual de BTC en tiempo real.')+'</div>');
-        H.push('<div class="bv '+liveClass+'"><a href="https://coinmarketcap.com/es/currencies/bitcoin/" target="_blank" style="color:inherit;">'+fmt(L.BTC_Price_RealTime_USD)+'</a></div></div>');
-
-        H.push('</div>'); /* fin btc-grid */
-        H.push('</div>'); /* fin card BTC */
-        H.push('</div>'); /* fin col der */
-        H.push('</div>'); /* fin loan-grid */
-
-        /* SPARKLINE */
-        H.push('<div class="sparkline-card card-anim" style="margin-top:20px;animation-delay:.28s">');
-        H.push('<div class="sparkline-header">');
-        H.push('<div class="sparkline-title">📈 Precio BTC — últimos 30 días '+tip('Evolución del precio de Bitcoin en los últimos 30 días con tus umbrales marcados.')+'</div>');
-        H.push('<div class="sparkline-legend"><div class="spark-leg"><div class="spark-leg-line" style="background:#EAB308"></div>Advertencia</div><div class="spark-leg"><div class="spark-leg-line" style="background:#DC2626"></div>Liquidación</div></div>');
-        H.push('</div><div id="sparklineChart"><div class="spark-loading">Cargando datos de mercado...</div></div></div>');
-
-        result.innerHTML=H.join('');
-
-        /* Barra de progreso */
-        setTimeout(()=>{
-          const fill=document.getElementById('progFill');
-          const label=document.getElementById('progLabel');
-          const pctNum=parseFloat(pct);
-          fill.style.width=pct+'%';
-          label.style.setProperty('--prog-w',pct+'%');
-          label.textContent=pct+'%';
-          label.className='prog-pct-label '+(pctNum>=15?'inside':'outside');
-        },200);
-
-        window.onresize=null;
-        loadSparkline(warn,liq);
-      }
-
-      function emptyState(){
-        return '<div class="empty-state">'+
-          '<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">'+
-            '<rect x="8" y="12" width="36" height="30" rx="5" stroke="#9BB8AD" stroke-width="1.5" fill="none"/>'+
-            '<path d="M8 19h36" stroke="#9BB8AD" stroke-width="1.5"/>'+
-            '<path d="M16 9v6M26 9v6M36 9v6" stroke="#9BB8AD" stroke-width="1.5" stroke-linecap="round"/>'+
-            '<circle cx="17" cy="28" r="2" fill="#C8DDD4"/>'+
-            '<circle cx="26" cy="28" r="2" fill="#C8DDD4"/>'+
-            '<circle cx="35" cy="28" r="2" fill="#C8DDD4"/>'+
-            '<circle cx="17" cy="36" r="2" fill="#C8DDD4"/>'+
-            '<circle cx="26" cy="36" r="2" fill="#C8DDD4"/>'+
-          '</svg>'+
-          '<div class="empty-title">Sin pagos registrados</div>'+
-          '<div class="empty-sub">Cuando realices tu primer pago aparecerá acá el historial completo.</div>'+
-        '</div>';
-      }
-
-      function paymentsHtml(P){
-        var rows=P.map(function(p){
-          return '<tr><td>'+esc(p.Date)+'</td><td>'+fmt(p.Amount_USD)+'</td><td>'+esc(p.Notes||'')+'</td><td class="td-muted">'+esc(p.Payment_ID||'')+'</td></tr>';
-        }).join('');
-        return '<div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Monto</th><th>Notas</th><th>ID</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
-      }
-
-      function loadSparkline(warnPrice,liqPrice){
-        fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily')
-          .then(r=>r.json())
-          .then(data=>{ renderSparkline(data.prices.map(p=>p[1]),warnPrice,liqPrice); })
-          .catch(()=>{
-            const el=document.getElementById('sparklineChart');
-            if(el) el.innerHTML='<div class="spark-loading" style="color:var(--muted)">No se pudieron cargar los datos de mercado.</div>';
-          });
-      }
-
-      function renderSparkline(prices,warnPrice,liqPrice){
-        const el=document.getElementById('sparklineChart');
-        if(!el||!prices.length) return;
-        const W=el.getBoundingClientRect().width||700;
-        const H=140, pad={t:14,b:26,l:10,r:10};
-        const w=W-pad.l-pad.r, h=H-pad.t-pad.b;
-        const minP=Math.min(...prices,liqPrice*0.97);
-        const maxP=Math.max(...prices,warnPrice*1.03);
-        const sx=i=>(i/(prices.length-1))*w+pad.l;
-        const sy=v=>H-pad.b-((v-minP)/(maxP-minP))*h;
-        const pts=prices.map((p,i)=>sx(i)+','+sy(p)).join(' ');
-        const areaPath=sx(0)+','+sy(prices[0])+' '+pts.split(' ').slice(1).join(' ')+' '+sx(prices.length-1)+','+(H-pad.b)+' '+sx(0)+','+(H-pad.b);
-        const lastX=sx(prices.length-1), lastY=sy(prices[prices.length-1]);
-        const yWarn=sy(warnPrice), yLiq=sy(liqPrice);
-        const fmtK=v=>v>=1000?'$'+(v/1000).toFixed(0)+'k':'$'+v.toFixed(0);
-        const dark=document.body.classList.contains('dark');
-        const lineColor=dark?'#5A9E84':'#3B6B57';
-        el.innerHTML=`<svg class="spark-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="${lineColor}" stop-opacity="0.15"/>
-            <stop offset="100%" stop-color="${lineColor}" stop-opacity="0"/>
-          </linearGradient></defs>
-          <polygon points="${areaPath}" fill="url(#sg)"/>
-          ${warnPrice>minP&&warnPrice<maxP?`<line x1="${pad.l}" y1="${yWarn}" x2="${W-pad.r}" y2="${yWarn}" stroke="#EAB308" stroke-width="1" stroke-dasharray="4,3" opacity=".75"/><text x="${W-pad.r-2}" y="${yWarn-4}" fill="#EAB308" font-size="9" text-anchor="end" font-family="DM Sans,sans-serif">${fmtK(warnPrice)}</text>`:''}
-          ${liqPrice>minP&&liqPrice<maxP?`<line x1="${pad.l}" y1="${yLiq}" x2="${W-pad.r}" y2="${yLiq}" stroke="#DC2626" stroke-width="1" stroke-dasharray="4,3" opacity=".75"/><text x="${W-pad.r-2}" y="${yLiq-4}" fill="#DC2626" font-size="9" text-anchor="end" font-family="DM Sans,sans-serif">${fmtK(liqPrice)}</text>`:''}
-          <polyline points="${pts}" fill="none" stroke="${lineColor}" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-          <circle cx="${lastX}" cy="${lastY}" r="3.5" fill="${lineColor}" stroke="white" stroke-width="1.5"/>
-          <text x="${pad.l}" y="${H-pad.b+14}" fill="var(--mist)" font-size="9" font-family="DM Sans,sans-serif">${fmtK(minP)}</text>
-          <text x="${pad.l}" y="${pad.t+6}" fill="var(--mist)" font-size="9" font-family="DM Sans,sans-serif">${fmtK(maxP)}</text>
-        </svg>`;
-      }
-
-      function resetView(){
-        document.getElementById('searchScreen').style.display='block';
-        document.getElementById('loanResult').style.display='none';
-        document.getElementById('loanResult').innerHTML='';
-        document.getElementById('loanCode').value='';
-        document.getElementById('statusMsg').innerHTML='';
-        window._lastLoan=null;
-        window.onresize=null;
-      }
-    </script>
-  </body>
+  /* PROTECCIÓN ADICIONAL PARA EVITAR INSPECCIÓN O EXPOSICIÓN DE CÓDIGO */
+  document.addEventListener('keydown', function(e) {
+    if (e.keyCode === 123 || 
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || 
+        (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83))) {
+      e.preventDefault();
+      return false;
+    }
+  });
+</script>
+</body>
 </html>
